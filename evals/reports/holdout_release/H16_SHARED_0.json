@@ -1,0 +1,235 @@
+{
+  "case_id": "H16",
+  "title": "两个有效政策冲突失败关闭",
+  "level": "api",
+  "tags": [
+    "security"
+  ],
+  "baseline": "SHARED",
+  "timestamp": "2026-10-12T05:05:37.757300+00:00",
+  "score": {
+    "success": true,
+    "checks": {
+      "error_code": true,
+      "case_count": true
+    },
+    "hard_violations": [],
+    "fact_correct": 0,
+    "fact_total": 0,
+    "citation_correct": 0,
+    "citation_total": 0,
+    "retrieval_required": false,
+    "retrieval_covered": true
+  },
+  "evidence": {
+    "responses": [],
+    "citations": [],
+    "available_citations": [],
+    "retrieved": [],
+    "observations": [],
+    "claims": [],
+    "business_data": [],
+    "events": [],
+    "model_outputs": [],
+    "tokens": {},
+    "extra": {},
+    "run_status": null,
+    "error_code": null,
+    "last_http": {
+      "http_status": 503,
+      "code": "POLICY_UNAVAILABLE"
+    },
+    "mode": "DETERMINISTIC_API",
+    "latency_ms": 265,
+    "http_trace": [
+      {
+        "path": "/orders/O-A101/policy?intent=RETURN_REFUND&query=退货窗口",
+        "actor": "C-A1",
+        "http_status": 503,
+        "code": "POLICY_UNAVAILABLE",
+        "data": {
+          "reason_codes": [
+            "POLICY_CONFLICT"
+          ],
+          "next_action": "MANUAL_REVIEW"
+        }
+      }
+    ],
+    "database": {
+      "cases": [],
+      "tickets": [],
+      "refunds": [],
+      "providers": [],
+      "reviews": [],
+      "confirmations": [],
+      "orders": [
+        {
+          "id": "O-A101",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 14900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A102",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 39900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A103",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 8900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A104",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A105",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 12900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A106",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 29900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A107",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 19900,
+          "refunded_amount_fen": 19900
+        },
+        {
+          "id": "O-A108",
+          "customer_id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A109",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 10900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A110",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 0,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A111",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 11900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A112",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 20000,
+          "refunded_amount_fen": 5000
+        },
+        {
+          "id": "O-A113",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 15900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-B101",
+          "customer_id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "paid_amount_fen": 69900,
+          "refunded_amount_fen": 0
+        }
+      ],
+      "users": [
+        {
+          "id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A2",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "customer_id": "C-B1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "E-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support"
+          ]
+        },
+        {
+          "id": "E-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-A3",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "warehouse"
+          ]
+        },
+        {
+          "id": "E-A4",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-B2",
+          "tenant_id": "TENANT-B",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        }
+      ]
+    }
+  },
+  "repeat_index": 0
+}

@@ -1,0 +1,1017 @@
+{
+  "case_id": "H05",
+  "title": "部分退款历史显式人工工单",
+  "level": "agent",
+  "tags": [
+    "edge"
+  ],
+  "baseline": "B2",
+  "timestamp": "2026-10-12T05:01:25.111756+00:00",
+  "score": {
+    "success": true,
+    "checks": {
+      "manual_handoff": true,
+      "ticket_category": true,
+      "ticket_count": true,
+      "refund_success_count": true
+    },
+    "hard_violations": [],
+    "fact_correct": 7,
+    "fact_total": 7,
+    "citation_correct": 1,
+    "citation_total": 1,
+    "retrieval_required": false,
+    "retrieval_covered": true
+  },
+  "evidence": {
+    "responses": [
+      {
+        "cases": [],
+        "facts": [
+          {
+            "kind": "ORDER",
+            "field": "paid_amount_fen",
+            "value": 31877,
+            "resource_id": "O-A112"
+          },
+          {
+            "kind": "ORDER",
+            "field": "refunded_amount_fen",
+            "value": 8123,
+            "resource_id": "O-A112"
+          },
+          {
+            "kind": "ORDER",
+            "field": "status",
+            "value": "DELIVERED",
+            "resource_id": "O-A112"
+          },
+          {
+            "kind": "ORDER",
+            "field": "delivered_at",
+            "value": "2026-10-10T02:00:00Z",
+            "resource_id": "O-A112"
+          },
+          {
+            "kind": "TICKET",
+            "field": "status",
+            "value": "OPEN",
+            "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F"
+          },
+          {
+            "kind": "TICKET",
+            "field": "category",
+            "value": "MANUAL_AFTER_SALES",
+            "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F"
+          },
+          {
+            "kind": "TICKET",
+            "field": "order_id",
+            "value": "O-A112",
+            "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F"
+          }
+        ],
+        "answer": "已为订单O-A112创建人工售后工单（TICKET-726BEC1761604A43857209B61B94A01F，状态OPEN）。该订单实付31877分，累计退款8123分；政策POLICY-A-2026-10-v1 / A-RETURN-02规定既往部分退款订单不由首版自动新增退款，需人工核实剩余可退金额与资格，请等待人工处理。",
+        "tickets": [
+          {
+            "id": "TICKET-726BEC1761604A43857209B61B94A01F",
+            "status": "OPEN",
+            "summary": "客户就订单O-A112申请继续退款：该订单已签收，实付31877分，累计已退款8123分，客户称此前退过部分金额，现希望继续退。政策POLICY-A-2026-10-v1 / A-RETURN-02规定既往部分退款订单不由首版自动新增退款，需人工处理。请人工核实剩余可退金额与资格。",
+            "category": "MANUAL_AFTER_SALES",
+            "order_id": "O-A112",
+            "simulated": true
+          }
+        ],
+        "citations": [
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+        ],
+        "simulated": true,
+        "needs_input": false
+      }
+    ],
+    "citations": [
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+    ],
+    "available_citations": [
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+    ],
+    "retrieved": [
+      "A-RETURN-02",
+      "A-RETURN-01",
+      "A-REFUND-01"
+    ],
+    "observations": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A112",
+        "field": "paid_amount_fen",
+        "value": 31877
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A112",
+        "field": "refunded_amount_fen",
+        "value": 8123
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A112",
+        "field": "delivered_at",
+        "value": "2026-10-10T02:00:00Z"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A112",
+        "field": "product_category",
+        "value": "STANDARD"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A112",
+        "field": "status",
+        "value": "DELIVERED"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A112",
+        "field": "version",
+        "value": 1
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "standard_return_window_seconds",
+        "value": 604800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "customer_confirmation_ttl_seconds",
+        "value": 900
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "logistics_inactivity_seconds",
+        "value": 172800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "all_refunds_require_review",
+        "value": true
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      },
+      {
+        "kind": "TICKET",
+        "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F",
+        "field": "status",
+        "value": "OPEN"
+      },
+      {
+        "kind": "TICKET",
+        "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F",
+        "field": "category",
+        "value": "MANUAL_AFTER_SALES"
+      },
+      {
+        "kind": "TICKET",
+        "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F",
+        "field": "order_id",
+        "value": "O-A112"
+      }
+    ],
+    "claims": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A112",
+        "field": "paid_amount_fen",
+        "value": 31877
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A112",
+        "field": "refunded_amount_fen",
+        "value": 8123
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A112",
+        "field": "status",
+        "value": "DELIVERED"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A112",
+        "field": "delivered_at",
+        "value": "2026-10-10T02:00:00Z"
+      },
+      {
+        "kind": "TICKET",
+        "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F",
+        "field": "status",
+        "value": "OPEN"
+      },
+      {
+        "kind": "TICKET",
+        "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F",
+        "field": "category",
+        "value": "MANUAL_AFTER_SALES"
+      },
+      {
+        "kind": "TICKET",
+        "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F",
+        "field": "order_id",
+        "value": "O-A112"
+      }
+    ],
+    "business_data": [
+      {
+        "id": "O-A112",
+        "cases": [],
+        "status": "DELIVERED",
+        "version": 1,
+        "delivered_at": "2026-10-10T02:00:00Z",
+        "paid_amount_fen": 31877,
+        "product_category": "STANDARD",
+        "refunded_amount_fen": 8123
+      },
+      {
+        "intent": "RETURN_REFUND",
+        "clauses": [
+          {
+            "text": "模拟定制和易腐商品不自动判断常规退货资格，应转人工。既往部分退款订单不由首版自动新增退款。",
+            "intent": "RETURN_REFUND",
+            "chunk_id": "A-RETURN-02",
+            "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+          },
+          {
+            "text": "模拟商家A：标准商品在签收后不超过7×24小时可提交常规退货申请，恰好7天包含在窗口内。资格通过不代表批准退款。",
+            "intent": "RETURN_REFUND",
+            "chunk_id": "A-RETURN-01",
+            "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-01"
+          },
+          {
+            "text": "常规退货批准后等待仓库确认收货；损坏退款无需退回必须有审核员明确决定。只有模拟支付对账成功才报告模拟退款成功。",
+            "intent": "ALL",
+            "chunk_id": "A-REFUND-01",
+            "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+          }
+        ],
+        "order_id": "O-A112",
+        "simulated": true,
+        "candidates": [
+          {
+            "score": 4.382156,
+            "chunk_id": "A-RETURN-02",
+            "selected": true
+          },
+          {
+            "score": 0.632533,
+            "chunk_id": "A-RETURN-01",
+            "selected": true
+          },
+          {
+            "score": 0.626001,
+            "chunk_id": "A-REFUND-01",
+            "selected": true
+          },
+          {
+            "score": 0.150348,
+            "chunk_id": "A-CONFIRM-01",
+            "selected": false
+          }
+        ],
+        "effective_to": "2026-10-31T16:00:00Z",
+        "evaluated_at": "2026-10-11T02:00:00Z",
+        "rule_summary": {
+          "all_refunds_require_review": true,
+          "logistics_inactivity_seconds": 172800,
+          "standard_return_window_seconds": 604800,
+          "customer_confirmation_ttl_seconds": 900
+        },
+        "effective_from": "2026-09-30T16:00:00Z",
+        "policy_version": "POLICY-A-2026-10-v1",
+        "retrieval_mode": "keyword_v1"
+      },
+      {
+        "id": "TICKET-726BEC1761604A43857209B61B94A01F",
+        "status": "OPEN",
+        "summary": "客户就订单O-A112申请继续退款：该订单已签收，实付31877分，累计已退款8123分，客户称此前退过部分金额，现希望继续退。政策POLICY-A-2026-10-v1 / A-RETURN-02规定既往部分退款订单不由首版自动新增退款，需人工处理。请人工核实剩余可退金额与资格。",
+        "category": "MANUAL_AFTER_SALES",
+        "order_id": "O-A112",
+        "simulated": true
+      }
+    ],
+    "events": [
+      {
+        "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+        "seq": 1,
+        "kind": "QUEUED",
+        "data": {
+          "action": "CREATE_TICKET"
+        }
+      },
+      {
+        "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+        "seq": 2,
+        "kind": "RUNNING",
+        "data": {
+          "model": "deepseek-flash",
+          "resumed": false,
+          "provider": "deepseek"
+        }
+      },
+      {
+        "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+        "seq": 3,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 0,
+          "usage": {
+            "total_tokens": 3047,
+            "prompt_tokens": 2922,
+            "completion_tokens": 125,
+            "prompt_cache_hit_tokens": 896,
+            "prompt_cache_miss_tokens": 2026
+          },
+          "input_ref": {
+            "round": 0,
+            "message_id": "MSG-7C346E46111E44F29C1BBECA003A372C"
+          },
+          "latency_ms": 1734,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "0",
+            "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4"
+          },
+          "tool_names": [
+            "get_order",
+            "search_policy"
+          ]
+        }
+      },
+      {
+        "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+        "seq": 4,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "get_order",
+          "step": "0:0",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "id": "O-A112",
+              "cases": [],
+              "status": "DELIVERED",
+              "version": 1,
+              "delivered_at": "2026-10-10T02:00:00Z",
+              "paid_amount_fen": 31877,
+              "product_category": "STANDARD",
+              "refunded_amount_fen": 8123
+            },
+            "trace_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "order_id": "O-A112"
+          }
+        }
+      },
+      {
+        "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+        "seq": 5,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "search_policy",
+          "step": "0:1",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "intent": "RETURN_REFUND",
+              "clauses": [
+                {
+                  "text": "模拟定制和易腐商品不自动判断常规退货资格，应转人工。既往部分退款订单不由首版自动新增退款。",
+                  "intent": "RETURN_REFUND",
+                  "chunk_id": "A-RETURN-02",
+                  "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+                },
+                {
+                  "text": "模拟商家A：标准商品在签收后不超过7×24小时可提交常规退货申请，恰好7天包含在窗口内。资格通过不代表批准退款。",
+                  "intent": "RETURN_REFUND",
+                  "chunk_id": "A-RETURN-01",
+                  "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-01"
+                },
+                {
+                  "text": "常规退货批准后等待仓库确认收货；损坏退款无需退回必须有审核员明确决定。只有模拟支付对账成功才报告模拟退款成功。",
+                  "intent": "ALL",
+                  "chunk_id": "A-REFUND-01",
+                  "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+                }
+              ],
+              "order_id": "O-A112",
+              "simulated": true,
+              "candidates": [
+                {
+                  "score": 4.382156,
+                  "chunk_id": "A-RETURN-02",
+                  "selected": true
+                },
+                {
+                  "score": 0.632533,
+                  "chunk_id": "A-RETURN-01",
+                  "selected": true
+                },
+                {
+                  "score": 0.626001,
+                  "chunk_id": "A-REFUND-01",
+                  "selected": true
+                },
+                {
+                  "score": 0.150348,
+                  "chunk_id": "A-CONFIRM-01",
+                  "selected": false
+                }
+              ],
+              "effective_to": "2026-10-31T16:00:00Z",
+              "evaluated_at": "2026-10-11T02:00:00Z",
+              "rule_summary": {
+                "all_refunds_require_review": true,
+                "logistics_inactivity_seconds": 172800,
+                "standard_return_window_seconds": 604800,
+                "customer_confirmation_ttl_seconds": 900
+              },
+              "effective_from": "2026-09-30T16:00:00Z",
+              "policy_version": "POLICY-A-2026-10-v1",
+              "retrieval_mode": "keyword_v1"
+            },
+            "trace_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "query": "历史部分退款后继续退货退款",
+            "top_k": 3,
+            "intent": "RETURN_REFUND",
+            "order_id": "O-A112"
+          }
+        }
+      },
+      {
+        "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+        "seq": 6,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 1,
+          "usage": {
+            "total_tokens": 3970,
+            "prompt_tokens": 3805,
+            "completion_tokens": 165,
+            "prompt_cache_hit_tokens": 2816,
+            "prompt_cache_miss_tokens": 989
+          },
+          "input_ref": {
+            "round": 1,
+            "message_id": "MSG-7C346E46111E44F29C1BBECA003A372C"
+          },
+          "latency_ms": 2140,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "1",
+            "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4"
+          },
+          "tool_names": [
+            "create_support_ticket"
+          ]
+        }
+      },
+      {
+        "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+        "seq": 7,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "create_support_ticket",
+          "step": "1:0",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "id": "TICKET-726BEC1761604A43857209B61B94A01F",
+              "status": "OPEN",
+              "summary": "客户就订单O-A112申请继续退款：该订单已签收，实付31877分，累计已退款8123分，客户称此前退过部分金额，现希望继续退。政策POLICY-A-2026-10-v1 / A-RETURN-02规定既往部分退款订单不由首版自动新增退款，需人工处理。请人工核实剩余可退金额与资格。",
+              "category": "MANUAL_AFTER_SALES",
+              "order_id": "O-A112",
+              "simulated": true
+            },
+            "trace_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "summary": "客户就订单O-A112申请继续退款：该订单已签收，实付31877分，累计已退款8123分，客户称此前退过部分金额，现希望继续退。政策POLICY-A-2026-10-v1 / A-RETURN-02规定既往部分退款订单不由首版自动新增退款，需人工处理。请人工核实剩余可退金额与资格。",
+            "category": "MANUAL_AFTER_SALES",
+            "order_id": "O-A112"
+          }
+        }
+      },
+      {
+        "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+        "seq": 8,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 2,
+          "usage": {
+            "total_tokens": 4560,
+            "prompt_tokens": 4192,
+            "completion_tokens": 368,
+            "prompt_cache_hit_tokens": 3968,
+            "prompt_cache_miss_tokens": 224
+          },
+          "input_ref": {
+            "round": 2,
+            "message_id": "MSG-7C346E46111E44F29C1BBECA003A372C"
+          },
+          "latency_ms": 2531,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "2",
+            "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4"
+          },
+          "tool_names": []
+        }
+      },
+      {
+        "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+        "seq": 9,
+        "kind": "COMPLETED",
+        "data": {
+          "response": {
+            "cases": [],
+            "facts": [
+              {
+                "kind": "ORDER",
+                "field": "paid_amount_fen",
+                "value": 31877,
+                "resource_id": "O-A112"
+              },
+              {
+                "kind": "ORDER",
+                "field": "refunded_amount_fen",
+                "value": 8123,
+                "resource_id": "O-A112"
+              },
+              {
+                "kind": "ORDER",
+                "field": "status",
+                "value": "DELIVERED",
+                "resource_id": "O-A112"
+              },
+              {
+                "kind": "ORDER",
+                "field": "delivered_at",
+                "value": "2026-10-10T02:00:00Z",
+                "resource_id": "O-A112"
+              },
+              {
+                "kind": "TICKET",
+                "field": "status",
+                "value": "OPEN",
+                "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F"
+              },
+              {
+                "kind": "TICKET",
+                "field": "category",
+                "value": "MANUAL_AFTER_SALES",
+                "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F"
+              },
+              {
+                "kind": "TICKET",
+                "field": "order_id",
+                "value": "O-A112",
+                "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F"
+              }
+            ],
+            "answer": "已为订单O-A112创建人工售后工单（TICKET-726BEC1761604A43857209B61B94A01F，状态OPEN）。该订单实付31877分，累计退款8123分；政策POLICY-A-2026-10-v1 / A-RETURN-02规定既往部分退款订单不由首版自动新增退款，需人工核实剩余可退金额与资格，请等待人工处理。",
+            "tickets": [
+              {
+                "id": "TICKET-726BEC1761604A43857209B61B94A01F",
+                "status": "OPEN",
+                "summary": "客户就订单O-A112申请继续退款：该订单已签收，实付31877分，累计已退款8123分，客户称此前退过部分金额，现希望继续退。政策POLICY-A-2026-10-v1 / A-RETURN-02规定既往部分退款订单不由首版自动新增退款，需人工处理。请人工核实剩余可退金额与资格。",
+                "category": "MANUAL_AFTER_SALES",
+                "order_id": "O-A112",
+                "simulated": true
+              }
+            ],
+            "citations": [
+              "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+            ],
+            "simulated": true
+          },
+          "error_code": null
+        }
+      }
+    ],
+    "model_outputs": [
+      {
+        "step": "0",
+        "result": {
+          "calls": [
+            {
+              "id": "call_00_IjQG5BnUX4CS9YLXdzNF3730",
+              "name": "get_order",
+              "arguments": {
+                "order_id": "O-A112"
+              }
+            },
+            {
+              "id": "call_01_ZbfkwuySJ4jHjD1IVkWE9360",
+              "name": "search_policy",
+              "arguments": {
+                "query": "历史部分退款后继续退货退款",
+                "top_k": 3,
+                "intent": "RETURN_REFUND",
+                "order_id": "O-A112"
+              }
+            }
+          ],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 3047,
+            "prompt_tokens": 2922,
+            "completion_tokens": 125,
+            "prompt_cache_hit_tokens": 896,
+            "prompt_cache_miss_tokens": 2026
+          },
+          "content": "I'll check the order facts and applicable policy first."
+        }
+      },
+      {
+        "step": "1",
+        "result": {
+          "calls": [
+            {
+              "id": "call_00_8NGXkfwYPmj8cHt2H0y05242",
+              "name": "create_support_ticket",
+              "arguments": {
+                "summary": "客户就订单O-A112申请继续退款：该订单已签收，实付31877分，累计已退款8123分，客户称此前退过部分金额，现希望继续退。政策POLICY-A-2026-10-v1 / A-RETURN-02规定既往部分退款订单不由首版自动新增退款，需人工处理。请人工核实剩余可退金额与资格。",
+                "category": "MANUAL_AFTER_SALES",
+                "order_id": "O-A112"
+              }
+            }
+          ],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 3970,
+            "prompt_tokens": 3805,
+            "completion_tokens": 165,
+            "prompt_cache_hit_tokens": 2816,
+            "prompt_cache_miss_tokens": 989
+          },
+          "content": ""
+        }
+      },
+      {
+        "step": "2",
+        "result": {
+          "calls": [],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 4560,
+            "prompt_tokens": 4192,
+            "completion_tokens": 368,
+            "prompt_cache_hit_tokens": 3968,
+            "prompt_cache_miss_tokens": 224
+          },
+          "content": "{\"answer\":\"已为订单O-A112创建人工售后工单（TICKET-726BEC1761604A43857209B61B94A01F，状态OPEN）。该订单实付31877分，累计退款8123分；政策POLICY-A-2026-10-v1 / A-RETURN-02规定既往部分退款订单不由首版自动新增退款，需人工核实剩余可退金额与资格，请等待人工处理。\",\"needs_input\":false,\"citations\":[\"模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02\"],\"facts\":[{\"kind\":\"ORDER\",\"resource_id\":\"O-A112\",\"field\":\"paid_amount_fen\",\"value\":31877},{\"kind\":\"ORDER\",\"resource_id\":\"O-A112\",\"field\":\"refunded_amount_fen\",\"value\":8123},{\"kind\":\"ORDER\",\"resource_id\":\"O-A112\",\"field\":\"status\",\"value\":\"DELIVERED\"},{\"kind\":\"ORDER\",\"resource_id\":\"O-A112\",\"field\":\"delivered_at\",\"value\":\"2026-10-10T02:00:00Z\"},{\"kind\":\"TICKET\",\"resource_id\":\"TICKET-726BEC1761604A43857209B61B94A01F\",\"field\":\"status\",\"value\":\"OPEN\"},{\"kind\":\"TICKET\",\"resource_id\":\"TICKET-726BEC1761604A43857209B61B94A01F\",\"field\":\"category\",\"value\":\"MANUAL_AFTER_SALES\"},{\"kind\":\"TICKET\",\"resource_id\":\"TICKET-726BEC1761604A43857209B61B94A01F\",\"field\":\"order_id\",\"value\":\"O-A112\"}]}"
+        }
+      }
+    ],
+    "tokens": {
+      "total_tokens": 11577,
+      "prompt_tokens": 10919,
+      "completion_tokens": 658,
+      "prompt_cache_hit_tokens": 7680,
+      "prompt_cache_miss_tokens": 3239
+    },
+    "extra": {},
+    "run_status": "COMPLETED",
+    "error_code": null,
+    "runs": [
+      {
+        "processed": true,
+        "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+        "conversation_id": "CONV-4B0A08D4430B45C8800E44621961DC9A",
+        "status": "COMPLETED",
+        "action": "CREATE_TICKET",
+        "target_order_id": "O-A112",
+        "provider": "deepseek",
+        "model": "deepseek-flash",
+        "prompt_version": "prompt-v4-m4",
+        "tool_version": "tools-v2-m4",
+        "model_calls": 3,
+        "tool_calls": 3,
+        "error_code": null,
+        "response": {
+          "cases": [],
+          "facts": [
+            {
+              "kind": "ORDER",
+              "field": "paid_amount_fen",
+              "value": 31877,
+              "resource_id": "O-A112"
+            },
+            {
+              "kind": "ORDER",
+              "field": "refunded_amount_fen",
+              "value": 8123,
+              "resource_id": "O-A112"
+            },
+            {
+              "kind": "ORDER",
+              "field": "status",
+              "value": "DELIVERED",
+              "resource_id": "O-A112"
+            },
+            {
+              "kind": "ORDER",
+              "field": "delivered_at",
+              "value": "2026-10-10T02:00:00Z",
+              "resource_id": "O-A112"
+            },
+            {
+              "kind": "TICKET",
+              "field": "status",
+              "value": "OPEN",
+              "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F"
+            },
+            {
+              "kind": "TICKET",
+              "field": "category",
+              "value": "MANUAL_AFTER_SALES",
+              "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F"
+            },
+            {
+              "kind": "TICKET",
+              "field": "order_id",
+              "value": "O-A112",
+              "resource_id": "TICKET-726BEC1761604A43857209B61B94A01F"
+            }
+          ],
+          "answer": "已为订单O-A112创建人工售后工单（TICKET-726BEC1761604A43857209B61B94A01F，状态OPEN）。该订单实付31877分，累计退款8123分；政策POLICY-A-2026-10-v1 / A-RETURN-02规定既往部分退款订单不由首版自动新增退款，需人工核实剩余可退金额与资格，请等待人工处理。",
+          "tickets": [
+            {
+              "id": "TICKET-726BEC1761604A43857209B61B94A01F",
+              "status": "OPEN",
+              "summary": "客户就订单O-A112申请继续退款：该订单已签收，实付31877分，累计已退款8123分，客户称此前退过部分金额，现希望继续退。政策POLICY-A-2026-10-v1 / A-RETURN-02规定既往部分退款订单不由首版自动新增退款，需人工处理。请人工核实剩余可退金额与资格。",
+              "category": "MANUAL_AFTER_SALES",
+              "order_id": "O-A112",
+              "simulated": true
+            }
+          ],
+          "citations": [
+            "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+          ],
+          "simulated": true
+        },
+        "created_at": "2026-10-12T05:01:17.609351+00:00",
+        "completed_at": "2026-10-12T05:01:24.832050+00:00"
+      }
+    ],
+    "mode": "LIVE",
+    "provider": "deepseek",
+    "model_id": "deepseek-flash",
+    "latency_ms": 7484,
+    "http_trace": [
+      {
+        "path": "/conversations",
+        "actor": "C-A1",
+        "http_status": 201,
+        "code": "OK",
+        "data": {
+          "conversation_id": "CONV-4B0A08D4430B45C8800E44621961DC9A"
+        }
+      },
+      {
+        "path": "/conversations/CONV-4B0A08D4430B45C8800E44621961DC9A/messages",
+        "actor": "C-A1",
+        "http_status": 202,
+        "code": "OK",
+        "data": {
+          "run_id": "RUN-FD35169A3FC04AEBB4F7ABD88D4248B4",
+          "conversation_id": "CONV-4B0A08D4430B45C8800E44621961DC9A",
+          "status": "QUEUED",
+          "action": "CREATE_TICKET",
+          "target_order_id": "O-A112",
+          "provider": null,
+          "model": null,
+          "prompt_version": "prompt-v4-m4",
+          "tool_version": "tools-v2-m4",
+          "model_calls": 0,
+          "tool_calls": 0,
+          "error_code": null,
+          "response": null,
+          "created_at": "2026-10-12T05:01:17.609351+00:00",
+          "completed_at": null
+        }
+      }
+    ],
+    "database": {
+      "cases": [],
+      "tickets": [
+        {
+          "id": "TICKET-726BEC1761604A43857209B61B94A01F",
+          "order_id": "O-A112",
+          "tenant_id": "TENANT-A",
+          "category": "MANUAL_AFTER_SALES",
+          "status": "OPEN",
+          "created_by": "C-A1"
+        }
+      ],
+      "refunds": [],
+      "providers": [],
+      "reviews": [],
+      "confirmations": [],
+      "orders": [
+        {
+          "id": "O-A101",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 14900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A102",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 39900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A103",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 8900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A104",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A105",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 12900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A106",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 29900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A107",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 19900,
+          "refunded_amount_fen": 19900
+        },
+        {
+          "id": "O-A108",
+          "customer_id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A109",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 10900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A110",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 0,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A111",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 11900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A113",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 15900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-B101",
+          "customer_id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "paid_amount_fen": 69900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A112",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 31877,
+          "refunded_amount_fen": 8123
+        }
+      ],
+      "users": [
+        {
+          "id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A2",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "customer_id": "C-B1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "E-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support"
+          ]
+        },
+        {
+          "id": "E-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-A3",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "warehouse"
+          ]
+        },
+        {
+          "id": "E-A4",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-B2",
+          "tenant_id": "TENANT-B",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        }
+      ]
+    }
+  },
+  "repeat_index": 0
+}

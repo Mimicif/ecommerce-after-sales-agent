@@ -1,0 +1,17 @@
+{
+  "checked_at_utc": "2026-10-12T05:30:43.500207+00:00",
+  "result": "PASS",
+  "api_version": "api-v1-m1",
+  "scope": "Live HTTP and PostgreSQL; no LLM",
+  "business_clock": "fixture",
+  "checks": [
+    "m1_api_and_database_ready",
+    "active_m3_application_blocks_another_application",
+    "fixture_clock_and_standard_return_precheck",
+    "completed_m2_refund_is_ineligible_for_another_damage_request",
+    "logistics_exception_and_unknown_are_distinct",
+    "current_tenant_policy_with_citations",
+    "new_endpoints_preserve_customer_and_tenant_isolation",
+    "client_clock_override_rejected"
+  ]
+}

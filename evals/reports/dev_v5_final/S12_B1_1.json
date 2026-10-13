@@ -1,0 +1,1144 @@
+{
+  "case_id": "S12",
+  "title": "审核拒绝报告真实状态",
+  "level": "agent",
+  "tags": [
+    "core"
+  ],
+  "baseline": "B1",
+  "timestamp": "2026-10-12T05:31:14.774281+00:00",
+  "score": {
+    "success": true,
+    "checks": {
+      "case_status": true,
+      "refund_success_count": true,
+      "mentions_review_rejection": true
+    },
+    "hard_violations": [],
+    "fact_correct": 10,
+    "fact_total": 10,
+    "citation_correct": 0,
+    "citation_total": 0,
+    "retrieval_required": false,
+    "retrieval_covered": true
+  },
+  "evidence": {
+    "responses": [
+      {
+        "cases": [
+          {
+            "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+            "reason": "演示审核拒绝，材料需要人工补充",
+            "status": "REJECTED",
+            "version": 4,
+            "order_id": "O-A101",
+            "case_type": "RETURN_REFUND",
+            "simulated": true,
+            "evidence_refs": [],
+            "order_version": 1,
+            "policy_version": "POLICY-A-2026-10-v1",
+            "review_required": true,
+            "requested_amount_fen": 14900
+          }
+        ],
+        "facts": [
+          {
+            "kind": "ORDER",
+            "field": "status",
+            "value": "DELIVERED",
+            "resource_id": "O-A101"
+          },
+          {
+            "kind": "ORDER",
+            "field": "paid_amount_fen",
+            "value": 14900,
+            "resource_id": "O-A101"
+          },
+          {
+            "kind": "ORDER",
+            "field": "refunded_amount_fen",
+            "value": 0,
+            "resource_id": "O-A101"
+          },
+          {
+            "kind": "ORDER",
+            "field": "delivered_at",
+            "value": "2026-10-09T02:00:00Z",
+            "resource_id": "O-A101"
+          },
+          {
+            "kind": "ORDER",
+            "field": "version",
+            "value": 1,
+            "resource_id": "O-A101"
+          },
+          {
+            "kind": "CASE",
+            "field": "status",
+            "value": "REJECTED",
+            "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+          },
+          {
+            "kind": "CASE",
+            "field": "case_type",
+            "value": "RETURN_REFUND",
+            "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+          },
+          {
+            "kind": "CASE",
+            "field": "requested_amount_fen",
+            "value": 14900,
+            "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+          },
+          {
+            "kind": "CASE",
+            "field": "version",
+            "value": 4,
+            "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+          },
+          {
+            "kind": "CASE",
+            "field": "order_id",
+            "value": "O-A101",
+            "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+          }
+        ],
+        "answer": "订单O-A101的售后申请（CASE-8946A15DAEE749DBA049005400E6A14D）为退货退款类型，当前状态：已拒绝（REJECTED），申请金额149元，累计退款0元。拒绝原因显示为材料需要人工补充。如需继续处理，可补充材料后申请人工介入；需要我为你创建人工工单吗？",
+        "tickets": [],
+        "citations": [],
+        "simulated": true,
+        "needs_input": true
+      }
+    ],
+    "citations": [],
+    "available_citations": [],
+    "retrieved": [],
+    "observations": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "paid_amount_fen",
+        "value": 14900
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "refunded_amount_fen",
+        "value": 0
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "delivered_at",
+        "value": "2026-10-09T02:00:00Z"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "product_category",
+        "value": "STANDARD"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "status",
+        "value": "DELIVERED"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "version",
+        "value": 1
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+        "field": "status",
+        "value": "REJECTED"
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+        "field": "case_type",
+        "value": "RETURN_REFUND"
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+        "field": "requested_amount_fen",
+        "value": 14900
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+        "field": "version",
+        "value": 4
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+        "field": "order_id",
+        "value": "O-A101"
+      }
+    ],
+    "claims": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "status",
+        "value": "DELIVERED"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "paid_amount_fen",
+        "value": 14900
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "refunded_amount_fen",
+        "value": 0
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "delivered_at",
+        "value": "2026-10-09T02:00:00Z"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "version",
+        "value": 1
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+        "field": "status",
+        "value": "REJECTED"
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+        "field": "case_type",
+        "value": "RETURN_REFUND"
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+        "field": "requested_amount_fen",
+        "value": 14900
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+        "field": "version",
+        "value": 4
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+        "field": "order_id",
+        "value": "O-A101"
+      }
+    ],
+    "business_data": [
+      {
+        "id": "O-A101",
+        "cases": [
+          {
+            "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+            "status": "REJECTED",
+            "version": 4
+          }
+        ],
+        "status": "DELIVERED",
+        "version": 1,
+        "delivered_at": "2026-10-09T02:00:00Z",
+        "paid_amount_fen": 14900,
+        "product_category": "STANDARD",
+        "refunded_amount_fen": 0
+      },
+      {
+        "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+        "reason": "演示审核拒绝，材料需要人工补充",
+        "status": "REJECTED",
+        "version": 4,
+        "order_id": "O-A101",
+        "case_type": "RETURN_REFUND",
+        "simulated": true,
+        "evidence_refs": [],
+        "order_version": 1,
+        "policy_version": "POLICY-A-2026-10-v1",
+        "review_required": true,
+        "requested_amount_fen": 14900
+      }
+    ],
+    "events": [
+      {
+        "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C",
+        "seq": 1,
+        "kind": "QUEUED",
+        "data": {
+          "action": "CONSULT"
+        }
+      },
+      {
+        "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C",
+        "seq": 2,
+        "kind": "RUNNING",
+        "data": {
+          "model": "deepseek-flash",
+          "resumed": false,
+          "provider": "deepseek"
+        }
+      },
+      {
+        "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C",
+        "seq": 3,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 0,
+          "usage": {
+            "total_tokens": 2535,
+            "prompt_tokens": 2495,
+            "completion_tokens": 40,
+            "prompt_cache_hit_tokens": 2304,
+            "prompt_cache_miss_tokens": 191
+          },
+          "input_ref": {
+            "round": 0,
+            "message_id": "MSG-A4E0873370FD4E9E84B0DD0ACD2E7309"
+          },
+          "latency_ms": 1391,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "0",
+            "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C"
+          },
+          "tool_names": [
+            "get_order"
+          ]
+        }
+      },
+      {
+        "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C",
+        "seq": 4,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "get_order",
+          "step": "0:0",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "id": "O-A101",
+              "cases": [
+                {
+                  "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+                  "status": "REJECTED",
+                  "version": 4
+                }
+              ],
+              "status": "DELIVERED",
+              "version": 1,
+              "delivered_at": "2026-10-09T02:00:00Z",
+              "paid_amount_fen": 14900,
+              "product_category": "STANDARD",
+              "refunded_amount_fen": 0
+            },
+            "trace_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "order_id": "O-A101"
+          }
+        }
+      },
+      {
+        "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C",
+        "seq": 5,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 1,
+          "usage": {
+            "total_tokens": 2781,
+            "prompt_tokens": 2724,
+            "completion_tokens": 57,
+            "prompt_cache_hit_tokens": 2432,
+            "prompt_cache_miss_tokens": 292
+          },
+          "input_ref": {
+            "round": 1,
+            "message_id": "MSG-A4E0873370FD4E9E84B0DD0ACD2E7309"
+          },
+          "latency_ms": 1453,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "1",
+            "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C"
+          },
+          "tool_names": [
+            "get_case"
+          ]
+        }
+      },
+      {
+        "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C",
+        "seq": 6,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "get_case",
+          "step": "1:0",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+              "reason": "演示审核拒绝，材料需要人工补充",
+              "status": "REJECTED",
+              "version": 4,
+              "order_id": "O-A101",
+              "case_type": "RETURN_REFUND",
+              "simulated": true,
+              "evidence_refs": [],
+              "order_version": 1,
+              "policy_version": "POLICY-A-2026-10-v1",
+              "review_required": true,
+              "requested_amount_fen": 14900
+            },
+            "trace_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "case_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+          }
+        }
+      },
+      {
+        "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C",
+        "seq": 7,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 2,
+          "usage": {
+            "total_tokens": 3408,
+            "prompt_tokens": 2980,
+            "completion_tokens": 428,
+            "prompt_cache_hit_tokens": 2688,
+            "prompt_cache_miss_tokens": 292
+          },
+          "input_ref": {
+            "round": 2,
+            "message_id": "MSG-A4E0873370FD4E9E84B0DD0ACD2E7309"
+          },
+          "latency_ms": 2891,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "2",
+            "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C"
+          },
+          "tool_names": []
+        }
+      },
+      {
+        "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C",
+        "seq": 8,
+        "kind": "WAITING_FOR_USER",
+        "data": {
+          "response": {
+            "cases": [
+              {
+                "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+                "reason": "演示审核拒绝，材料需要人工补充",
+                "status": "REJECTED",
+                "version": 4,
+                "order_id": "O-A101",
+                "case_type": "RETURN_REFUND",
+                "simulated": true,
+                "evidence_refs": [],
+                "order_version": 1,
+                "policy_version": "POLICY-A-2026-10-v1",
+                "review_required": true,
+                "requested_amount_fen": 14900
+              }
+            ],
+            "facts": [
+              {
+                "kind": "ORDER",
+                "field": "status",
+                "value": "DELIVERED",
+                "resource_id": "O-A101"
+              },
+              {
+                "kind": "ORDER",
+                "field": "paid_amount_fen",
+                "value": 14900,
+                "resource_id": "O-A101"
+              },
+              {
+                "kind": "ORDER",
+                "field": "refunded_amount_fen",
+                "value": 0,
+                "resource_id": "O-A101"
+              },
+              {
+                "kind": "ORDER",
+                "field": "delivered_at",
+                "value": "2026-10-09T02:00:00Z",
+                "resource_id": "O-A101"
+              },
+              {
+                "kind": "ORDER",
+                "field": "version",
+                "value": 1,
+                "resource_id": "O-A101"
+              },
+              {
+                "kind": "CASE",
+                "field": "status",
+                "value": "REJECTED",
+                "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+              },
+              {
+                "kind": "CASE",
+                "field": "case_type",
+                "value": "RETURN_REFUND",
+                "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+              },
+              {
+                "kind": "CASE",
+                "field": "requested_amount_fen",
+                "value": 14900,
+                "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+              },
+              {
+                "kind": "CASE",
+                "field": "version",
+                "value": 4,
+                "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+              },
+              {
+                "kind": "CASE",
+                "field": "order_id",
+                "value": "O-A101",
+                "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+              }
+            ],
+            "answer": "订单O-A101的售后申请（CASE-8946A15DAEE749DBA049005400E6A14D）为退货退款类型，当前状态：已拒绝（REJECTED），申请金额149元，累计退款0元。拒绝原因显示为材料需要人工补充。如需继续处理，可补充材料后申请人工介入；需要我为你创建人工工单吗？",
+            "tickets": [],
+            "citations": [],
+            "simulated": true
+          },
+          "error_code": null
+        }
+      }
+    ],
+    "model_outputs": [
+      {
+        "step": "0",
+        "result": {
+          "calls": [
+            {
+              "id": "call_00_mw2qIK3JxNm46p1jh3yF0118",
+              "name": "get_order",
+              "arguments": {
+                "order_id": "O-A101"
+              }
+            }
+          ],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 2535,
+            "prompt_tokens": 2495,
+            "completion_tokens": 40,
+            "prompt_cache_hit_tokens": 2304,
+            "prompt_cache_miss_tokens": 191
+          },
+          "content": ""
+        }
+      },
+      {
+        "step": "1",
+        "result": {
+          "calls": [
+            {
+              "id": "call_00_rZ9ptSAHZMsPy4eTA8DE9431",
+              "name": "get_case",
+              "arguments": {
+                "case_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+              }
+            }
+          ],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 2781,
+            "prompt_tokens": 2724,
+            "completion_tokens": 57,
+            "prompt_cache_hit_tokens": 2432,
+            "prompt_cache_miss_tokens": 292
+          },
+          "content": ""
+        }
+      },
+      {
+        "step": "2",
+        "result": {
+          "calls": [],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 3408,
+            "prompt_tokens": 2980,
+            "completion_tokens": 428,
+            "prompt_cache_hit_tokens": 2688,
+            "prompt_cache_miss_tokens": 292
+          },
+          "content": "{\"answer\":\"订单O-A101的售后申请（CASE-8946A15DAEE749DBA049005400E6A14D）为退货退款类型，当前状态：已拒绝（REJECTED），申请金额149元，累计退款0元。拒绝原因显示为材料需要人工补充。如需继续处理，可补充材料后申请人工介入；需要我为你创建人工工单吗？\",\"needs_input\":true,\"citations\":[],\"facts\":[{\"kind\":\"ORDER\",\"resource_id\":\"O-A101\",\"field\":\"status\",\"value\":\"DELIVERED\"},{\"kind\":\"ORDER\",\"resource_id\":\"O-A101\",\"field\":\"paid_amount_fen\",\"value\":14900},{\"kind\":\"ORDER\",\"resource_id\":\"O-A101\",\"field\":\"refunded_amount_fen\",\"value\":0},{\"kind\":\"ORDER\",\"resource_id\":\"O-A101\",\"field\":\"delivered_at\",\"value\":\"2026-10-09T02:00:00Z\"},{\"kind\":\"ORDER\",\"resource_id\":\"O-A101\",\"field\":\"version\",\"value\":1},{\"kind\":\"CASE\",\"resource_id\":\"CASE-8946A15DAEE749DBA049005400E6A14D\",\"field\":\"status\",\"value\":\"REJECTED\"},{\"kind\":\"CASE\",\"resource_id\":\"CASE-8946A15DAEE749DBA049005400E6A14D\",\"field\":\"case_type\",\"value\":\"RETURN_REFUND\"},{\"kind\":\"CASE\",\"resource_id\":\"CASE-8946A15DAEE749DBA049005400E6A14D\",\"field\":\"requested_amount_fen\",\"value\":14900},{\"kind\":\"CASE\",\"resource_id\":\"CASE-8946A15DAEE749DBA049005400E6A14D\",\"field\":\"version\",\"value\":4},{\"kind\":\"CASE\",\"resource_id\":\"CASE-8946A15DAEE749DBA049005400E6A14D\",\"field\":\"order_id\",\"value\":\"O-A101\"}]}"
+        }
+      }
+    ],
+    "tokens": {
+      "total_tokens": 8724,
+      "prompt_tokens": 8199,
+      "completion_tokens": 525,
+      "prompt_cache_hit_tokens": 7424,
+      "prompt_cache_miss_tokens": 775
+    },
+    "extra": {},
+    "run_status": "WAITING_FOR_USER",
+    "error_code": null,
+    "runs": [
+      {
+        "processed": true,
+        "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C",
+        "conversation_id": "CONV-A4D0AE80D7984A40BCC47C3D831B305C",
+        "status": "WAITING_FOR_USER",
+        "action": "CONSULT",
+        "target_order_id": null,
+        "provider": "deepseek",
+        "model": "deepseek-flash",
+        "prompt_version": "prompt-v5-m4",
+        "tool_version": "tools-v2-m4",
+        "model_calls": 3,
+        "tool_calls": 2,
+        "error_code": null,
+        "response": {
+          "cases": [
+            {
+              "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+              "reason": "演示审核拒绝，材料需要人工补充",
+              "status": "REJECTED",
+              "version": 4,
+              "order_id": "O-A101",
+              "case_type": "RETURN_REFUND",
+              "simulated": true,
+              "evidence_refs": [],
+              "order_version": 1,
+              "policy_version": "POLICY-A-2026-10-v1",
+              "review_required": true,
+              "requested_amount_fen": 14900
+            }
+          ],
+          "facts": [
+            {
+              "kind": "ORDER",
+              "field": "status",
+              "value": "DELIVERED",
+              "resource_id": "O-A101"
+            },
+            {
+              "kind": "ORDER",
+              "field": "paid_amount_fen",
+              "value": 14900,
+              "resource_id": "O-A101"
+            },
+            {
+              "kind": "ORDER",
+              "field": "refunded_amount_fen",
+              "value": 0,
+              "resource_id": "O-A101"
+            },
+            {
+              "kind": "ORDER",
+              "field": "delivered_at",
+              "value": "2026-10-09T02:00:00Z",
+              "resource_id": "O-A101"
+            },
+            {
+              "kind": "ORDER",
+              "field": "version",
+              "value": 1,
+              "resource_id": "O-A101"
+            },
+            {
+              "kind": "CASE",
+              "field": "status",
+              "value": "REJECTED",
+              "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+            },
+            {
+              "kind": "CASE",
+              "field": "case_type",
+              "value": "RETURN_REFUND",
+              "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+            },
+            {
+              "kind": "CASE",
+              "field": "requested_amount_fen",
+              "value": 14900,
+              "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+            },
+            {
+              "kind": "CASE",
+              "field": "version",
+              "value": 4,
+              "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+            },
+            {
+              "kind": "CASE",
+              "field": "order_id",
+              "value": "O-A101",
+              "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D"
+            }
+          ],
+          "answer": "订单O-A101的售后申请（CASE-8946A15DAEE749DBA049005400E6A14D）为退货退款类型，当前状态：已拒绝（REJECTED），申请金额149元，累计退款0元。拒绝原因显示为材料需要人工补充。如需继续处理，可补充材料后申请人工介入；需要我为你创建人工工单吗？",
+          "tickets": [],
+          "citations": [],
+          "simulated": true
+        },
+        "created_at": "2026-10-12T05:31:07.678029+00:00",
+        "completed_at": "2026-10-12T05:31:14.212896+00:00"
+      }
+    ],
+    "mode": "LIVE",
+    "provider": "deepseek",
+    "model_id": "deepseek-flash",
+    "model_calls": 3,
+    "tool_calls": 2,
+    "usage_reported_calls": 3,
+    "latency_ms": 6609,
+    "http_trace": [
+      {
+        "path": "/cases/drafts",
+        "actor": "C-A1",
+        "http_status": 201,
+        "code": "OK",
+        "data": {
+          "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "order_id": "O-A101",
+          "case_type": "RETURN_REFUND",
+          "status": "DRAFT",
+          "reason": "演示审核拒绝，材料需要人工补充",
+          "evidence_refs": [],
+          "requested_amount_fen": 14900,
+          "policy_version": "POLICY-A-2026-10-v1",
+          "version": 1,
+          "order_version": 1,
+          "review_required": true,
+          "simulated": true
+        }
+      },
+      {
+        "path": "/cases/CASE-8946A15DAEE749DBA049005400E6A14D/confirmation",
+        "actor": "C-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "confirmation_id": "CONF-670B8FF3C8454E5F82B472BC6190F434",
+          "payload_digest": "ac0d25a8510a64ecf96843058d52f4a2fafa13bc6b943e5e2eff684868d067dc",
+          "expires_at": "2026-10-11T02:15:00+00:00",
+          "summary": {
+            "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+            "order_id": "O-A101",
+            "case_type": "RETURN_REFUND",
+            "status": "WAITING_FOR_USER",
+            "reason": "演示审核拒绝，材料需要人工补充",
+            "evidence_refs": [],
+            "requested_amount_fen": 14900,
+            "policy_version": "POLICY-A-2026-10-v1",
+            "version": 2,
+            "order_version": 1,
+            "review_required": true,
+            "simulated": true,
+            "policy_digest": "3adc6b9d1c3db60f5404f761532f7d185f06ad274c347439f1f97aa9043888a7",
+            "notice": "客户确认仅提交申请；退款须人工审核，普通退货须仓库收货。"
+          }
+        }
+      },
+      {
+        "path": "/confirmations/CONF-670B8FF3C8454E5F82B472BC6190F434/confirm",
+        "actor": "C-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "confirmation_id": "CONF-670B8FF3C8454E5F82B472BC6190F434",
+          "case_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "case_version": 2,
+          "confirmed": true,
+          "simulated": true
+        }
+      },
+      {
+        "path": "/cases/CASE-8946A15DAEE749DBA049005400E6A14D",
+        "actor": "C-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "order_id": "O-A101",
+          "case_type": "RETURN_REFUND",
+          "status": "WAITING_FOR_USER",
+          "reason": "演示审核拒绝，材料需要人工补充",
+          "evidence_refs": [],
+          "requested_amount_fen": 14900,
+          "policy_version": "POLICY-A-2026-10-v1",
+          "version": 2,
+          "order_version": 1,
+          "review_required": true,
+          "simulated": true
+        }
+      },
+      {
+        "path": "/cases/CASE-8946A15DAEE749DBA049005400E6A14D/submit",
+        "actor": "C-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "order_id": "O-A101",
+          "case_type": "RETURN_REFUND",
+          "status": "PENDING_REVIEW",
+          "reason": "演示审核拒绝，材料需要人工补充",
+          "evidence_refs": [],
+          "requested_amount_fen": 14900,
+          "policy_version": "POLICY-A-2026-10-v1",
+          "version": 3,
+          "order_version": 1,
+          "review_required": true,
+          "simulated": true
+        }
+      },
+      {
+        "path": "/cases/CASE-8946A15DAEE749DBA049005400E6A14D/review",
+        "actor": "E-A2",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "order_id": "O-A101",
+          "case_type": "RETURN_REFUND",
+          "status": "REJECTED",
+          "reason": "演示审核拒绝，材料需要人工补充",
+          "evidence_refs": [],
+          "requested_amount_fen": 14900,
+          "policy_version": "POLICY-A-2026-10-v1",
+          "version": 4,
+          "order_version": 1,
+          "review_required": true,
+          "simulated": true
+        }
+      },
+      {
+        "path": "/conversations",
+        "actor": "C-A1",
+        "http_status": 201,
+        "code": "OK",
+        "data": {
+          "conversation_id": "CONV-A4D0AE80D7984A40BCC47C3D831B305C"
+        }
+      },
+      {
+        "path": "/conversations/CONV-A4D0AE80D7984A40BCC47C3D831B305C/messages",
+        "actor": "C-A1",
+        "http_status": 202,
+        "code": "OK",
+        "data": {
+          "run_id": "RUN-DBA1959B84E14C62911A3FCD9A7C5D0C",
+          "conversation_id": "CONV-A4D0AE80D7984A40BCC47C3D831B305C",
+          "status": "QUEUED",
+          "action": "CONSULT",
+          "target_order_id": null,
+          "provider": null,
+          "model": null,
+          "prompt_version": "prompt-v5-m4",
+          "tool_version": "tools-v2-m4",
+          "model_calls": 0,
+          "tool_calls": 0,
+          "error_code": null,
+          "response": null,
+          "created_at": "2026-10-12T05:31:07.678029+00:00",
+          "completed_at": null
+        }
+      }
+    ],
+    "database": {
+      "audits": [
+        {
+          "actor_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "action": "CREATE_DRAFT",
+          "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "result": "OK",
+          "summary": {
+            "status": "DRAFT",
+            "version": 1,
+            "amount_fen": 14900
+          }
+        },
+        {
+          "actor_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "action": "CREATE_CONFIRMATION",
+          "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "result": "OK",
+          "summary": {
+            "status": "WAITING_FOR_USER",
+            "version": 2,
+            "amount_fen": 14900
+          }
+        },
+        {
+          "actor_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "action": "CUSTOMER_CONFIRM",
+          "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "result": "OK",
+          "summary": {
+            "status": "WAITING_FOR_USER",
+            "version": 2,
+            "amount_fen": 14900
+          }
+        },
+        {
+          "actor_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "action": "SUBMIT_CASE",
+          "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "result": "OK",
+          "summary": {
+            "status": "PENDING_REVIEW",
+            "version": 3,
+            "amount_fen": 14900
+          }
+        },
+        {
+          "actor_id": "E-A2",
+          "tenant_id": "TENANT-A",
+          "action": "REVIEW_CASE",
+          "resource_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "result": "OK",
+          "summary": {
+            "status": "REJECTED",
+            "version": 4,
+            "amount_fen": 14900
+          }
+        }
+      ],
+      "cases": [
+        {
+          "id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "order_id": "O-A101",
+          "tenant_id": "TENANT-A",
+          "case_type": "RETURN_REFUND",
+          "status": "REJECTED",
+          "requested_amount_fen": 14900,
+          "created_by": "C-A1",
+          "received_at": null
+        }
+      ],
+      "tickets": [],
+      "refunds": [],
+      "providers": [],
+      "reviews": [
+        {
+          "case_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "reviewer_id": "E-A2",
+          "decision": "REJECT",
+          "return_required": true
+        }
+      ],
+      "confirmations": [
+        {
+          "case_id": "CASE-8946A15DAEE749DBA049005400E6A14D",
+          "confirmed_by": "C-A1",
+          "confirmed_at": "2026-10-11T02:00:00+00:00",
+          "consumed_at": "2026-10-11T02:00:00+00:00"
+        }
+      ],
+      "orders": [
+        {
+          "id": "O-A101",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 14900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A102",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 39900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A103",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 8900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A104",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A105",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 12900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A106",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 29900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A107",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 19900,
+          "refunded_amount_fen": 19900
+        },
+        {
+          "id": "O-A108",
+          "customer_id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A109",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 10900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A110",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 0,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A111",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 11900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A112",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 20000,
+          "refunded_amount_fen": 5000
+        },
+        {
+          "id": "O-A113",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 15900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-B101",
+          "customer_id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "paid_amount_fen": 69900,
+          "refunded_amount_fen": 0
+        }
+      ],
+      "users": [
+        {
+          "id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A2",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "customer_id": "C-B1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "E-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support"
+          ]
+        },
+        {
+          "id": "E-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-A3",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "warehouse"
+          ]
+        },
+        {
+          "id": "E-A4",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-B2",
+          "tenant_id": "TENANT-B",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        }
+      ]
+    }
+  },
+  "repeat_index": 1
+}

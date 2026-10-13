@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "model": "deepseek-flash",
+  "cases": {
+    "O-A101": "CASE-811B9C1AEB864B0088759367A9F0D796",
+    "O-A102": "CASE-ADC56B3B693B47E29D8FBCCE80972F04",
+    "O-A108": "CASE-D7CFB0C03A324BE3810B7DFFACD8FA46"
+  },
+  "scenarios": [
+    "A普通退货",
+    "B损坏补问与免退回人工审批",
+    "C支付已执行但响应超时及新worker查询恢复"
+  ],
+  "checks": [
+    "刷新保持确认摘要和持久化会话",
+    "重复点击确认/批准/收货",
+    "重复worker唯一流水",
+    "客户及租户隔离",
+    "员工角色限制",
+    "390px无横向溢出",
+    "浏览器无运行错误"
+  ]
+}

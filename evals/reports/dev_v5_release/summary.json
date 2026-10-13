@@ -1,0 +1,80 @@
+{
+  "B0/FORM": {
+    "tasks": 9,
+    "successes": 9,
+    "task_success_rate": 1.0,
+    "hard_violations": 0,
+    "fact_correct": 108,
+    "fact_total": 108,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 1.0,
+    "p50_ms": 234,
+    "p95_ms": 297,
+    "tokens": {},
+    "model_calls": 0,
+    "tool_calls": 0,
+    "usage_reported_calls": 0,
+    "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+    "estimated_cost_usd_range": null,
+    "failures": []
+  },
+  "B1/LIVE": {
+    "tasks": 6,
+    "successes": 6,
+    "task_success_rate": 1.0,
+    "hard_violations": 0,
+    "fact_correct": 44,
+    "fact_total": 44,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 1.0,
+    "p50_ms": 5297,
+    "p95_ms": 6610,
+    "tokens": {
+      "total_tokens": 36454,
+      "prompt_tokens": 33933,
+      "completion_tokens": 2521,
+      "prompt_cache_hit_tokens": 28800,
+      "prompt_cache_miss_tokens": 5133
+    },
+    "model_calls": 12,
+    "tool_calls": 12,
+    "usage_reported_calls": 12,
+    "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+    "estimated_cost_usd_range": [
+      0.00236895,
+      0.0047379
+    ],
+    "failures": []
+  },
+  "B2/LIVE": {
+    "tasks": 6,
+    "successes": 6,
+    "task_success_rate": 1.0,
+    "hard_violations": 0,
+    "fact_correct": 10,
+    "fact_total": 10,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 1.0,
+    "p50_ms": 4250,
+    "p95_ms": 4891,
+    "tokens": {
+      "total_tokens": 41956,
+      "prompt_tokens": 40547,
+      "completion_tokens": 1409,
+      "prompt_cache_hit_tokens": 33408,
+      "prompt_cache_miss_tokens": 7139
+    },
+    "model_calls": 12,
+    "tool_calls": 15,
+    "usage_reported_calls": 12,
+    "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+    "estimated_cost_usd_range": [
+      0.002016474,
+      0.004032948
+    ],
+    "failures": []
+  }
+}

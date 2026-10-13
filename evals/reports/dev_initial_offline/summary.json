@@ -1,0 +1,18 @@
+{
+  "B0/FORM": {
+    "tasks": 6,
+    "successes": 6,
+    "task_success_rate": 1.0,
+    "hard_violations": 0,
+    "fact_correct": 58,
+    "fact_total": 58,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 1.0,
+    "p50_ms": 156,
+    "p95_ms": 281,
+    "tokens": {},
+    "estimated_cost_usd_range": null,
+    "failures": []
+  }
+}

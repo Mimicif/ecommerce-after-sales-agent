@@ -1,0 +1,69 @@
+{
+  "B0/FORM": {
+    "tasks": 12,
+    "successes": 10,
+    "task_success_rate": 0.8333333333333334,
+    "hard_violations": 0,
+    "fact_correct": 156,
+    "fact_total": 156,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 0.6,
+    "p50_ms": 235,
+    "p95_ms": 922,
+    "tokens": {},
+    "model_calls": 0,
+    "tool_calls": 0,
+    "usage_reported_calls": 0,
+    "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+    "estimated_cost_usd_range": null,
+    "failures": [
+      {
+        "case_id": "N09",
+        "repeat_index": 0,
+        "failed_checks": [
+          "citations_include"
+        ],
+        "error_code": null
+      },
+      {
+        "case_id": "N12",
+        "repeat_index": 0,
+        "failed_checks": [
+          "citations_include"
+        ],
+        "error_code": null
+      }
+    ]
+  },
+  "SHARED/DETERMINISTIC_API": {
+    "tasks": 12,
+    "successes": 11,
+    "task_success_rate": 0.9166666666666666,
+    "hard_violations": 0,
+    "fact_correct": 8,
+    "fact_total": 8,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": null,
+    "retrieval_coverage": null,
+    "p50_ms": 266,
+    "p95_ms": 875,
+    "tokens": {},
+    "model_calls": 0,
+    "tool_calls": 0,
+    "usage_reported_calls": 0,
+    "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+    "estimated_cost_usd_range": null,
+    "failures": [
+      {
+        "case_id": "N21",
+        "repeat_index": 0,
+        "failed_checks": [
+          "eligibility",
+          "reason_code"
+        ],
+        "error_code": null
+      }
+    ]
+  }
+}

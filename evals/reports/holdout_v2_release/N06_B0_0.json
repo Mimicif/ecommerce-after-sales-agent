@@ -1,0 +1,577 @@
+{
+  "case_id": "N06",
+  "title": "B店午夜签收普通申请不能自动审批",
+  "level": "agent",
+  "tags": [
+    "core"
+  ],
+  "baseline": "B0",
+  "timestamp": "2026-10-12T05:34:28.152239+00:00",
+  "score": {
+    "success": true,
+    "checks": {
+      "case_status": true,
+      "requested_amount_fen": true,
+      "citations_include": true,
+      "review_record_count": true,
+      "refund_success_count": true
+    },
+    "hard_violations": [],
+    "fact_correct": 15,
+    "fact_total": 15,
+    "citation_correct": 1,
+    "citation_total": 1,
+    "retrieval_required": true,
+    "retrieval_covered": true
+  },
+  "evidence": {
+    "responses": [
+      {
+        "answer": "可以申请，需审核。草稿待客户独立确认后提交审核。O-B101支付25005分，签收时间2026-10-08T16:01:00Z。",
+        "needs_input": true
+      }
+    ],
+    "citations": [
+      "模拟售后政策 POLICY-B-2026-10-v1 / B-RETURN-01"
+    ],
+    "available_citations": [
+      "模拟售后政策 POLICY-B-2026-10-v1 / B-RETURN-01"
+    ],
+    "retrieved": [
+      "B-RETURN-01"
+    ],
+    "observations": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-B101",
+        "field": "paid_amount_fen",
+        "value": 25005
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-B101",
+        "field": "refunded_amount_fen",
+        "value": 0
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-B101",
+        "field": "delivered_at",
+        "value": "2026-10-08T16:01:00Z"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-B101",
+        "field": "product_category",
+        "value": "STANDARD"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-B101",
+        "field": "status",
+        "value": "DELIVERED"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-B101",
+        "field": "version",
+        "value": 1
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-B-2026-10-v1",
+        "field": "standard_return_window_seconds",
+        "value": 259200
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-B-2026-10-v1",
+        "field": "customer_confirmation_ttl_seconds",
+        "value": 900
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-B-2026-10-v1",
+        "field": "logistics_inactivity_seconds",
+        "value": 172800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-B-2026-10-v1",
+        "field": "all_refunds_require_review",
+        "value": true
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-B-2026-10-v1",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-B101",
+        "field": "eligibility",
+        "value": "eligible"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-B101",
+        "field": "refundable_amount_fen",
+        "value": 25005
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-B101",
+        "field": "policy_version",
+        "value": "POLICY-B-2026-10-v1"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-B101",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      }
+    ],
+    "claims": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-B101",
+        "field": "paid_amount_fen",
+        "value": 25005
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-B101",
+        "field": "refunded_amount_fen",
+        "value": 0
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-B101",
+        "field": "delivered_at",
+        "value": "2026-10-08T16:01:00Z"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-B101",
+        "field": "product_category",
+        "value": "STANDARD"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-B101",
+        "field": "status",
+        "value": "DELIVERED"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-B101",
+        "field": "version",
+        "value": 1
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-B-2026-10-v1",
+        "field": "standard_return_window_seconds",
+        "value": 259200
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-B-2026-10-v1",
+        "field": "customer_confirmation_ttl_seconds",
+        "value": 900
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-B-2026-10-v1",
+        "field": "logistics_inactivity_seconds",
+        "value": 172800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-B-2026-10-v1",
+        "field": "all_refunds_require_review",
+        "value": true
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-B-2026-10-v1",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-B101",
+        "field": "eligibility",
+        "value": "eligible"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-B101",
+        "field": "refundable_amount_fen",
+        "value": 25005
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-B101",
+        "field": "policy_version",
+        "value": "POLICY-B-2026-10-v1"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-B101",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      }
+    ],
+    "business_data": [],
+    "events": [],
+    "model_outputs": [],
+    "tokens": {},
+    "extra": {},
+    "run_status": null,
+    "error_code": null,
+    "mode": "FORM",
+    "latency_ms": 657,
+    "http_trace": [
+      {
+        "path": "/orders/O-B101",
+        "actor": "C-B1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "id": "O-B101",
+          "product_category": "STANDARD",
+          "status": "DELIVERED",
+          "paid_amount_fen": 25005,
+          "refunded_amount_fen": 0,
+          "delivered_at": "2026-10-08T16:01:00Z",
+          "version": 1,
+          "cases": []
+        }
+      },
+      {
+        "path": "/orders/O-B101/policy?intent=RETURN_REFUND&query=O-B101+%E6%AC%BE%E5%BC%8F%E4%B8%8D%E5%96%9C%E6%AC%A2%EF%BC%8C%E8%AF%B7%E7%94%B3%E8%AF%B7%E6%99%AE%E9%80%9A%E9%80%80%E8%B4%A7%E5%B9%B6%E5%87%86%E5%A4%87%E7%A1%AE%E8%AE%A4%E5%8D%A1%EF%BC%8C%E6%88%91%E8%BF%98%E6%B2%A1%E6%9C%89%E7%A1%AE%E8%AE%A4%E6%8F%90%E4%BA%A4%E3%80%82",
+        "actor": "C-B1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "order_id": "O-B101",
+          "policy_version": "POLICY-B-2026-10-v1",
+          "intent": "RETURN_REFUND",
+          "effective_from": "2026-09-30T16:00:00Z",
+          "effective_to": "2026-10-31T16:00:00Z",
+          "clauses": [
+            {
+              "chunk_id": "B-RETURN-01",
+              "intent": "RETURN_REFUND",
+              "text": "隔离测试商家B：常规申请3天窗口。该条款不适用于商家A，也不能向A的用户泄露。",
+              "citation": "模拟售后政策 POLICY-B-2026-10-v1 / B-RETURN-01"
+            }
+          ],
+          "retrieval_mode": "keyword_v1",
+          "candidates": [
+            {
+              "chunk_id": "B-RETURN-01",
+              "score": 0.287682,
+              "selected": true
+            }
+          ],
+          "rule_summary": {
+            "standard_return_window_seconds": 259200,
+            "customer_confirmation_ttl_seconds": 900,
+            "logistics_inactivity_seconds": 172800,
+            "all_refunds_require_review": true
+          },
+          "evaluated_at": "2026-10-11T02:00:00Z",
+          "simulated": true
+        }
+      },
+      {
+        "path": "/orders/O-B101/eligibility",
+        "actor": "C-B1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "eligibility": "eligible",
+          "reason_codes": [
+            "RETURN_RULES_SATISFIED"
+          ],
+          "refundable_amount_fen": 25005,
+          "policy_version": "POLICY-B-2026-10-v1",
+          "order_version": 1,
+          "evaluated_at": "2026-10-11T02:00:00Z",
+          "assessment_scope": "READ_ONLY_PRECHECK",
+          "review_required": true
+        }
+      },
+      {
+        "path": "/cases/drafts",
+        "actor": "C-B1",
+        "http_status": 201,
+        "code": "OK",
+        "data": {
+          "id": "CASE-FFDEA693AC6E4EF684D0DC8027BF7C4E",
+          "order_id": "O-B101",
+          "case_type": "RETURN_REFUND",
+          "status": "DRAFT",
+          "reason": "O-B101 款式不喜欢，请申请普通退货并准备确认卡，我还没有确认提交。",
+          "evidence_refs": [],
+          "requested_amount_fen": 25005,
+          "policy_version": "POLICY-B-2026-10-v1",
+          "version": 1,
+          "order_version": 1,
+          "review_required": true,
+          "simulated": true
+        }
+      },
+      {
+        "path": "/cases/CASE-FFDEA693AC6E4EF684D0DC8027BF7C4E/confirmation",
+        "actor": "C-B1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "confirmation_id": "CONF-8036DEE3F86E4D24A06CA406622D1544",
+          "payload_digest": "dcd8ed1ccb4f75bd74d3d5ed8b9151be390ab2bf3f5ea9431cff0607866ff127",
+          "expires_at": "2026-10-11T02:15:00+00:00",
+          "summary": {
+            "id": "CASE-FFDEA693AC6E4EF684D0DC8027BF7C4E",
+            "order_id": "O-B101",
+            "case_type": "RETURN_REFUND",
+            "status": "WAITING_FOR_USER",
+            "reason": "O-B101 款式不喜欢，请申请普通退货并准备确认卡，我还没有确认提交。",
+            "evidence_refs": [],
+            "requested_amount_fen": 25005,
+            "policy_version": "POLICY-B-2026-10-v1",
+            "version": 2,
+            "order_version": 1,
+            "review_required": true,
+            "simulated": true,
+            "policy_digest": "4ec0296cc47f4f8d36f9f6abdf386e8bddc00decf3f8348c97e73939383281f4",
+            "notice": "客户确认仅提交申请；退款须人工审核，普通退货须仓库收货。"
+          }
+        }
+      }
+    ],
+    "database": {
+      "audits": [
+        {
+          "actor_id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "action": "CREATE_DRAFT",
+          "resource_id": "CASE-FFDEA693AC6E4EF684D0DC8027BF7C4E",
+          "result": "OK",
+          "summary": {
+            "status": "DRAFT",
+            "version": 1,
+            "amount_fen": 25005
+          }
+        },
+        {
+          "actor_id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "action": "CREATE_CONFIRMATION",
+          "resource_id": "CASE-FFDEA693AC6E4EF684D0DC8027BF7C4E",
+          "result": "OK",
+          "summary": {
+            "status": "WAITING_FOR_USER",
+            "version": 2,
+            "amount_fen": 25005
+          }
+        }
+      ],
+      "cases": [
+        {
+          "id": "CASE-FFDEA693AC6E4EF684D0DC8027BF7C4E",
+          "order_id": "O-B101",
+          "tenant_id": "TENANT-B",
+          "case_type": "RETURN_REFUND",
+          "status": "WAITING_FOR_USER",
+          "requested_amount_fen": 25005,
+          "created_by": "C-B1",
+          "received_at": null
+        }
+      ],
+      "tickets": [],
+      "refunds": [],
+      "providers": [],
+      "reviews": [],
+      "confirmations": [
+        {
+          "case_id": "CASE-FFDEA693AC6E4EF684D0DC8027BF7C4E",
+          "confirmed_by": null,
+          "confirmed_at": null,
+          "consumed_at": null
+        }
+      ],
+      "orders": [
+        {
+          "id": "O-A101",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 14900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A102",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 39900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A103",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 8900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A104",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A105",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 12900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A106",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 29900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A107",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 19900,
+          "refunded_amount_fen": 19900
+        },
+        {
+          "id": "O-A108",
+          "customer_id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A109",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 10900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A110",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 0,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A111",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 11900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A112",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 20000,
+          "refunded_amount_fen": 5000
+        },
+        {
+          "id": "O-A113",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 15900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-B101",
+          "customer_id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "paid_amount_fen": 25005,
+          "refunded_amount_fen": 0
+        }
+      ],
+      "users": [
+        {
+          "id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A2",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "customer_id": "C-B1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "E-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support"
+          ]
+        },
+        {
+          "id": "E-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-A3",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "warehouse"
+          ]
+        },
+        {
+          "id": "E-A4",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-B2",
+          "tenant_id": "TENANT-B",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        }
+      ]
+    }
+  },
+  "repeat_index": 0
+}

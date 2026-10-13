@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="3.887" timestamp="2026-10-12T17:52:15.161925+08:00" hostname="lwz"><testcase classname="backend.tests.test_m3" name="test_checkpoint_pending_write_before_parent_commit" time="1.386"><failure message="sqlalchemy.exc.IntegrityError: (psycopg.errors.ForeignKeyViolation) insert or update on table &quot;graph_writes&quot; violates foreign key constraint &quot;graph_writes_run_id_checkpoint_id_fkey&quot;&#10;DETAIL:  Key (run_id, checkpoint_id)=(RUN-7D1CD055AE194428AC20BA7496CE2795, controlled-parent) is not present in table &quot;graph_checkpoints&quot;.&#10;[SQL: INSERT INTO graph_writes (run_id, checkpoint_id, task_id, idx, channel, value) VALUES (%(run_id)s::VARCHAR, %(checkpoint_id)s::VARCHAR, %(task_id)s::VARCHAR, %(idx)s::INTEGER, %(channel)s::VARCHAR, %(value)s::JSONB)]&#10;[SQL parameters hidden due to hide_parameters=True]&#10;(Background on this error at: https://sqlalche.me/e/20/gkpj)">.venv\Lib\site-packages\sqlalchemy\engine\base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+.venv\Lib\site-packages\psycopg\cursor.py:117: in execute
+    raise ex.with_traceback(None)
+E   psycopg.errors.ForeignKeyViolation: insert or update on table "graph_writes" violates foreign key constraint "graph_writes_run_id_checkpoint_id_fkey"
+E   DETAIL:  Key (run_id, checkpoint_id)=(RUN-7D1CD055AE194428AC20BA7496CE2795, controlled-parent) is not present in table "graph_checkpoints".
+
+The above exception was the direct cause of the following exception:
+backend\tests\test_m3.py:267: in test_checkpoint_pending_write_before_parent_commit
+    pending.result(timeout=5)
+D:\anaconda3\Lib\concurrent\futures\_base.py:449: in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+D:\anaconda3\Lib\concurrent\futures\_base.py:401: in __get_result
+    raise self._exception
+D:\anaconda3\Lib\concurrent\futures\thread.py:58: in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend\app\agent_checkpoint.py:83: in put_writes
+    with self.sessions() as session, session.begin():
+                                     ^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\engine\util.py:147: in __exit__
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\engine\util.py:145: in __exit__
+    self.commit()
+&lt;string&gt;:2: in commit
+    ???
+.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py:137: in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:1316: in commit
+    self._prepare_impl()
+&lt;string&gt;:2: in _prepare_impl
+    ???
+.venv\Lib\site-packages\sqlalchemy\orm\state_changes.py:137: in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:1290: in _prepare_impl
+    self.session.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4353: in flush
+    self._flush(objects)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4488: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4449: in _flush
+    flush_context.execute()
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:465: in execute
+    rec.execute(self)
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:641: in execute
+    util.preloaded.orm_persistence.save_obj(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:94: in save_obj
+    _emit_insert_statements(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:1049: in _emit_insert_statements
+    result = connection.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1969: in _exec_single_context
+    self.dialect.do_execute(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:952: in do_execute
+    cursor.execute(statement, parameters)
+.venv\Lib\site-packages\psycopg\cursor.py:117: in execute
+    raise ex.with_traceback(None)
+E   sqlalchemy.exc.IntegrityError: (psycopg.errors.ForeignKeyViolation) insert or update on table "graph_writes" violates foreign key constraint "graph_writes_run_id_checkpoint_id_fkey"
+E   DETAIL:  Key (run_id, checkpoint_id)=(RUN-7D1CD055AE194428AC20BA7496CE2795, controlled-parent) is not present in table "graph_checkpoints".
+E   [SQL: INSERT INTO graph_writes (run_id, checkpoint_id, task_id, idx, channel, value) VALUES (%(run_id)s::VARCHAR, %(checkpoint_id)s::VARCHAR, %(task_id)s::VARCHAR, %(idx)s::INTEGER, %(channel)s::VARCHAR, %(value)s::JSONB)]
+E   [SQL parameters hidden due to hide_parameters=True]
+E   (Background on this error at: https://sqlalche.me/e/20/gkpj)</failure></testcase></testsuite></testsuites>

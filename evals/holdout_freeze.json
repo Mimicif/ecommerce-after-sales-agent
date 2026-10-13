@@ -1,0 +1,9 @@
+{
+  "reviewed_by": "human_user",
+  "approved_at": "2026-10-12T04:45:10.1356699+00:00",
+  "eval_version": "holdout-v1-m4",
+  "case_count": 24,
+  "prompt_tuning_exposure": "none; only authored oracle contract checks before freeze",
+  "approval": "已核验24条预期，同意冻结并验收",
+  "sha256": "51cf380f4adb298a28280be08315d570d6fcfccf7b43bfae90be2b8bed8d4e66"
+}

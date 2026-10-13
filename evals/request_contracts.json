@@ -1,0 +1,14 @@
+{
+  "version": "request-v2-m4",
+  "description": "可信客户UI动作；只规定输入授权与后续客户话语，不包含评分答案。其余首轮默认CONSULT。",
+  "requests": {
+    "S02": {"action": "APPLY_AFTER_SALES", "target_order_id": "O-A101"},
+    "S06": {"action": "APPLY_AFTER_SALES", "target_order_id": "O-A102"},
+    "S07": {"action": "CREATE_TICKET", "target_order_id": "O-A104"},
+    "S15": {"followups": [{"content": "我同意转人工，请为O-A103创建人工售后工单。", "action": "CREATE_TICKET", "target_order_id": "O-A103"}]},
+    "S16": {"followups": [{"content": "我同意转人工，请为O-A106创建人工售后工单。", "action": "CREATE_TICKET", "target_order_id": "O-A106"}]},
+    "S18": {"followups": [{"content": "我同意转人工，请为O-A109创建人工售后工单，签收时间待核实。", "action": "CREATE_TICKET", "target_order_id": "O-A109"}]},
+    "S34": {"followups": [{"content": "查询超时也不能认定丢件。我同意人工核查，请直接为O-A104创建物流核查工单。", "action": "CREATE_TICKET", "target_order_id": "O-A104"}]}
+  },
+  "readonly_cases": ["S01", "S03", "S08", "S12", "S19", "S22", "S24", "H01", "H02", "H04", "H08", "H09", "H10", "H22"]
+}

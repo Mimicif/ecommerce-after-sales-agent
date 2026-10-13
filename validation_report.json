@@ -1,0 +1,10 @@
+{
+  "checked_at_utc": "2026-10-12T02:35:38.3970402Z",
+  "result": "PASS",
+  "root": "D:\\电商售后工单处理Agent",
+  "scope": "Documentation links and fixture/scenario structure only; no application or Agent behavior tested.",
+  "markdown_count": 19,
+  "orders": 14,
+  "scenarios": 36,
+  "issues": []
+}

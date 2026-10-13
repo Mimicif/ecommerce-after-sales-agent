@@ -1,0 +1,558 @@
+{
+  "case_id": "S07",
+  "title": "物流超48小时建单",
+  "level": "agent",
+  "tags": [
+    "core"
+  ],
+  "baseline": "B0",
+  "timestamp": "2026-10-12T05:09:28.315015+00:00",
+  "score": {
+    "success": true,
+    "checks": {
+      "ticket_category": true,
+      "ticket_count": true,
+      "refund_success_count": true,
+      "citations_include": true
+    },
+    "hard_violations": [],
+    "fact_correct": 15,
+    "fact_total": 15,
+    "citation_correct": 3,
+    "citation_total": 3,
+    "retrieval_required": true,
+    "retrieval_covered": true
+  },
+  "evidence": {
+    "responses": [
+      {
+        "answer": "可能物流异常，需人工核查，不能认定丢件。已创建人工核查工单。O-A104支付9900分，签收时间待核实。",
+        "needs_input": false
+      }
+    ],
+    "citations": [
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+    ],
+    "available_citations": [
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+    ],
+    "retrieved": [
+      "A-LOGISTICS-01",
+      "A-CONFIRM-01",
+      "A-REFUND-01"
+    ],
+    "observations": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "paid_amount_fen",
+        "value": 9900
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "refunded_amount_fen",
+        "value": 0
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "delivered_at",
+        "value": null
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "product_category",
+        "value": "STANDARD"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "status",
+        "value": "IN_TRANSIT"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "version",
+        "value": 1
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "standard_return_window_seconds",
+        "value": 604800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "customer_confirmation_ttl_seconds",
+        "value": 900
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "logistics_inactivity_seconds",
+        "value": 172800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "all_refunds_require_review",
+        "value": true
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "possible_exception",
+        "value": true
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "order_status",
+        "value": "IN_TRANSIT"
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "last_updated_at",
+        "value": "2026-10-08T01:00:00Z"
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      }
+    ],
+    "claims": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "paid_amount_fen",
+        "value": 9900
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "refunded_amount_fen",
+        "value": 0
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "delivered_at",
+        "value": null
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "product_category",
+        "value": "STANDARD"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "status",
+        "value": "IN_TRANSIT"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "version",
+        "value": 1
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "standard_return_window_seconds",
+        "value": 604800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "customer_confirmation_ttl_seconds",
+        "value": 900
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "logistics_inactivity_seconds",
+        "value": 172800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "all_refunds_require_review",
+        "value": true
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "possible_exception",
+        "value": true
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "order_status",
+        "value": "IN_TRANSIT"
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "last_updated_at",
+        "value": "2026-10-08T01:00:00Z"
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      }
+    ],
+    "business_data": [],
+    "events": [],
+    "model_outputs": [],
+    "tokens": {},
+    "extra": {},
+    "run_status": null,
+    "error_code": null,
+    "mode": "FORM",
+    "latency_ms": 234,
+    "http_trace": [
+      {
+        "path": "/orders/O-A104",
+        "actor": "C-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "id": "O-A104",
+          "product_category": "STANDARD",
+          "status": "IN_TRANSIT",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0,
+          "delivered_at": null,
+          "version": 1,
+          "cases": []
+        }
+      },
+      {
+        "path": "/orders/O-A104/policy?intent=LOGISTICS&query=O-A104%E5%A5%BD%E5%87%A0%E5%A4%A9%E6%B2%A1%E6%9B%B4%E6%96%B0%E4%BA%86%EF%BC%8C%E5%B8%AE%E6%88%91%E6%9F%A5%E5%B9%B6%E5%88%9B%E5%BB%BA%E7%89%A9%E6%B5%81%E5%BC%82%E5%B8%B8%E5%B7%A5%E5%8D%95%E3%80%82",
+        "actor": "C-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "order_id": "O-A104",
+          "policy_version": "POLICY-A-2026-10-v1",
+          "intent": "LOGISTICS",
+          "effective_from": "2026-09-30T16:00:00Z",
+          "effective_to": "2026-10-31T16:00:00Z",
+          "clauses": [
+            {
+              "chunk_id": "A-LOGISTICS-01",
+              "intent": "LOGISTICS",
+              "text": "运输中订单最近轨迹超过48小时未更新可标记可能异常并创建物流工单。没有轨迹或查询失败不代表已丢件。",
+              "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01"
+            },
+            {
+              "chunk_id": "A-CONFIRM-01",
+              "intent": "ALL",
+              "text": "客户确认绑定订单、类型、金额与政策版本，有效期15分钟。客户确认后可提交审核，全部退款仍需人工批准。",
+              "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01"
+            },
+            {
+              "chunk_id": "A-REFUND-01",
+              "intent": "ALL",
+              "text": "常规退货批准后等待仓库确认收货；损坏退款无需退回必须有审核员明确决定。只有模拟支付对账成功才报告模拟退款成功。",
+              "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+            }
+          ],
+          "retrieval_mode": "keyword_v1",
+          "candidates": [
+            {
+              "chunk_id": "A-LOGISTICS-01",
+              "score": 9.206359,
+              "selected": true
+            },
+            {
+              "chunk_id": "A-CONFIRM-01",
+              "score": 0.0,
+              "selected": true
+            },
+            {
+              "chunk_id": "A-REFUND-01",
+              "score": 0.0,
+              "selected": true
+            }
+          ],
+          "rule_summary": {
+            "standard_return_window_seconds": 604800,
+            "customer_confirmation_ttl_seconds": 900,
+            "logistics_inactivity_seconds": 172800,
+            "all_refunds_require_review": true
+          },
+          "evaluated_at": "2026-10-11T02:00:00Z",
+          "simulated": true
+        }
+      },
+      {
+        "path": "/orders/O-A104/logistics",
+        "actor": "C-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "order_id": "O-A104",
+          "order_status": "IN_TRANSIT",
+          "events": [
+            {
+              "id": "L-A104-1",
+              "occurred_at": "2026-10-08T01:00:00Z",
+              "status": "IN_TRANSIT",
+              "description": "模拟转运中心等待发运"
+            }
+          ],
+          "events_truncated": false,
+          "last_updated_at": "2026-10-08T01:00:00Z",
+          "possible_exception": true,
+          "manual_required": true,
+          "reason_codes": [
+            "LOGISTICS_INACTIVE"
+          ],
+          "evaluated_at": "2026-10-11T02:00:00Z",
+          "simulated": true
+        }
+      },
+      {
+        "path": "/tickets",
+        "actor": "C-A1",
+        "http_status": 201,
+        "code": "OK",
+        "data": {
+          "id": "TICKET-2106E3A6AA834AE39EEC33AE8D2BAD69",
+          "order_id": "O-A104",
+          "category": "LOGISTICS",
+          "summary": "O-A104好几天没更新了，帮我查并创建物流异常工单。",
+          "status": "OPEN",
+          "simulated": true
+        }
+      }
+    ],
+    "database": {
+      "audits": [
+        {
+          "actor_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "action": "CREATE_TICKET",
+          "resource_id": "TICKET-2106E3A6AA834AE39EEC33AE8D2BAD69",
+          "result": "OK",
+          "summary": {
+            "status": "OPEN",
+            "category": "LOGISTICS"
+          }
+        }
+      ],
+      "cases": [],
+      "tickets": [
+        {
+          "id": "TICKET-2106E3A6AA834AE39EEC33AE8D2BAD69",
+          "order_id": "O-A104",
+          "tenant_id": "TENANT-A",
+          "category": "LOGISTICS",
+          "status": "OPEN",
+          "created_by": "C-A1"
+        }
+      ],
+      "refunds": [],
+      "providers": [],
+      "reviews": [],
+      "confirmations": [],
+      "orders": [
+        {
+          "id": "O-A101",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 14900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A102",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 39900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A103",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 8900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A104",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A105",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 12900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A106",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 29900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A107",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 19900,
+          "refunded_amount_fen": 19900
+        },
+        {
+          "id": "O-A108",
+          "customer_id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A109",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 10900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A110",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 0,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A111",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 11900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A112",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 20000,
+          "refunded_amount_fen": 5000
+        },
+        {
+          "id": "O-A113",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 15900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-B101",
+          "customer_id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "paid_amount_fen": 69900,
+          "refunded_amount_fen": 0
+        }
+      ],
+      "users": [
+        {
+          "id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A2",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "customer_id": "C-B1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "E-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support"
+          ]
+        },
+        {
+          "id": "E-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-A3",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "warehouse"
+          ]
+        },
+        {
+          "id": "E-A4",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-B2",
+          "tenant_id": "TENANT-B",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        }
+      ]
+    }
+  },
+  "repeat_index": 0
+}

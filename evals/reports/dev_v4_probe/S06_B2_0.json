@@ -1,0 +1,975 @@
+{
+  "case_id": "S06",
+  "title": "损坏材料齐全仍待确认",
+  "level": "agent",
+  "tags": [
+    "core"
+  ],
+  "baseline": "B2",
+  "timestamp": "2026-10-12T04:56:52.560565+00:00",
+  "score": {
+    "success": true,
+    "checks": {
+      "case_type": true,
+      "case_status": true,
+      "refund_success_count": true
+    },
+    "hard_violations": [],
+    "fact_correct": 0,
+    "fact_total": 0,
+    "citation_correct": 3,
+    "citation_total": 3,
+    "retrieval_required": false,
+    "retrieval_covered": true
+  },
+  "evidence": {
+    "responses": [
+      {
+        "cases": [
+          {
+            "id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+            "reason": "客户反馈商品外壳破裂，要求退款。证据引用：EVIDENCE-A1。",
+            "status": "DRAFT",
+            "version": 1,
+            "order_id": "O-A102",
+            "case_type": "DAMAGE_REFUND",
+            "simulated": true,
+            "evidence_refs": [
+              "EVIDENCE-A1"
+            ],
+            "order_version": 1,
+            "policy_version": "POLICY-A-2026-10-v1",
+            "review_required": true,
+            "requested_amount_fen": 39900
+          }
+        ],
+        "facts": [],
+        "answer": "草稿已创建，请通过独立客户接口生成确认摘要并确认后再提交。",
+        "tickets": [],
+        "citations": [
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01",
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-DAMAGE-01",
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+        ],
+        "simulated": true,
+        "needs_input": true
+      }
+    ],
+    "citations": [
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-DAMAGE-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+    ],
+    "available_citations": [
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-DAMAGE-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01"
+    ],
+    "retrieved": [
+      "A-REFUND-01",
+      "A-DAMAGE-01",
+      "A-CONFIRM-01"
+    ],
+    "observations": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A102",
+        "field": "paid_amount_fen",
+        "value": 39900
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A102",
+        "field": "refunded_amount_fen",
+        "value": 0
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A102",
+        "field": "delivered_at",
+        "value": "2026-10-10T02:00:00Z"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A102",
+        "field": "product_category",
+        "value": "STANDARD"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A102",
+        "field": "status",
+        "value": "DELIVERED"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A102",
+        "field": "version",
+        "value": 1
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "standard_return_window_seconds",
+        "value": 604800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "customer_confirmation_ttl_seconds",
+        "value": 900
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "logistics_inactivity_seconds",
+        "value": 172800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "all_refunds_require_review",
+        "value": true
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-A102",
+        "field": "eligibility",
+        "value": "manual_required"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-A102",
+        "field": "refundable_amount_fen",
+        "value": 39900
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-A102",
+        "field": "policy_version",
+        "value": "POLICY-A-2026-10-v1"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-A102",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+        "field": "status",
+        "value": "DRAFT"
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+        "field": "case_type",
+        "value": "DAMAGE_REFUND"
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+        "field": "requested_amount_fen",
+        "value": 39900
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+        "field": "version",
+        "value": 1
+      },
+      {
+        "kind": "CASE",
+        "resource_id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+        "field": "order_id",
+        "value": "O-A102"
+      }
+    ],
+    "claims": [],
+    "business_data": [
+      {
+        "id": "O-A102",
+        "cases": [],
+        "status": "DELIVERED",
+        "version": 1,
+        "delivered_at": "2026-10-10T02:00:00Z",
+        "paid_amount_fen": 39900,
+        "product_category": "STANDARD",
+        "refunded_amount_fen": 0
+      },
+      {
+        "intent": "DAMAGE_REFUND",
+        "clauses": [
+          {
+            "text": "常规退货批准后等待仓库确认收货；损坏退款无需退回必须有审核员明确决定。只有模拟支付对账成功才报告模拟退款成功。",
+            "intent": "ALL",
+            "chunk_id": "A-REFUND-01",
+            "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+          },
+          {
+            "text": "损坏诉求需补充描述与证据引用，交由人工判断。常规7天窗口之外的损坏争议仍可转人工，不能直接套用常规退货拒绝。",
+            "intent": "DAMAGE_REFUND",
+            "chunk_id": "A-DAMAGE-01",
+            "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-DAMAGE-01"
+          },
+          {
+            "text": "客户确认绑定订单、类型、金额与政策版本，有效期15分钟。客户确认后可提交审核，全部退款仍需人工批准。",
+            "intent": "ALL",
+            "chunk_id": "A-CONFIRM-01",
+            "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01"
+          }
+        ],
+        "order_id": "O-A102",
+        "simulated": true,
+        "candidates": [
+          {
+            "score": 2.271654,
+            "chunk_id": "A-REFUND-01",
+            "selected": true
+          },
+          {
+            "score": 0.733373,
+            "chunk_id": "A-DAMAGE-01",
+            "selected": true
+          },
+          {
+            "score": 0.677817,
+            "chunk_id": "A-CONFIRM-01",
+            "selected": true
+          }
+        ],
+        "effective_to": "2026-10-31T16:00:00Z",
+        "evaluated_at": "2026-10-11T02:00:00Z",
+        "rule_summary": {
+          "all_refunds_require_review": true,
+          "logistics_inactivity_seconds": 172800,
+          "standard_return_window_seconds": 604800,
+          "customer_confirmation_ttl_seconds": 900
+        },
+        "effective_from": "2026-09-30T16:00:00Z",
+        "policy_version": "POLICY-A-2026-10-v1",
+        "retrieval_mode": "keyword_v1"
+      },
+      {
+        "eligibility": "manual_required",
+        "evaluated_at": "2026-10-11T02:00:00Z",
+        "reason_codes": [
+          "DAMAGE_REQUIRES_MANUAL_REVIEW"
+        ],
+        "order_version": 1,
+        "policy_version": "POLICY-A-2026-10-v1",
+        "review_required": true,
+        "assessment_scope": "READ_ONLY_PRECHECK",
+        "refundable_amount_fen": 39900
+      },
+      {
+        "id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+        "reason": "客户反馈商品外壳破裂，要求退款。证据引用：EVIDENCE-A1。",
+        "status": "DRAFT",
+        "version": 1,
+        "order_id": "O-A102",
+        "case_type": "DAMAGE_REFUND",
+        "simulated": true,
+        "evidence_refs": [
+          "EVIDENCE-A1"
+        ],
+        "order_version": 1,
+        "policy_version": "POLICY-A-2026-10-v1",
+        "review_required": true,
+        "requested_amount_fen": 39900
+      }
+    ],
+    "events": [
+      {
+        "run_id": "RUN-34A481408CDF44668935CCE024FD1616",
+        "seq": 1,
+        "kind": "QUEUED",
+        "data": {
+          "action": "APPLY_AFTER_SALES"
+        }
+      },
+      {
+        "run_id": "RUN-34A481408CDF44668935CCE024FD1616",
+        "seq": 2,
+        "kind": "RUNNING",
+        "data": {
+          "model": "deepseek-flash",
+          "resumed": false,
+          "provider": "deepseek"
+        }
+      },
+      {
+        "run_id": "RUN-34A481408CDF44668935CCE024FD1616",
+        "seq": 3,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 0,
+          "usage": {
+            "total_tokens": 3108,
+            "prompt_tokens": 2918,
+            "completion_tokens": 190,
+            "prompt_cache_hit_tokens": 1024,
+            "prompt_cache_miss_tokens": 1894
+          },
+          "input_ref": {
+            "round": 0,
+            "message_id": "MSG-CCF6340C5C4D4FD68871A1D87EB3C089"
+          },
+          "latency_ms": 1953,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "0",
+            "run_id": "RUN-34A481408CDF44668935CCE024FD1616"
+          },
+          "tool_names": [
+            "get_order",
+            "search_policy",
+            "check_eligibility"
+          ]
+        }
+      },
+      {
+        "run_id": "RUN-34A481408CDF44668935CCE024FD1616",
+        "seq": 4,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "get_order",
+          "step": "0:0",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "id": "O-A102",
+              "cases": [],
+              "status": "DELIVERED",
+              "version": 1,
+              "delivered_at": "2026-10-10T02:00:00Z",
+              "paid_amount_fen": 39900,
+              "product_category": "STANDARD",
+              "refunded_amount_fen": 0
+            },
+            "trace_id": "RUN-34A481408CDF44668935CCE024FD1616",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "order_id": "O-A102"
+          }
+        }
+      },
+      {
+        "run_id": "RUN-34A481408CDF44668935CCE024FD1616",
+        "seq": 5,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "search_policy",
+          "step": "0:1",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "intent": "DAMAGE_REFUND",
+              "clauses": [
+                {
+                  "text": "常规退货批准后等待仓库确认收货；损坏退款无需退回必须有审核员明确决定。只有模拟支付对账成功才报告模拟退款成功。",
+                  "intent": "ALL",
+                  "chunk_id": "A-REFUND-01",
+                  "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+                },
+                {
+                  "text": "损坏诉求需补充描述与证据引用，交由人工判断。常规7天窗口之外的损坏争议仍可转人工，不能直接套用常规退货拒绝。",
+                  "intent": "DAMAGE_REFUND",
+                  "chunk_id": "A-DAMAGE-01",
+                  "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-DAMAGE-01"
+                },
+                {
+                  "text": "客户确认绑定订单、类型、金额与政策版本，有效期15分钟。客户确认后可提交审核，全部退款仍需人工批准。",
+                  "intent": "ALL",
+                  "chunk_id": "A-CONFIRM-01",
+                  "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01"
+                }
+              ],
+              "order_id": "O-A102",
+              "simulated": true,
+              "candidates": [
+                {
+                  "score": 2.271654,
+                  "chunk_id": "A-REFUND-01",
+                  "selected": true
+                },
+                {
+                  "score": 0.733373,
+                  "chunk_id": "A-DAMAGE-01",
+                  "selected": true
+                },
+                {
+                  "score": 0.677817,
+                  "chunk_id": "A-CONFIRM-01",
+                  "selected": true
+                }
+              ],
+              "effective_to": "2026-10-31T16:00:00Z",
+              "evaluated_at": "2026-10-11T02:00:00Z",
+              "rule_summary": {
+                "all_refunds_require_review": true,
+                "logistics_inactivity_seconds": 172800,
+                "standard_return_window_seconds": 604800,
+                "customer_confirmation_ttl_seconds": 900
+              },
+              "effective_from": "2026-09-30T16:00:00Z",
+              "policy_version": "POLICY-A-2026-10-v1",
+              "retrieval_mode": "keyword_v1"
+            },
+            "trace_id": "RUN-34A481408CDF44668935CCE024FD1616",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "query": "外壳裂了 损坏退款",
+            "top_k": 3,
+            "intent": "DAMAGE_REFUND",
+            "order_id": "O-A102"
+          }
+        }
+      },
+      {
+        "run_id": "RUN-34A481408CDF44668935CCE024FD1616",
+        "seq": 6,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "check_eligibility",
+          "step": "0:2",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "eligibility": "manual_required",
+              "evaluated_at": "2026-10-11T02:00:00Z",
+              "reason_codes": [
+                "DAMAGE_REQUIRES_MANUAL_REVIEW"
+              ],
+              "order_version": 1,
+              "policy_version": "POLICY-A-2026-10-v1",
+              "review_required": true,
+              "assessment_scope": "READ_ONLY_PRECHECK",
+              "refundable_amount_fen": 39900
+            },
+            "trace_id": "RUN-34A481408CDF44668935CCE024FD1616",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "order_id": "O-A102",
+            "case_type": "DAMAGE_REFUND",
+            "reason_code": "DAMAGED"
+          }
+        }
+      },
+      {
+        "run_id": "RUN-34A481408CDF44668935CCE024FD1616",
+        "seq": 7,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 1,
+          "usage": {
+            "total_tokens": 4123,
+            "prompt_tokens": 4003,
+            "completion_tokens": 120,
+            "prompt_cache_hit_tokens": 2816,
+            "prompt_cache_miss_tokens": 1187
+          },
+          "input_ref": {
+            "round": 1,
+            "message_id": "MSG-CCF6340C5C4D4FD68871A1D87EB3C089"
+          },
+          "latency_ms": 1829,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "1",
+            "run_id": "RUN-34A481408CDF44668935CCE024FD1616"
+          },
+          "tool_names": [
+            "create_case_draft"
+          ]
+        }
+      },
+      {
+        "run_id": "RUN-34A481408CDF44668935CCE024FD1616",
+        "seq": 8,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "create_case_draft",
+          "step": "1:0",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+              "reason": "客户反馈商品外壳破裂，要求退款。证据引用：EVIDENCE-A1。",
+              "status": "DRAFT",
+              "version": 1,
+              "order_id": "O-A102",
+              "case_type": "DAMAGE_REFUND",
+              "simulated": true,
+              "evidence_refs": [
+                "EVIDENCE-A1"
+              ],
+              "order_version": 1,
+              "policy_version": "POLICY-A-2026-10-v1",
+              "review_required": true,
+              "requested_amount_fen": 39900
+            },
+            "trace_id": "RUN-34A481408CDF44668935CCE024FD1616",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "reason": "客户反馈商品外壳破裂，要求退款。证据引用：EVIDENCE-A1。",
+            "order_id": "O-A102",
+            "case_type": "DAMAGE_REFUND",
+            "evidence_refs": [
+              "EVIDENCE-A1"
+            ]
+          }
+        }
+      },
+      {
+        "run_id": "RUN-34A481408CDF44668935CCE024FD1616",
+        "seq": 9,
+        "kind": "WAITING_FOR_USER",
+        "data": {
+          "response": {
+            "cases": [
+              {
+                "id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+                "reason": "客户反馈商品外壳破裂，要求退款。证据引用：EVIDENCE-A1。",
+                "status": "DRAFT",
+                "version": 1,
+                "order_id": "O-A102",
+                "case_type": "DAMAGE_REFUND",
+                "simulated": true,
+                "evidence_refs": [
+                  "EVIDENCE-A1"
+                ],
+                "order_version": 1,
+                "policy_version": "POLICY-A-2026-10-v1",
+                "review_required": true,
+                "requested_amount_fen": 39900
+              }
+            ],
+            "facts": [],
+            "answer": "草稿已创建，请通过独立客户接口生成确认摘要并确认后再提交。",
+            "tickets": [],
+            "citations": [
+              "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01",
+              "模拟售后政策 POLICY-A-2026-10-v1 / A-DAMAGE-01",
+              "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+            ],
+            "simulated": true
+          },
+          "error_code": null
+        }
+      }
+    ],
+    "model_outputs": [
+      {
+        "step": "0",
+        "result": {
+          "calls": [
+            {
+              "id": "call_00_Dw45gfRlN9UkzBMX3PHC4162",
+              "name": "get_order",
+              "arguments": {
+                "order_id": "O-A102"
+              }
+            },
+            {
+              "id": "call_01_avXrf53THZ7jju5sNQHG5339",
+              "name": "search_policy",
+              "arguments": {
+                "query": "外壳裂了 损坏退款",
+                "top_k": 3,
+                "intent": "DAMAGE_REFUND",
+                "order_id": "O-A102"
+              }
+            },
+            {
+              "id": "call_02_hq3hxGByyrGPTabp0HI68371",
+              "name": "check_eligibility",
+              "arguments": {
+                "order_id": "O-A102",
+                "case_type": "DAMAGE_REFUND",
+                "reason_code": "DAMAGED"
+              }
+            }
+          ],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 3108,
+            "prompt_tokens": 2918,
+            "completion_tokens": 190,
+            "prompt_cache_hit_tokens": 1024,
+            "prompt_cache_miss_tokens": 1894
+          },
+          "content": ""
+        }
+      },
+      {
+        "step": "1",
+        "result": {
+          "calls": [
+            {
+              "id": "call_00_w7FGILBHtvSAwlSFTlgU7888",
+              "name": "create_case_draft",
+              "arguments": {
+                "reason": "客户反馈商品外壳破裂，要求退款。证据引用：EVIDENCE-A1。",
+                "order_id": "O-A102",
+                "case_type": "DAMAGE_REFUND",
+                "evidence_refs": [
+                  "EVIDENCE-A1"
+                ]
+              }
+            }
+          ],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 4123,
+            "prompt_tokens": 4003,
+            "completion_tokens": 120,
+            "prompt_cache_hit_tokens": 2816,
+            "prompt_cache_miss_tokens": 1187
+          },
+          "content": ""
+        }
+      }
+    ],
+    "tokens": {
+      "total_tokens": 7231,
+      "prompt_tokens": 6921,
+      "completion_tokens": 310,
+      "prompt_cache_hit_tokens": 3840,
+      "prompt_cache_miss_tokens": 3081
+    },
+    "extra": {},
+    "run_status": "WAITING_FOR_USER",
+    "error_code": null,
+    "runs": [
+      {
+        "processed": true,
+        "run_id": "RUN-34A481408CDF44668935CCE024FD1616",
+        "conversation_id": "CONV-4CA1D88DDF9D41E890DC7BC5CF98B2AC",
+        "status": "WAITING_FOR_USER",
+        "action": "APPLY_AFTER_SALES",
+        "target_order_id": "O-A102",
+        "provider": "deepseek",
+        "model": "deepseek-flash",
+        "prompt_version": "prompt-v4-m4",
+        "tool_version": "tools-v2-m4",
+        "model_calls": 2,
+        "tool_calls": 4,
+        "error_code": null,
+        "response": {
+          "cases": [
+            {
+              "id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+              "reason": "客户反馈商品外壳破裂，要求退款。证据引用：EVIDENCE-A1。",
+              "status": "DRAFT",
+              "version": 1,
+              "order_id": "O-A102",
+              "case_type": "DAMAGE_REFUND",
+              "simulated": true,
+              "evidence_refs": [
+                "EVIDENCE-A1"
+              ],
+              "order_version": 1,
+              "policy_version": "POLICY-A-2026-10-v1",
+              "review_required": true,
+              "requested_amount_fen": 39900
+            }
+          ],
+          "facts": [],
+          "answer": "草稿已创建，请通过独立客户接口生成确认摘要并确认后再提交。",
+          "tickets": [],
+          "citations": [
+            "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01",
+            "模拟售后政策 POLICY-A-2026-10-v1 / A-DAMAGE-01",
+            "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+          ],
+          "simulated": true
+        },
+        "created_at": "2026-10-12T04:56:47.860452+00:00",
+        "completed_at": "2026-10-12T04:56:52.278496+00:00"
+      }
+    ],
+    "mode": "LIVE",
+    "provider": "deepseek",
+    "model_id": "deepseek-flash",
+    "latency_ms": 4703,
+    "http_trace": [
+      {
+        "path": "/conversations",
+        "actor": "C-A1",
+        "http_status": 201,
+        "code": "OK",
+        "data": {
+          "conversation_id": "CONV-4CA1D88DDF9D41E890DC7BC5CF98B2AC"
+        }
+      },
+      {
+        "path": "/conversations/CONV-4CA1D88DDF9D41E890DC7BC5CF98B2AC/messages",
+        "actor": "C-A1",
+        "http_status": 202,
+        "code": "OK",
+        "data": {
+          "run_id": "RUN-34A481408CDF44668935CCE024FD1616",
+          "conversation_id": "CONV-4CA1D88DDF9D41E890DC7BC5CF98B2AC",
+          "status": "QUEUED",
+          "action": "APPLY_AFTER_SALES",
+          "target_order_id": "O-A102",
+          "provider": null,
+          "model": null,
+          "prompt_version": "prompt-v4-m4",
+          "tool_version": "tools-v2-m4",
+          "model_calls": 0,
+          "tool_calls": 0,
+          "error_code": null,
+          "response": null,
+          "created_at": "2026-10-12T04:56:47.860452+00:00",
+          "completed_at": null
+        }
+      },
+      {
+        "path": "/cases/CASE-451320DE156B416A9EE3A0E7AB4BDCC0/confirmation",
+        "actor": "C-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "confirmation_id": "CONF-72E44A129C424854A7299158A23D2739",
+          "payload_digest": "3db20794a6ec5425304868d5718d71b89dfbf7aa3a237a303ff7a07eead29a82",
+          "expires_at": "2026-10-11T02:15:00+00:00",
+          "summary": {
+            "id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+            "order_id": "O-A102",
+            "case_type": "DAMAGE_REFUND",
+            "status": "WAITING_FOR_USER",
+            "reason": "客户反馈商品外壳破裂，要求退款。证据引用：EVIDENCE-A1。",
+            "evidence_refs": [
+              "EVIDENCE-A1"
+            ],
+            "requested_amount_fen": 39900,
+            "policy_version": "POLICY-A-2026-10-v1",
+            "version": 2,
+            "order_version": 1,
+            "review_required": true,
+            "simulated": true,
+            "policy_digest": "3adc6b9d1c3db60f5404f761532f7d185f06ad274c347439f1f97aa9043888a7",
+            "notice": "客户确认仅提交申请；退款须人工审核，普通退货须仓库收货。"
+          }
+        }
+      }
+    ],
+    "database": {
+      "cases": [
+        {
+          "id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+          "order_id": "O-A102",
+          "tenant_id": "TENANT-A",
+          "case_type": "DAMAGE_REFUND",
+          "status": "WAITING_FOR_USER",
+          "requested_amount_fen": 39900,
+          "created_by": "C-A1",
+          "received_at": null
+        }
+      ],
+      "tickets": [],
+      "refunds": [],
+      "providers": [],
+      "reviews": [],
+      "confirmations": [
+        {
+          "case_id": "CASE-451320DE156B416A9EE3A0E7AB4BDCC0",
+          "confirmed_by": null,
+          "confirmed_at": null,
+          "consumed_at": null
+        }
+      ],
+      "orders": [
+        {
+          "id": "O-A101",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 14900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A102",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 39900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A103",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 8900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A104",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A105",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 12900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A106",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 29900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A107",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 19900,
+          "refunded_amount_fen": 19900
+        },
+        {
+          "id": "O-A108",
+          "customer_id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A109",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 10900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A110",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 0,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A111",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 11900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A112",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 20000,
+          "refunded_amount_fen": 5000
+        },
+        {
+          "id": "O-A113",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 15900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-B101",
+          "customer_id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "paid_amount_fen": 69900,
+          "refunded_amount_fen": 0
+        }
+      ],
+      "users": [
+        {
+          "id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A2",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "customer_id": "C-B1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "E-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support"
+          ]
+        },
+        {
+          "id": "E-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-A3",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "warehouse"
+          ]
+        },
+        {
+          "id": "E-A4",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-B2",
+          "tenant_id": "TENANT-B",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        }
+      ]
+    }
+  },
+  "repeat_index": 0
+}

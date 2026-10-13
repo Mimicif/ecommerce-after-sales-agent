@@ -1,0 +1,205 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.EXE",
+      "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_7a3f580682e843f793278e2a40d81c05\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_7a3f580682e843f793278e2a40d81c05\\frontend\\playwright.config.ts",
+    "rootDir": "D:/电商售后工单处理Agent/.runtime/m6_workspace_7a3f580682e843f793278e2a40d81c05/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/电商售后工单处理Agent/.runtime/m6_workspace_7a3f580682e843f793278e2a40d81c05/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/电商售后工单处理Agent/.runtime/m6_workspace_7a3f580682e843f793278e2a40d81c05/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 600000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_7a3f580682e843f793278e2a40d81c05\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_7a3f580682e843f793278e2a40d81c05\\frontend\\e2e",
+        "snapshotDir": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_7a3f580682e843f793278e2a40d81c05\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 600000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5175",
+          "actionTimeout": 15000,
+          "channel": "msedge",
+          "viewport": {
+            "width": 1366,
+            "height": 900
+          },
+          "headless": true,
+          "trace": "off",
+          "screenshot": "only-on-failure",
+          "video": {
+            "mode": "on",
+            "size": {
+              "width": 1366,
+              "height": 900
+            }
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_7a3f580682e843f793278e2a40d81c05\\artifacts\\m6/browser_results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "workflow.spec.ts",
+      "file": "workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "真实模型 / 普通退货、损坏澄清、支付超时恢复与角色隔离",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 229674,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T10:02:17.199Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_7a3f580682e843f793278e2a40d81c05\\frontend\\test-results\\workflow-真实模型-普通退货、损坏澄清、支付超时恢复与角色隔离\\video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c601ceb5ecfc8efa4a14-4d8ea65bc921df21f678",
+          "file": "workflow.spec.ts",
+          "line": 145,
+          "column": 1
+        },
+        {
+          "title": "真实后端 / 网络回执丢失、同键恢复、重复话语、停止与安全文本",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10680,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T10:06:07.838Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_7a3f580682e843f793278e2a40d81c05\\frontend\\test-results\\workflow-真实后端-网络回执丢失、同键恢复、重复话语、停止与安全文本\\video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c601ceb5ecfc8efa4a14-b515fd603c0486ccc4bc",
+          "file": "workflow.spec.ts",
+          "line": 325,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T10:02:16.193Z",
+    "duration": 242957.36,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

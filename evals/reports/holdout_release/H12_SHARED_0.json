@@ -1,0 +1,338 @@
+{
+  "case_id": "H12",
+  "title": "客服建单与独立客户确认",
+  "level": "api",
+  "tags": [
+    "core"
+  ],
+  "baseline": "SHARED",
+  "timestamp": "2026-10-12T05:05:09.234633+00:00",
+  "score": {
+    "success": true,
+    "checks": {
+      "case_status": true,
+      "requested_amount_fen": true,
+      "refund_success_count": true
+    },
+    "hard_violations": [],
+    "fact_correct": 0,
+    "fact_total": 0,
+    "citation_correct": 0,
+    "citation_total": 0,
+    "retrieval_required": false,
+    "retrieval_covered": true
+  },
+  "evidence": {
+    "responses": [],
+    "citations": [],
+    "available_citations": [],
+    "retrieved": [],
+    "observations": [],
+    "claims": [],
+    "business_data": [],
+    "events": [],
+    "model_outputs": [],
+    "tokens": {},
+    "extra": {},
+    "run_status": null,
+    "error_code": null,
+    "mode": "DETERMINISTIC_API",
+    "latency_ms": 453,
+    "http_trace": [
+      {
+        "path": "/cases/drafts",
+        "actor": "E-A1",
+        "http_status": 201,
+        "code": "OK",
+        "data": {
+          "id": "CASE-DAA71FCC01414DCBAF943086045831DF",
+          "order_id": "O-A108",
+          "case_type": "RETURN_REFUND",
+          "status": "DRAFT",
+          "reason": "客户明确申请，商品尺寸不合适",
+          "evidence_refs": [],
+          "requested_amount_fen": 57421,
+          "policy_version": "POLICY-A-2026-10-v1",
+          "version": 1,
+          "order_version": 1,
+          "review_required": true,
+          "simulated": true
+        }
+      },
+      {
+        "path": "/cases/CASE-DAA71FCC01414DCBAF943086045831DF/confirmation",
+        "actor": "C-A2",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "confirmation_id": "CONF-A040CD91E9624C3389B2A694117D4DC6",
+          "payload_digest": "dbb0d3141db18edda109825b72643e7939d84c4d38c70c07aa927c8def96e9ae",
+          "expires_at": "2026-10-11T02:15:00+00:00",
+          "summary": {
+            "id": "CASE-DAA71FCC01414DCBAF943086045831DF",
+            "order_id": "O-A108",
+            "case_type": "RETURN_REFUND",
+            "status": "WAITING_FOR_USER",
+            "reason": "客户明确申请，商品尺寸不合适",
+            "evidence_refs": [],
+            "requested_amount_fen": 57421,
+            "policy_version": "POLICY-A-2026-10-v1",
+            "version": 2,
+            "order_version": 1,
+            "review_required": true,
+            "simulated": true,
+            "policy_digest": "3adc6b9d1c3db60f5404f761532f7d185f06ad274c347439f1f97aa9043888a7",
+            "notice": "客户确认仅提交申请；退款须人工审核，普通退货须仓库收货。"
+          }
+        }
+      },
+      {
+        "path": "/confirmations/CONF-A040CD91E9624C3389B2A694117D4DC6/confirm",
+        "actor": "C-A2",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "confirmation_id": "CONF-A040CD91E9624C3389B2A694117D4DC6",
+          "case_id": "CASE-DAA71FCC01414DCBAF943086045831DF",
+          "case_version": 2,
+          "confirmed": true,
+          "simulated": true
+        }
+      },
+      {
+        "path": "/cases/CASE-DAA71FCC01414DCBAF943086045831DF",
+        "actor": "E-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "id": "CASE-DAA71FCC01414DCBAF943086045831DF",
+          "order_id": "O-A108",
+          "case_type": "RETURN_REFUND",
+          "status": "WAITING_FOR_USER",
+          "reason": "客户明确申请，商品尺寸不合适",
+          "evidence_refs": [],
+          "requested_amount_fen": 57421,
+          "policy_version": "POLICY-A-2026-10-v1",
+          "version": 2,
+          "order_version": 1,
+          "review_required": true,
+          "simulated": true
+        }
+      },
+      {
+        "path": "/cases/CASE-DAA71FCC01414DCBAF943086045831DF/submit",
+        "actor": "E-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "id": "CASE-DAA71FCC01414DCBAF943086045831DF",
+          "order_id": "O-A108",
+          "case_type": "RETURN_REFUND",
+          "status": "PENDING_REVIEW",
+          "reason": "客户明确申请，商品尺寸不合适",
+          "evidence_refs": [],
+          "requested_amount_fen": 57421,
+          "policy_version": "POLICY-A-2026-10-v1",
+          "version": 3,
+          "order_version": 1,
+          "review_required": true,
+          "simulated": true
+        }
+      }
+    ],
+    "database": {
+      "cases": [
+        {
+          "id": "CASE-DAA71FCC01414DCBAF943086045831DF",
+          "order_id": "O-A108",
+          "tenant_id": "TENANT-A",
+          "case_type": "RETURN_REFUND",
+          "status": "PENDING_REVIEW",
+          "requested_amount_fen": 57421,
+          "created_by": "E-A1",
+          "received_at": null
+        }
+      ],
+      "tickets": [],
+      "refunds": [],
+      "providers": [],
+      "reviews": [],
+      "confirmations": [
+        {
+          "case_id": "CASE-DAA71FCC01414DCBAF943086045831DF",
+          "confirmed_by": "C-A2",
+          "confirmed_at": "2026-10-11T02:00:00+00:00",
+          "consumed_at": "2026-10-11T02:00:00+00:00"
+        }
+      ],
+      "orders": [
+        {
+          "id": "O-A101",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 14900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A102",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 39900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A103",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 8900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A104",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A105",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 12900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A106",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 29900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A107",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 19900,
+          "refunded_amount_fen": 19900
+        },
+        {
+          "id": "O-A109",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 10900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A110",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 0,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A111",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 11900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A112",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 20000,
+          "refunded_amount_fen": 5000
+        },
+        {
+          "id": "O-A113",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 15900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-B101",
+          "customer_id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "paid_amount_fen": 69900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A108",
+          "customer_id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 57421,
+          "refunded_amount_fen": 0
+        }
+      ],
+      "users": [
+        {
+          "id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A2",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "customer_id": "C-B1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "E-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support"
+          ]
+        },
+        {
+          "id": "E-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-A3",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "warehouse"
+          ]
+        },
+        {
+          "id": "E-A4",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-B2",
+          "tenant_id": "TENANT-B",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        }
+      ]
+    }
+  },
+  "repeat_index": 0
+}

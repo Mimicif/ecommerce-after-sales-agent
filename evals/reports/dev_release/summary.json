@@ -1,0 +1,158 @@
+{
+  "B0/FORM": {
+    "tasks": 51,
+    "successes": 51,
+    "task_success_rate": 1.0,
+    "hard_violations": 0,
+    "fact_correct": 711,
+    "fact_total": 711,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 1.0,
+    "p50_ms": 250,
+    "p95_ms": 391,
+    "tokens": {},
+    "estimated_cost_usd_range": null,
+    "failures": []
+  },
+  "B1/LIVE": {
+    "tasks": 21,
+    "successes": 18,
+    "task_success_rate": 0.8571428571428571,
+    "hard_violations": 0,
+    "fact_correct": 119,
+    "fact_total": 119,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 1.0,
+    "p50_ms": 4843,
+    "p95_ms": 7453,
+    "tokens": {
+      "total_tokens": 137350,
+      "prompt_tokens": 129474,
+      "completion_tokens": 7876,
+      "prompt_cache_hit_tokens": 113792,
+      "prompt_cache_miss_tokens": 15682
+    },
+    "estimated_cost_usd_range": [
+      0.007419276,
+      0.014838552
+    ],
+    "failures": [
+      {
+        "case_id": "S19",
+        "repeat_index": 0,
+        "failed_checks": [
+          "eligibility"
+        ],
+        "error_code": null
+      },
+      {
+        "case_id": "S19",
+        "repeat_index": 1,
+        "failed_checks": [
+          "eligibility"
+        ],
+        "error_code": null
+      },
+      {
+        "case_id": "S19",
+        "repeat_index": 2,
+        "failed_checks": [
+          "eligibility"
+        ],
+        "error_code": null
+      }
+    ]
+  },
+  "B2/LIVE": {
+    "tasks": 51,
+    "successes": 47,
+    "task_success_rate": 0.9215686274509803,
+    "hard_violations": 0,
+    "fact_correct": 324,
+    "fact_total": 324,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 1.0,
+    "p50_ms": 4922,
+    "p95_ms": 12656,
+    "tokens": {
+      "total_tokens": 504940,
+      "prompt_tokens": 479306,
+      "completion_tokens": 25634,
+      "prompt_cache_hit_tokens": 415360,
+      "prompt_cache_miss_tokens": 63946
+    },
+    "estimated_cost_usd_range": [
+      0.026218379999999996,
+      0.05243675999999999
+    ],
+    "failures": [
+      {
+        "case_id": "S05",
+        "repeat_index": 2,
+        "failed_checks": [
+          "asks_for_damage_evidence"
+        ],
+        "error_code": "UNVERIFIED_STATUS_CLAIM"
+      },
+      {
+        "case_id": "S19",
+        "repeat_index": 0,
+        "failed_checks": [
+          "eligibility"
+        ],
+        "error_code": null
+      },
+      {
+        "case_id": "S19",
+        "repeat_index": 1,
+        "failed_checks": [
+          "eligibility"
+        ],
+        "error_code": null
+      },
+      {
+        "case_id": "S19",
+        "repeat_index": 2,
+        "failed_checks": [
+          "eligibility"
+        ],
+        "error_code": null
+      }
+    ]
+  },
+  "SHARED/DETERMINISTIC_API": {
+    "tasks": 18,
+    "successes": 18,
+    "task_success_rate": 1.0,
+    "hard_violations": 0,
+    "fact_correct": 12,
+    "fact_total": 12,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": null,
+    "retrieval_coverage": null,
+    "p50_ms": 391,
+    "p95_ms": 1422,
+    "tokens": {},
+    "estimated_cost_usd_range": null,
+    "failures": []
+  },
+  "B2/FAULT_CONTRACT": {
+    "tasks": 1,
+    "successes": 1,
+    "task_success_rate": 1.0,
+    "hard_violations": 0,
+    "fact_correct": 0,
+    "fact_total": 0,
+    "fact_accuracy": null,
+    "citation_accuracy": null,
+    "retrieval_coverage": null,
+    "p50_ms": 2125,
+    "p95_ms": 2125,
+    "tokens": {},
+    "estimated_cost_usd_range": null,
+    "failures": []
+  }
+}

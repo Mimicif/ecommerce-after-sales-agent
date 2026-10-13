@@ -1,0 +1,22 @@
+{
+  "SHARED/DETERMINISTIC_API": {
+    "tasks": 6,
+    "successes": 6,
+    "task_success_rate": 1.0,
+    "hard_violations": 0,
+    "fact_correct": 8,
+    "fact_total": 8,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": null,
+    "retrieval_coverage": null,
+    "p50_ms": 172,
+    "p95_ms": 375,
+    "tokens": {},
+    "model_calls": 0,
+    "tool_calls": 0,
+    "usage_reported_calls": 0,
+    "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+    "estimated_cost_usd_range": null,
+    "failures": []
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "backend_committed_before_network_abort": true,
+  "same_message_replayed_without_duplicate": true,
+  "explicit_repeated_utterance_creates_new_message": true,
+  "cancelled_runs": 2,
+  "untrusted_html_rendered_as_text": true,
+  "keyboard_native_controls": true
+}

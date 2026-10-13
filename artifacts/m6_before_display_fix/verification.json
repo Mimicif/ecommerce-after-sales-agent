@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "release": "0.6.0-local-m6",
+  "backend_tests": 308,
+  "browser_tests": 2,
+  "fresh_physical_database": true,
+  "clean_install": true,
+  "production_preview": true,
+  "development_unchanged": true,
+  "tested_source_files_unchanged": 1124,
+  "runtime_versions": {
+    "python": "Python 3.12.7",
+    "uv": "uv 0.12.0 (b88d7c5c4 2026-07-28 x86_64-pc-windows-msvc)",
+    "node": "v24.14.1",
+    "npm": "11.11.0"
+  },
+  "postgresql": "18.6",
+  "demo": {
+    "duration_seconds": 228.72,
+    "width": 1366,
+    "height": 900,
+    "sha256": "215a495813e1f85e38d35285ed0dd61693fa287aac702ac9c0917767687e94d3",
+    "source_recording": "frontend/test-results/workflow-真实模型-普通退货、损坏澄清、支付超时恢复与角色隔离/video.webm",
+    "inspected_recordings": 2
+  },
+  "historical_evaluations_preserved": true
+}

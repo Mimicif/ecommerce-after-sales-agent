@@ -1,0 +1,698 @@
+{
+  "case_id": "S04",
+  "title": "订单缺失且多个候选必须澄清",
+  "level": "agent",
+  "tags": [
+    "core"
+  ],
+  "baseline": "B2",
+  "timestamp": "2026-10-12T05:01:00.363221+00:00",
+  "score": {
+    "success": true,
+    "checks": {
+      "asks_for_order_selection": true,
+      "submitted_case_count": true
+    },
+    "hard_violations": [],
+    "fact_correct": 0,
+    "fact_total": 0,
+    "citation_correct": 0,
+    "citation_total": 0,
+    "retrieval_required": false,
+    "retrieval_covered": true
+  },
+  "evidence": {
+    "responses": [
+      {
+        "cases": [],
+        "facts": [],
+        "answer": "你有多个订单，请告诉我具体要退哪一个（只回复订单号即可）：O-A101、O-A102、O-A103、O-A104、O-A105、O-A106、O-A107、O-A109、O-A110、O-A111、O-A112、O-A113。",
+        "tickets": [],
+        "citations": [],
+        "simulated": true,
+        "needs_input": true
+      }
+    ],
+    "citations": [],
+    "available_citations": [],
+    "retrieved": [],
+    "observations": [],
+    "claims": [],
+    "business_data": [
+      {
+        "items": [
+          {
+            "id": "O-A101",
+            "cases": [],
+            "status": "DELIVERED",
+            "version": 1,
+            "delivered_at": "2026-10-09T02:00:00Z",
+            "paid_amount_fen": 14900,
+            "product_category": "STANDARD",
+            "refunded_amount_fen": 0
+          },
+          {
+            "id": "O-A102",
+            "cases": [],
+            "status": "DELIVERED",
+            "version": 1,
+            "delivered_at": "2026-10-10T02:00:00Z",
+            "paid_amount_fen": 39900,
+            "product_category": "STANDARD",
+            "refunded_amount_fen": 0
+          },
+          {
+            "id": "O-A103",
+            "cases": [],
+            "status": "DELIVERED",
+            "version": 1,
+            "delivered_at": "2026-10-01T02:00:00Z",
+            "paid_amount_fen": 8900,
+            "product_category": "STANDARD",
+            "refunded_amount_fen": 0
+          },
+          {
+            "id": "O-A104",
+            "cases": [],
+            "status": "IN_TRANSIT",
+            "version": 1,
+            "delivered_at": null,
+            "paid_amount_fen": 9900,
+            "product_category": "STANDARD",
+            "refunded_amount_fen": 0
+          },
+          {
+            "id": "O-A105",
+            "cases": [],
+            "status": "IN_TRANSIT",
+            "version": 1,
+            "delivered_at": null,
+            "paid_amount_fen": 12900,
+            "product_category": "STANDARD",
+            "refunded_amount_fen": 0
+          },
+          {
+            "id": "O-A106",
+            "cases": [],
+            "status": "DELIVERED",
+            "version": 1,
+            "delivered_at": "2026-10-10T02:00:00Z",
+            "paid_amount_fen": 29900,
+            "product_category": "CUSTOM",
+            "refunded_amount_fen": 0
+          },
+          {
+            "id": "O-A107",
+            "cases": [],
+            "status": "DELIVERED",
+            "version": 1,
+            "delivered_at": "2026-10-09T02:00:00Z",
+            "paid_amount_fen": 19900,
+            "product_category": "STANDARD",
+            "refunded_amount_fen": 19900
+          },
+          {
+            "id": "O-A109",
+            "cases": [],
+            "status": "DELIVERED",
+            "version": 1,
+            "delivered_at": null,
+            "paid_amount_fen": 10900,
+            "product_category": "STANDARD",
+            "refunded_amount_fen": 0
+          },
+          {
+            "id": "O-A110",
+            "cases": [],
+            "status": "DELIVERED",
+            "version": 1,
+            "delivered_at": "2026-10-10T02:00:00Z",
+            "paid_amount_fen": 0,
+            "product_category": "STANDARD",
+            "refunded_amount_fen": 0
+          },
+          {
+            "id": "O-A111",
+            "cases": [],
+            "status": "DELIVERED",
+            "version": 1,
+            "delivered_at": "2026-10-12T02:00:00Z",
+            "paid_amount_fen": 11900,
+            "product_category": "STANDARD",
+            "refunded_amount_fen": 0
+          },
+          {
+            "id": "O-A112",
+            "cases": [],
+            "status": "DELIVERED",
+            "version": 1,
+            "delivered_at": "2026-10-10T02:00:00Z",
+            "paid_amount_fen": 20000,
+            "product_category": "STANDARD",
+            "refunded_amount_fen": 5000
+          },
+          {
+            "id": "O-A113",
+            "cases": [],
+            "status": "IN_TRANSIT",
+            "version": 1,
+            "delivered_at": null,
+            "paid_amount_fen": 15900,
+            "product_category": "STANDARD",
+            "refunded_amount_fen": 0
+          }
+        ],
+        "next_cursor": null
+      }
+    ],
+    "events": [
+      {
+        "run_id": "RUN-EF1B8DE3937C450F82868819267EA0E9",
+        "seq": 1,
+        "kind": "QUEUED",
+        "data": {
+          "action": "CONSULT"
+        }
+      },
+      {
+        "run_id": "RUN-EF1B8DE3937C450F82868819267EA0E9",
+        "seq": 2,
+        "kind": "RUNNING",
+        "data": {
+          "model": "deepseek-flash",
+          "resumed": false,
+          "provider": "deepseek"
+        }
+      },
+      {
+        "run_id": "RUN-EF1B8DE3937C450F82868819267EA0E9",
+        "seq": 3,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 0,
+          "usage": {
+            "total_tokens": 2946,
+            "prompt_tokens": 2909,
+            "completion_tokens": 37,
+            "prompt_cache_hit_tokens": 2688,
+            "prompt_cache_miss_tokens": 221
+          },
+          "input_ref": {
+            "round": 0,
+            "message_id": "MSG-E5873BD04DFC4094BE84C95432A369A8"
+          },
+          "latency_ms": 1359,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "0",
+            "run_id": "RUN-EF1B8DE3937C450F82868819267EA0E9"
+          },
+          "tool_names": [
+            "list_my_orders"
+          ]
+        }
+      },
+      {
+        "run_id": "RUN-EF1B8DE3937C450F82868819267EA0E9",
+        "seq": 4,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "list_my_orders",
+          "step": "0:0",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "items": [
+                {
+                  "id": "O-A101",
+                  "cases": [],
+                  "status": "DELIVERED",
+                  "version": 1,
+                  "delivered_at": "2026-10-09T02:00:00Z",
+                  "paid_amount_fen": 14900,
+                  "product_category": "STANDARD",
+                  "refunded_amount_fen": 0
+                },
+                {
+                  "id": "O-A102",
+                  "cases": [],
+                  "status": "DELIVERED",
+                  "version": 1,
+                  "delivered_at": "2026-10-10T02:00:00Z",
+                  "paid_amount_fen": 39900,
+                  "product_category": "STANDARD",
+                  "refunded_amount_fen": 0
+                },
+                {
+                  "id": "O-A103",
+                  "cases": [],
+                  "status": "DELIVERED",
+                  "version": 1,
+                  "delivered_at": "2026-10-01T02:00:00Z",
+                  "paid_amount_fen": 8900,
+                  "product_category": "STANDARD",
+                  "refunded_amount_fen": 0
+                },
+                {
+                  "id": "O-A104",
+                  "cases": [],
+                  "status": "IN_TRANSIT",
+                  "version": 1,
+                  "delivered_at": null,
+                  "paid_amount_fen": 9900,
+                  "product_category": "STANDARD",
+                  "refunded_amount_fen": 0
+                },
+                {
+                  "id": "O-A105",
+                  "cases": [],
+                  "status": "IN_TRANSIT",
+                  "version": 1,
+                  "delivered_at": null,
+                  "paid_amount_fen": 12900,
+                  "product_category": "STANDARD",
+                  "refunded_amount_fen": 0
+                },
+                {
+                  "id": "O-A106",
+                  "cases": [],
+                  "status": "DELIVERED",
+                  "version": 1,
+                  "delivered_at": "2026-10-10T02:00:00Z",
+                  "paid_amount_fen": 29900,
+                  "product_category": "CUSTOM",
+                  "refunded_amount_fen": 0
+                },
+                {
+                  "id": "O-A107",
+                  "cases": [],
+                  "status": "DELIVERED",
+                  "version": 1,
+                  "delivered_at": "2026-10-09T02:00:00Z",
+                  "paid_amount_fen": 19900,
+                  "product_category": "STANDARD",
+                  "refunded_amount_fen": 19900
+                },
+                {
+                  "id": "O-A109",
+                  "cases": [],
+                  "status": "DELIVERED",
+                  "version": 1,
+                  "delivered_at": null,
+                  "paid_amount_fen": 10900,
+                  "product_category": "STANDARD",
+                  "refunded_amount_fen": 0
+                },
+                {
+                  "id": "O-A110",
+                  "cases": [],
+                  "status": "DELIVERED",
+                  "version": 1,
+                  "delivered_at": "2026-10-10T02:00:00Z",
+                  "paid_amount_fen": 0,
+                  "product_category": "STANDARD",
+                  "refunded_amount_fen": 0
+                },
+                {
+                  "id": "O-A111",
+                  "cases": [],
+                  "status": "DELIVERED",
+                  "version": 1,
+                  "delivered_at": "2026-10-12T02:00:00Z",
+                  "paid_amount_fen": 11900,
+                  "product_category": "STANDARD",
+                  "refunded_amount_fen": 0
+                },
+                {
+                  "id": "O-A112",
+                  "cases": [],
+                  "status": "DELIVERED",
+                  "version": 1,
+                  "delivered_at": "2026-10-10T02:00:00Z",
+                  "paid_amount_fen": 20000,
+                  "product_category": "STANDARD",
+                  "refunded_amount_fen": 5000
+                },
+                {
+                  "id": "O-A113",
+                  "cases": [],
+                  "status": "IN_TRANSIT",
+                  "version": 1,
+                  "delivered_at": null,
+                  "paid_amount_fen": 15900,
+                  "product_category": "STANDARD",
+                  "refunded_amount_fen": 0
+                }
+              ],
+              "next_cursor": null
+            },
+            "trace_id": "RUN-EF1B8DE3937C450F82868819267EA0E9",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "limit": 20,
+            "cursor": null
+          }
+        }
+      },
+      {
+        "run_id": "RUN-EF1B8DE3937C450F82868819267EA0E9",
+        "seq": 5,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 1,
+          "usage": {
+            "total_tokens": 3995,
+            "prompt_tokens": 3911,
+            "completion_tokens": 84,
+            "prompt_cache_hit_tokens": 3712,
+            "prompt_cache_miss_tokens": 199
+          },
+          "input_ref": {
+            "round": 1,
+            "message_id": "MSG-E5873BD04DFC4094BE84C95432A369A8"
+          },
+          "latency_ms": 1515,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "1",
+            "run_id": "RUN-EF1B8DE3937C450F82868819267EA0E9"
+          },
+          "tool_names": []
+        }
+      },
+      {
+        "run_id": "RUN-EF1B8DE3937C450F82868819267EA0E9",
+        "seq": 6,
+        "kind": "WAITING_FOR_USER",
+        "data": {
+          "response": {
+            "cases": [],
+            "facts": [],
+            "answer": "你有多个订单，请告诉我具体要退哪一个（只回复订单号即可）：O-A101、O-A102、O-A103、O-A104、O-A105、O-A106、O-A107、O-A109、O-A110、O-A111、O-A112、O-A113。",
+            "tickets": [],
+            "citations": [],
+            "simulated": true
+          },
+          "error_code": null
+        }
+      }
+    ],
+    "model_outputs": [
+      {
+        "step": "0",
+        "result": {
+          "calls": [
+            {
+              "id": "call_00_F4LLzKZBx2Af7mbxpIVb0230",
+              "name": "list_my_orders",
+              "arguments": {
+                "limit": 20,
+                "cursor": null
+              }
+            }
+          ],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 2946,
+            "prompt_tokens": 2909,
+            "completion_tokens": 37,
+            "prompt_cache_hit_tokens": 2688,
+            "prompt_cache_miss_tokens": 221
+          },
+          "content": "我需要先确认您的订单。请稍等，我查一下。"
+        }
+      },
+      {
+        "step": "1",
+        "result": {
+          "calls": [],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 3995,
+            "prompt_tokens": 3911,
+            "completion_tokens": 84,
+            "prompt_cache_hit_tokens": 3712,
+            "prompt_cache_miss_tokens": 199
+          },
+          "content": "{\"answer\":\"你有多个订单，请告诉我具体要退哪一个（只回复订单号即可）：O-A101、O-A102、O-A103、O-A104、O-A105、O-A106、O-A107、O-A109、O-A110、O-A111、O-A112、O-A113。\",\"needs_input\":true,\"citations\":[],\"facts\":[]}"
+        }
+      }
+    ],
+    "tokens": {
+      "total_tokens": 6941,
+      "prompt_tokens": 6820,
+      "completion_tokens": 121,
+      "prompt_cache_hit_tokens": 6400,
+      "prompt_cache_miss_tokens": 420
+    },
+    "extra": {},
+    "run_status": "WAITING_FOR_USER",
+    "error_code": null,
+    "runs": [
+      {
+        "processed": true,
+        "run_id": "RUN-EF1B8DE3937C450F82868819267EA0E9",
+        "conversation_id": "CONV-A34BCDA70FCA41EBB0A42C78193D2265",
+        "status": "WAITING_FOR_USER",
+        "action": "CONSULT",
+        "target_order_id": null,
+        "provider": "deepseek",
+        "model": "deepseek-flash",
+        "prompt_version": "prompt-v4-m4",
+        "tool_version": "tools-v2-m4",
+        "model_calls": 2,
+        "tool_calls": 1,
+        "error_code": null,
+        "response": {
+          "cases": [],
+          "facts": [],
+          "answer": "你有多个订单，请告诉我具体要退哪一个（只回复订单号即可）：O-A101、O-A102、O-A103、O-A104、O-A105、O-A106、O-A107、O-A109、O-A110、O-A111、O-A112、O-A113。",
+          "tickets": [],
+          "citations": [],
+          "simulated": true
+        },
+        "created_at": "2026-10-12T05:00:56.490934+00:00",
+        "completed_at": "2026-10-12T05:00:59.960185+00:00"
+      }
+    ],
+    "mode": "LIVE",
+    "provider": "deepseek",
+    "model_id": "deepseek-flash",
+    "latency_ms": 3718,
+    "http_trace": [
+      {
+        "path": "/conversations",
+        "actor": "C-A1",
+        "http_status": 201,
+        "code": "OK",
+        "data": {
+          "conversation_id": "CONV-A34BCDA70FCA41EBB0A42C78193D2265"
+        }
+      },
+      {
+        "path": "/conversations/CONV-A34BCDA70FCA41EBB0A42C78193D2265/messages",
+        "actor": "C-A1",
+        "http_status": 202,
+        "code": "OK",
+        "data": {
+          "run_id": "RUN-EF1B8DE3937C450F82868819267EA0E9",
+          "conversation_id": "CONV-A34BCDA70FCA41EBB0A42C78193D2265",
+          "status": "QUEUED",
+          "action": "CONSULT",
+          "target_order_id": null,
+          "provider": null,
+          "model": null,
+          "prompt_version": "prompt-v4-m4",
+          "tool_version": "tools-v2-m4",
+          "model_calls": 0,
+          "tool_calls": 0,
+          "error_code": null,
+          "response": null,
+          "created_at": "2026-10-12T05:00:56.490934+00:00",
+          "completed_at": null
+        }
+      }
+    ],
+    "database": {
+      "cases": [],
+      "tickets": [],
+      "refunds": [],
+      "providers": [],
+      "reviews": [],
+      "confirmations": [],
+      "orders": [
+        {
+          "id": "O-A101",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 14900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A102",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 39900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A103",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 8900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A104",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A105",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 12900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A106",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 29900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A107",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 19900,
+          "refunded_amount_fen": 19900
+        },
+        {
+          "id": "O-A108",
+          "customer_id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A109",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 10900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A110",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 0,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A111",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 11900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A112",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 20000,
+          "refunded_amount_fen": 5000
+        },
+        {
+          "id": "O-A113",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 15900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-B101",
+          "customer_id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "paid_amount_fen": 69900,
+          "refunded_amount_fen": 0
+        }
+      ],
+      "users": [
+        {
+          "id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A2",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "customer_id": "C-B1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "E-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support"
+          ]
+        },
+        {
+          "id": "E-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-A3",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "warehouse"
+          ]
+        },
+        {
+          "id": "E-A4",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-B2",
+          "tenant_id": "TENANT-B",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        }
+      ]
+    }
+  },
+  "repeat_index": 1
+}

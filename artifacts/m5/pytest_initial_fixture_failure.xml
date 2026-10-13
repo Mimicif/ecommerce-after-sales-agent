@@ -1,0 +1,2296 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="9" failures="0" skipped="0" tests="15" time="23.909" timestamp="2026-10-12T15:41:49.378207+08:00" hostname="lwz"><testcase classname="backend.tests.test_m5" name="test_collections_scoped[C-A1-owners0]" time="1.097"><error message="failed on setup with &quot;sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)&#10;(psycopg.errors.ForeignKeyViolation) insert or update on table &quot;after_sales_cases&quot; violates foreign key constraint &quot;after_sales_cases_policy_version_fkey&quot;&#10;DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table &quot;policy_versions&quot;.&#10;[SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]&#10;[SQL parameters hidden due to hide_parameters=True]&#10;(Background on this error at: https://sqlalche.me/e/20/gkpj)&quot;">self = &lt;sqlalchemy.engine.base.Connection object at 0x00000190C7558CE0&gt;
+dialect = &lt;sqlalchemy.dialects.postgresql.psycopg.PGDialect_psycopg object at 0x00000190C6E58E00&gt;
+context = &lt;sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x00000190C75A3710&gt;
+statement = &lt;sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x00000190C75A3E30&gt;
+parameters = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -&gt; CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+&gt;                   self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c75c4a10&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.ForeignKeyViolation: insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: ForeignKeyViolation
+
+The above exception was the direct cause of the following exception:
+
+database = (Settings(database_url=SecretStr('**********'), dev_mode=True, session_ttl_seconds=3600, database_schema='after_sales_...Engine(postgresql+psycopg://after_sales:***@127.0.0.1:55432/after_sales_test), autoflush=True, expire_on_commit=False))
+
+    @pytest.fixture
+    def populated(database):
+        with database[2]() as session, session.begin():
+            for actor, order, tenant in [
+                ("C-A1", "O-A101", "TENANT-A"),
+                ("C-A2", "O-A108", "TENANT-A"),
+                ("C-B1", "O-B101", "TENANT-B"),
+            ]:
+                # Resource ACLs join actual orders; tenant names are copied from their rows.
+                from app.models import Order
+    
+&gt;               source = session.get(Order, order)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_m5.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2250: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:577: in orm_pre_session_exec
+    session._autoflush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3073: in _autoflush
+    raise e.with_traceback(sys.exc_info()[2])
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3062: in _autoflush
+    self.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4353: in flush
+    self._flush(objects)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4488: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4449: in _flush
+    flush_context.execute()
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:465: in execute
+    rec.execute(self)
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:641: in execute
+    util.preloaded.orm_persistence.save_obj(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:94: in save_obj
+    _emit_insert_statements(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:1049: in _emit_insert_statements
+    result = connection.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: in _exec_single_context
+    self.dialect.do_executemany(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c75c4a10&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+E           (psycopg.errors.ForeignKeyViolation) insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+E           [SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]
+E           [SQL parameters hidden due to hide_parameters=True]
+E           (Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: IntegrityError</error></testcase><testcase classname="backend.tests.test_m5" name="test_collections_scoped[C-A2-owners1]" time="0.992"><error message="failed on setup with &quot;sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)&#10;(psycopg.errors.ForeignKeyViolation) insert or update on table &quot;after_sales_cases&quot; violates foreign key constraint &quot;after_sales_cases_policy_version_fkey&quot;&#10;DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table &quot;policy_versions&quot;.&#10;[SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]&#10;[SQL parameters hidden due to hide_parameters=True]&#10;(Background on this error at: https://sqlalche.me/e/20/gkpj)&quot;">self = &lt;sqlalchemy.engine.base.Connection object at 0x00000190C71B82F0&gt;
+dialect = &lt;sqlalchemy.dialects.postgresql.psycopg.PGDialect_psycopg object at 0x00000190C7640B00&gt;
+context = &lt;sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x00000190C77D5D90&gt;
+statement = &lt;sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x00000190C77D4FE0&gt;
+parameters = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -&gt; CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+&gt;                   self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c95bd190&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.ForeignKeyViolation: insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: ForeignKeyViolation
+
+The above exception was the direct cause of the following exception:
+
+database = (Settings(database_url=SecretStr('**********'), dev_mode=True, session_ttl_seconds=3600, database_schema='after_sales_...Engine(postgresql+psycopg://after_sales:***@127.0.0.1:55432/after_sales_test), autoflush=True, expire_on_commit=False))
+
+    @pytest.fixture
+    def populated(database):
+        with database[2]() as session, session.begin():
+            for actor, order, tenant in [
+                ("C-A1", "O-A101", "TENANT-A"),
+                ("C-A2", "O-A108", "TENANT-A"),
+                ("C-B1", "O-B101", "TENANT-B"),
+            ]:
+                # Resource ACLs join actual orders; tenant names are copied from their rows.
+                from app.models import Order
+    
+&gt;               source = session.get(Order, order)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_m5.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2250: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:577: in orm_pre_session_exec
+    session._autoflush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3073: in _autoflush
+    raise e.with_traceback(sys.exc_info()[2])
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3062: in _autoflush
+    self.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4353: in flush
+    self._flush(objects)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4488: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4449: in _flush
+    flush_context.execute()
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:465: in execute
+    rec.execute(self)
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:641: in execute
+    util.preloaded.orm_persistence.save_obj(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:94: in save_obj
+    _emit_insert_statements(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:1049: in _emit_insert_statements
+    result = connection.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: in _exec_single_context
+    self.dialect.do_executemany(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c95bd190&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+E           (psycopg.errors.ForeignKeyViolation) insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+E           [SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]
+E           [SQL parameters hidden due to hide_parameters=True]
+E           (Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: IntegrityError</error></testcase><testcase classname="backend.tests.test_m5" name="test_collections_scoped[C-B1-owners2]" time="0.853"><error message="failed on setup with &quot;sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)&#10;(psycopg.errors.ForeignKeyViolation) insert or update on table &quot;after_sales_cases&quot; violates foreign key constraint &quot;after_sales_cases_policy_version_fkey&quot;&#10;DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table &quot;policy_versions&quot;.&#10;[SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]&#10;[SQL parameters hidden due to hide_parameters=True]&#10;(Background on this error at: https://sqlalche.me/e/20/gkpj)&quot;">self = &lt;sqlalchemy.engine.base.Connection object at 0x00000190C957A240&gt;
+dialect = &lt;sqlalchemy.dialects.postgresql.psycopg.PGDialect_psycopg object at 0x00000190C7650E90&gt;
+context = &lt;sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x00000190C957A600&gt;
+statement = &lt;sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x00000190C6E58470&gt;
+parameters = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -&gt; CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+&gt;                   self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c9565550&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.ForeignKeyViolation: insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: ForeignKeyViolation
+
+The above exception was the direct cause of the following exception:
+
+database = (Settings(database_url=SecretStr('**********'), dev_mode=True, session_ttl_seconds=3600, database_schema='after_sales_...Engine(postgresql+psycopg://after_sales:***@127.0.0.1:55432/after_sales_test), autoflush=True, expire_on_commit=False))
+
+    @pytest.fixture
+    def populated(database):
+        with database[2]() as session, session.begin():
+            for actor, order, tenant in [
+                ("C-A1", "O-A101", "TENANT-A"),
+                ("C-A2", "O-A108", "TENANT-A"),
+                ("C-B1", "O-B101", "TENANT-B"),
+            ]:
+                # Resource ACLs join actual orders; tenant names are copied from their rows.
+                from app.models import Order
+    
+&gt;               source = session.get(Order, order)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_m5.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2250: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:577: in orm_pre_session_exec
+    session._autoflush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3073: in _autoflush
+    raise e.with_traceback(sys.exc_info()[2])
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3062: in _autoflush
+    self.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4353: in flush
+    self._flush(objects)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4488: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4449: in _flush
+    flush_context.execute()
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:465: in execute
+    rec.execute(self)
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:641: in execute
+    util.preloaded.orm_persistence.save_obj(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:94: in save_obj
+    _emit_insert_statements(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:1049: in _emit_insert_statements
+    result = connection.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: in _exec_single_context
+    self.dialect.do_executemany(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c9565550&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+E           (psycopg.errors.ForeignKeyViolation) insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+E           [SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]
+E           [SQL parameters hidden due to hide_parameters=True]
+E           (Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: IntegrityError</error></testcase><testcase classname="backend.tests.test_m5" name="test_collections_scoped[E-A1-owners3]" time="0.826"><error message="failed on setup with &quot;sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)&#10;(psycopg.errors.ForeignKeyViolation) insert or update on table &quot;after_sales_cases&quot; violates foreign key constraint &quot;after_sales_cases_policy_version_fkey&quot;&#10;DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table &quot;policy_versions&quot;.&#10;[SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]&#10;[SQL parameters hidden due to hide_parameters=True]&#10;(Background on this error at: https://sqlalche.me/e/20/gkpj)&quot;">self = &lt;sqlalchemy.engine.base.Connection object at 0x00000190C94D35C0&gt;
+dialect = &lt;sqlalchemy.dialects.postgresql.psycopg.PGDialect_psycopg object at 0x00000190C94D0920&gt;
+context = &lt;sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x00000190C8BDCD70&gt;
+statement = &lt;sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x00000190C8BDCDD0&gt;
+parameters = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -&gt; CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+&gt;                   self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c8c7e450&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.ForeignKeyViolation: insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: ForeignKeyViolation
+
+The above exception was the direct cause of the following exception:
+
+database = (Settings(database_url=SecretStr('**********'), dev_mode=True, session_ttl_seconds=3600, database_schema='after_sales_...Engine(postgresql+psycopg://after_sales:***@127.0.0.1:55432/after_sales_test), autoflush=True, expire_on_commit=False))
+
+    @pytest.fixture
+    def populated(database):
+        with database[2]() as session, session.begin():
+            for actor, order, tenant in [
+                ("C-A1", "O-A101", "TENANT-A"),
+                ("C-A2", "O-A108", "TENANT-A"),
+                ("C-B1", "O-B101", "TENANT-B"),
+            ]:
+                # Resource ACLs join actual orders; tenant names are copied from their rows.
+                from app.models import Order
+    
+&gt;               source = session.get(Order, order)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_m5.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2250: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:577: in orm_pre_session_exec
+    session._autoflush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3073: in _autoflush
+    raise e.with_traceback(sys.exc_info()[2])
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3062: in _autoflush
+    self.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4353: in flush
+    self._flush(objects)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4488: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4449: in _flush
+    flush_context.execute()
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:465: in execute
+    rec.execute(self)
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:641: in execute
+    util.preloaded.orm_persistence.save_obj(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:94: in save_obj
+    _emit_insert_statements(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:1049: in _emit_insert_statements
+    result = connection.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: in _exec_single_context
+    self.dialect.do_executemany(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c8c7e450&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+E           (psycopg.errors.ForeignKeyViolation) insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+E           [SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]
+E           [SQL parameters hidden due to hide_parameters=True]
+E           (Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: IntegrityError</error></testcase><testcase classname="backend.tests.test_m5" name="test_collections_scoped[E-A2-owners4]" time="0.970"><error message="failed on setup with &quot;sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)&#10;(psycopg.errors.ForeignKeyViolation) insert or update on table &quot;after_sales_cases&quot; violates foreign key constraint &quot;after_sales_cases_policy_version_fkey&quot;&#10;DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table &quot;policy_versions&quot;.&#10;[SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]&#10;[SQL parameters hidden due to hide_parameters=True]&#10;(Background on this error at: https://sqlalche.me/e/20/gkpj)&quot;">self = &lt;sqlalchemy.engine.base.Connection object at 0x00000190C8C541A0&gt;
+dialect = &lt;sqlalchemy.dialects.postgresql.psycopg.PGDialect_psycopg object at 0x00000190C9588B90&gt;
+context = &lt;sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x00000190C8C32B70&gt;
+statement = &lt;sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x00000190C8C31B20&gt;
+parameters = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -&gt; CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+&gt;                   self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c8c1a8d0&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.ForeignKeyViolation: insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: ForeignKeyViolation
+
+The above exception was the direct cause of the following exception:
+
+database = (Settings(database_url=SecretStr('**********'), dev_mode=True, session_ttl_seconds=3600, database_schema='after_sales_...Engine(postgresql+psycopg://after_sales:***@127.0.0.1:55432/after_sales_test), autoflush=True, expire_on_commit=False))
+
+    @pytest.fixture
+    def populated(database):
+        with database[2]() as session, session.begin():
+            for actor, order, tenant in [
+                ("C-A1", "O-A101", "TENANT-A"),
+                ("C-A2", "O-A108", "TENANT-A"),
+                ("C-B1", "O-B101", "TENANT-B"),
+            ]:
+                # Resource ACLs join actual orders; tenant names are copied from their rows.
+                from app.models import Order
+    
+&gt;               source = session.get(Order, order)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_m5.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2250: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:577: in orm_pre_session_exec
+    session._autoflush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3073: in _autoflush
+    raise e.with_traceback(sys.exc_info()[2])
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3062: in _autoflush
+    self.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4353: in flush
+    self._flush(objects)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4488: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4449: in _flush
+    flush_context.execute()
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:465: in execute
+    rec.execute(self)
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:641: in execute
+    util.preloaded.orm_persistence.save_obj(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:94: in save_obj
+    _emit_insert_statements(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:1049: in _emit_insert_statements
+    result = connection.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: in _exec_single_context
+    self.dialect.do_executemany(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c8c1a8d0&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+E           (psycopg.errors.ForeignKeyViolation) insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+E           [SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]
+E           [SQL parameters hidden due to hide_parameters=True]
+E           (Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: IntegrityError</error></testcase><testcase classname="backend.tests.test_m5" name="test_collections_scoped[E-A3-owners5]" time="0.841"><error message="failed on setup with &quot;sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)&#10;(psycopg.errors.ForeignKeyViolation) insert or update on table &quot;after_sales_cases&quot; violates foreign key constraint &quot;after_sales_cases_policy_version_fkey&quot;&#10;DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table &quot;policy_versions&quot;.&#10;[SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]&#10;[SQL parameters hidden due to hide_parameters=True]&#10;(Background on this error at: https://sqlalche.me/e/20/gkpj)&quot;">self = &lt;sqlalchemy.engine.base.Connection object at 0x00000190C8C54260&gt;
+dialect = &lt;sqlalchemy.dialects.postgresql.psycopg.PGDialect_psycopg object at 0x00000190C8C31E50&gt;
+context = &lt;sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x00000190C8C33950&gt;
+statement = &lt;sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x00000190C8C31AF0&gt;
+parameters = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -&gt; CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+&gt;                   self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c9306450&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.ForeignKeyViolation: insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: ForeignKeyViolation
+
+The above exception was the direct cause of the following exception:
+
+database = (Settings(database_url=SecretStr('**********'), dev_mode=True, session_ttl_seconds=3600, database_schema='after_sales_...Engine(postgresql+psycopg://after_sales:***@127.0.0.1:55432/after_sales_test), autoflush=True, expire_on_commit=False))
+
+    @pytest.fixture
+    def populated(database):
+        with database[2]() as session, session.begin():
+            for actor, order, tenant in [
+                ("C-A1", "O-A101", "TENANT-A"),
+                ("C-A2", "O-A108", "TENANT-A"),
+                ("C-B1", "O-B101", "TENANT-B"),
+            ]:
+                # Resource ACLs join actual orders; tenant names are copied from their rows.
+                from app.models import Order
+    
+&gt;               source = session.get(Order, order)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_m5.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2250: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:577: in orm_pre_session_exec
+    session._autoflush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3073: in _autoflush
+    raise e.with_traceback(sys.exc_info()[2])
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3062: in _autoflush
+    self.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4353: in flush
+    self._flush(objects)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4488: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4449: in _flush
+    flush_context.execute()
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:465: in execute
+    rec.execute(self)
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:641: in execute
+    util.preloaded.orm_persistence.save_obj(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:94: in save_obj
+    _emit_insert_statements(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:1049: in _emit_insert_statements
+    result = connection.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: in _exec_single_context
+    self.dialect.do_executemany(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c9306450&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+E           (psycopg.errors.ForeignKeyViolation) insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+E           [SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]
+E           [SQL parameters hidden due to hide_parameters=True]
+E           (Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: IntegrityError</error></testcase><testcase classname="backend.tests.test_m5" name="test_collections_scoped[E-B2-owners6]" time="1.157"><error message="failed on setup with &quot;sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)&#10;(psycopg.errors.ForeignKeyViolation) insert or update on table &quot;after_sales_cases&quot; violates foreign key constraint &quot;after_sales_cases_policy_version_fkey&quot;&#10;DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table &quot;policy_versions&quot;.&#10;[SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]&#10;[SQL parameters hidden due to hide_parameters=True]&#10;(Background on this error at: https://sqlalche.me/e/20/gkpj)&quot;">self = &lt;sqlalchemy.engine.base.Connection object at 0x00000190C9579130&gt;
+dialect = &lt;sqlalchemy.dialects.postgresql.psycopg.PGDialect_psycopg object at 0x00000190C92E0230&gt;
+context = &lt;sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x00000190C8BDEB10&gt;
+statement = &lt;sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x00000190C8BDEE10&gt;
+parameters = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -&gt; CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+&gt;                   self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c95bd550&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.ForeignKeyViolation: insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: ForeignKeyViolation
+
+The above exception was the direct cause of the following exception:
+
+database = (Settings(database_url=SecretStr('**********'), dev_mode=True, session_ttl_seconds=3600, database_schema='after_sales_...Engine(postgresql+psycopg://after_sales:***@127.0.0.1:55432/after_sales_test), autoflush=True, expire_on_commit=False))
+
+    @pytest.fixture
+    def populated(database):
+        with database[2]() as session, session.begin():
+            for actor, order, tenant in [
+                ("C-A1", "O-A101", "TENANT-A"),
+                ("C-A2", "O-A108", "TENANT-A"),
+                ("C-B1", "O-B101", "TENANT-B"),
+            ]:
+                # Resource ACLs join actual orders; tenant names are copied from their rows.
+                from app.models import Order
+    
+&gt;               source = session.get(Order, order)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_m5.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2250: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:577: in orm_pre_session_exec
+    session._autoflush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3073: in _autoflush
+    raise e.with_traceback(sys.exc_info()[2])
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3062: in _autoflush
+    self.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4353: in flush
+    self._flush(objects)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4488: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4449: in _flush
+    flush_context.execute()
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:465: in execute
+    rec.execute(self)
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:641: in execute
+    util.preloaded.orm_persistence.save_obj(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:94: in save_obj
+    _emit_insert_statements(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:1049: in _emit_insert_statements
+    result = connection.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: in _exec_single_context
+    self.dialect.do_executemany(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c95bd550&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+E           (psycopg.errors.ForeignKeyViolation) insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+E           [SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]
+E           [SQL parameters hidden due to hide_parameters=True]
+E           (Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: IntegrityError</error></testcase><testcase classname="backend.tests.test_m5" name="test_pagination_and_filter" time="0.845"><error message="failed on setup with &quot;sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)&#10;(psycopg.errors.ForeignKeyViolation) insert or update on table &quot;after_sales_cases&quot; violates foreign key constraint &quot;after_sales_cases_policy_version_fkey&quot;&#10;DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table &quot;policy_versions&quot;.&#10;[SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]&#10;[SQL parameters hidden due to hide_parameters=True]&#10;(Background on this error at: https://sqlalche.me/e/20/gkpj)&quot;">self = &lt;sqlalchemy.engine.base.Connection object at 0x00000190C7650E60&gt;
+dialect = &lt;sqlalchemy.dialects.postgresql.psycopg.PGDialect_psycopg object at 0x00000190C8CBCEC0&gt;
+context = &lt;sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x00000190C8C30B30&gt;
+statement = &lt;sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x00000190C8C30A70&gt;
+parameters = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -&gt; CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+&gt;                   self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c8cb99d0&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.ForeignKeyViolation: insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: ForeignKeyViolation
+
+The above exception was the direct cause of the following exception:
+
+database = (Settings(database_url=SecretStr('**********'), dev_mode=True, session_ttl_seconds=3600, database_schema='after_sales_...Engine(postgresql+psycopg://after_sales:***@127.0.0.1:55432/after_sales_test), autoflush=True, expire_on_commit=False))
+
+    @pytest.fixture
+    def populated(database):
+        with database[2]() as session, session.begin():
+            for actor, order, tenant in [
+                ("C-A1", "O-A101", "TENANT-A"),
+                ("C-A2", "O-A108", "TENANT-A"),
+                ("C-B1", "O-B101", "TENANT-B"),
+            ]:
+                # Resource ACLs join actual orders; tenant names are copied from their rows.
+                from app.models import Order
+    
+&gt;               source = session.get(Order, order)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_m5.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2250: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:577: in orm_pre_session_exec
+    session._autoflush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3073: in _autoflush
+    raise e.with_traceback(sys.exc_info()[2])
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3062: in _autoflush
+    self.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4353: in flush
+    self._flush(objects)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4488: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4449: in _flush
+    flush_context.execute()
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:465: in execute
+    rec.execute(self)
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:641: in execute
+    util.preloaded.orm_persistence.save_obj(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:94: in save_obj
+    _emit_insert_statements(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:1049: in _emit_insert_statements
+    result = connection.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: in _exec_single_context
+    self.dialect.do_executemany(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190c8cb99d0&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+E           (psycopg.errors.ForeignKeyViolation) insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+E           [SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]
+E           [SQL parameters hidden due to hide_parameters=True]
+E           (Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: IntegrityError</error></testcase><testcase classname="backend.tests.test_m5" name="test_query_tampering_rejected[/cases?tenant_id=TENANT-B]" time="1.063" /><testcase classname="backend.tests.test_m5" name="test_query_tampering_rejected[/tickets?limit=51]" time="1.047" /><testcase classname="backend.tests.test_m5" name="test_query_tampering_rejected[/conversations?owner_id=C-A2]" time="1.120" /><testcase classname="backend.tests.test_m5" name="test_query_tampering_rejected[/cases?status=HACK]" time="1.095" /><testcase classname="backend.tests.test_m5" name="test_evidence_and_identity" time="1.188" /><testcase classname="backend.tests.test_m5" name="test_conversation_listing_own_only" time="1.344" /><testcase classname="backend.tests.test_m5" name="test_history_does_not_bypass_resource_acl" time="0.990"><error message="failed on setup with &quot;sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)&#10;(psycopg.errors.ForeignKeyViolation) insert or update on table &quot;after_sales_cases&quot; violates foreign key constraint &quot;after_sales_cases_policy_version_fkey&quot;&#10;DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table &quot;policy_versions&quot;.&#10;[SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]&#10;[SQL parameters hidden due to hide_parameters=True]&#10;(Background on this error at: https://sqlalche.me/e/20/gkpj)&quot;">self = &lt;sqlalchemy.engine.base.Connection object at 0x00000190C8D07A10&gt;
+dialect = &lt;sqlalchemy.dialects.postgresql.psycopg.PGDialect_psycopg object at 0x00000190C8D3FD10&gt;
+context = &lt;sqlalchemy.dialects.postgresql.psycopg.PGExecutionContext_psycopg object at 0x00000190CA17D790&gt;
+statement = &lt;sqlalchemy.dialects.postgresql.psycopg.PGCompiler_psycopg object at 0x00000190CA17E360&gt;
+parameters = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+
+    def _exec_single_context(
+        self,
+        dialect: Dialect,
+        context: ExecutionContext,
+        statement: Union[str, Compiled],
+        parameters: Optional[_AnyMultiExecuteParams],
+    ) -&gt; CursorResult[Any]:
+        """continue the _execute_context() method for a single DBAPI
+        cursor.execute() or cursor.executemany() call.
+    
+        """
+        if dialect.bind_typing is BindTyping.SETINPUTSIZES:
+            generic_setinputsizes = context._prepare_set_input_sizes()
+    
+            if generic_setinputsizes:
+                try:
+                    dialect.do_set_input_sizes(
+                        context.cursor, generic_setinputsizes, context
+                    )
+                except BaseException as e:
+                    self._handle_dbapi_exception(
+                        e, str(statement), parameters, None, context
+                    )
+    
+        cursor, str_statement, parameters = (
+            context.cursor,
+            context.statement,
+            context.parameters,
+        )
+    
+        effective_parameters: Optional[_AnyExecuteParams]
+    
+        if not context.executemany:
+            effective_parameters = parameters[0]
+        else:
+            effective_parameters = parameters
+    
+        if self._has_events or self.engine._has_events:
+            for fn in self.dispatch.before_cursor_execute:
+                str_statement, effective_parameters = fn(
+                    self,
+                    cursor,
+                    str_statement,
+                    effective_parameters,
+                    context,
+                    context.executemany,
+                )
+    
+        if self._echo:
+            self._log_info(str_statement)
+    
+            stats = context._get_cache_stats()
+    
+            if not self.engine.hide_parameters:
+                self._log_info(
+                    "[%s] %r",
+                    stats,
+                    sql_util._repr_params(
+                        effective_parameters,
+                        batches=10,
+                        ismulti=context.executemany,
+                    ),
+                )
+            else:
+                self._log_info(
+                    "[%s] [SQL parameters hidden due to hide_parameters=True]",
+                    stats,
+                )
+    
+        evt_handled: bool = False
+        try:
+            if context.execute_style is ExecuteStyle.EXECUTEMANY:
+                effective_parameters = cast(
+                    "_CoreMultiExecuteParams", effective_parameters
+                )
+                if self.dialect._has_events:
+                    for fn in self.dialect.dispatch.do_executemany:
+                        if fn(
+                            cursor,
+                            str_statement,
+                            effective_parameters,
+                            context,
+                        ):
+                            evt_handled = True
+                            break
+                if not evt_handled:
+&gt;                   self.dialect.do_executemany(
+                        cursor,
+                        str_statement,
+                        effective_parameters,
+                        context,
+
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190ca0e59d0&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           psycopg.errors.ForeignKeyViolation: insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: ForeignKeyViolation
+
+The above exception was the direct cause of the following exception:
+
+database = (Settings(database_url=SecretStr('**********'), dev_mode=True, session_ttl_seconds=3600, database_schema='after_sales_...Engine(postgresql+psycopg://after_sales:***@127.0.0.1:55432/after_sales_test), autoflush=True, expire_on_commit=False))
+
+    @pytest.fixture
+    def populated(database):
+        with database[2]() as session, session.begin():
+            for actor, order, tenant in [
+                ("C-A1", "O-A101", "TENANT-A"),
+                ("C-A2", "O-A108", "TENANT-A"),
+                ("C-B1", "O-B101", "TENANT-B"),
+            ]:
+                # Resource ACLs join actual orders; tenant names are copied from their rows.
+                from app.models import Order
+    
+&gt;               source = session.get(Order, order)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_m5.py:24: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3702: in get
+    return self._get_impl(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3881: in _get_impl
+    return db_load_fn(
+.venv\Lib\site-packages\sqlalchemy\orm\loading.py:695: in load_on_pk_identity
+    session.execute(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2373: in execute
+    return self._execute_internal(
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:2250: in _execute_internal
+    ) = compile_state_cls.orm_pre_session_exec(
+.venv\Lib\site-packages\sqlalchemy\orm\context.py:577: in orm_pre_session_exec
+    session._autoflush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3073: in _autoflush
+    raise e.with_traceback(sys.exc_info()[2])
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:3062: in _autoflush
+    self.flush()
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4353: in flush
+    self._flush(objects)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4488: in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\sqlalchemy\util\langhelpers.py:122: in __exit__
+    raise exc_value.with_traceback(exc_tb)
+.venv\Lib\site-packages\sqlalchemy\orm\session.py:4449: in _flush
+    flush_context.execute()
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:465: in execute
+    rec.execute(self)
+.venv\Lib\site-packages\sqlalchemy\orm\unitofwork.py:641: in execute
+    util.preloaded.orm_persistence.save_obj(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:94: in save_obj
+    _emit_insert_statements(
+.venv\Lib\site-packages\sqlalchemy\orm\persistence.py:1049: in _emit_insert_statements
+    result = connection.execute(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1421: in execute
+    return meth(
+.venv\Lib\site-packages\sqlalchemy\sql\elements.py:526: in _execute_on_connection
+    return connection._execute_clauseelement(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1643: in _execute_clauseelement
+    ret = self._execute_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1848: in _execute_context
+    return self._exec_single_context(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1988: in _exec_single_context
+    self._handle_dbapi_exception(
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:2365: in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+.venv\Lib\site-packages\sqlalchemy\engine\base.py:1938: in _exec_single_context
+    self.dialect.do_executemany(
+.venv\Lib\site-packages\sqlalchemy\engine\default.py:949: in do_executemany
+    cursor.executemany(statement, parameters)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;psycopg.Cursor [closed] [IDLE] (host=127.0.0.1 port=55432 user=after_sales database=after_sales_test) at 0x190ca0e59d0&gt;
+query = 'INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fe...INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)'
+params_seq = [{'id': 'CASE-C-A1-0', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}, {'id': 'CASE-C-A1-1', 'tenant_id': 'TENANT-A', 'order_id': 'O-A101', 'case_type': 'RETURN_REFUND', ...}]
+returning = False
+
+    def executemany(
+        self, query: Query, params_seq: Iterable[Params], *, returning: bool = False
+    ) -&gt; None:
+        """
+        Execute the same command with a sequence of input data.
+        """
+        try:
+            with self._conn.lock:
+                if Pipeline.is_supported():
+                    # If there is already a pipeline, ride it, in order to avoid
+                    # sending unnecessary Sync.
+                    if self._conn._pipeline:
+                        self._conn.wait(
+                            self._executemany_gen_pipeline(query, params_seq, returning)
+                        )
+                    else:
+                        # Otherwise, make a new one
+                        with self._conn._pipeline_nolock():
+                            self._conn.wait(
+                                self._executemany_gen_pipeline(
+                                    query, params_seq, returning
+                                )
+                            )
+                else:
+                    self._conn.wait(
+                        self._executemany_gen_no_pipeline(query, params_seq, returning)
+                    )
+        except e._NO_TRACEBACK as ex:
+&gt;           raise ex.with_traceback(None)
+E           sqlalchemy.exc.IntegrityError: (raised as a result of Query-invoked autoflush; consider using a session.no_autoflush block if this flush is occurring prematurely)
+E           (psycopg.errors.ForeignKeyViolation) insert or update on table "after_sales_cases" violates foreign key constraint "after_sales_cases_policy_version_fkey"
+E           DETAIL:  Key (policy_version)=(POLICY-A-v1) is not present in table "policy_versions".
+E           [SQL: INSERT INTO after_sales_cases (id, tenant_id, order_id, case_type, status, reason, evidence_refs, requested_amount_fen, policy_version, policy_digest, rules_snapshot, order_version, version, created_by, created_at, received_at) VALUES (%(id)s::VARCHAR, %(tenant_id)s::VARCHAR, %(order_id)s::VARCHAR, %(case_type)s::VARCHAR, %(status)s::VARCHAR, %(reason)s::VARCHAR, %(evidence_refs)s::JSONB, %(requested_amount_fen)s::INTEGER, %(policy_version)s::VARCHAR, %(policy_digest)s::VARCHAR, %(rules_snapshot)s::JSONB, %(order_version)s::INTEGER, %(version)s::INTEGER, %(created_by)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE, %(received_at)s::TIMESTAMP WITH TIME ZONE)]
+E           [SQL parameters hidden due to hide_parameters=True]
+E           (Background on this error at: https://sqlalche.me/e/20/gkpj)
+
+.venv\Lib\site-packages\psycopg\cursor.py:148: IntegrityError</error></testcase></testsuite></testsuites>

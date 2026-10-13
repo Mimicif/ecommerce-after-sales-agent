@@ -1,0 +1,8 @@
+{
+  "duration_seconds": 228.2,
+  "width": 1366,
+  "height": 900,
+  "sha256": "bf711d410cf8a0d6bd8979452ab15980323356e154242e1c0753690f0f54889f",
+  "source_recording": "frontend/test-results/workflow-真实模型-普通退货、损坏澄清、支付超时恢复与角色隔离/video.webm",
+  "inspected_recordings": 2
+}

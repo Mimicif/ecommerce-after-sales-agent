@@ -1,0 +1,345 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "list_my_orders",
+      "description": "列出当前身份可访问的订单，最多20条，只读。",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "cursor": {
+            "anyOf": [
+              {
+                "maxLength": 64,
+                "minLength": 1,
+                "pattern": "^[A-Z0-9-]+$",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null,
+            "title": "Cursor"
+          },
+          "limit": {
+            "default": 20,
+            "maximum": 20,
+            "minimum": 1,
+            "title": "Limit",
+            "type": "integer"
+          }
+        },
+        "title": "ListOrdersInput",
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_order",
+      "description": "查询有权限的订单事实与整数分金额，不提交售后。",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "order_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Z0-9-]+$",
+            "title": "Order Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "order_id"
+        ],
+        "title": "OrderInput",
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_logistics",
+      "description": "读取物流轨迹与可能异常信号；未知不代表丢件。",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "order_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Z0-9-]+$",
+            "title": "Order Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "order_id"
+        ],
+        "title": "OrderInput",
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "search_policy",
+      "description": "先过滤本租户有效政策和意图，再以中文query检索，默认top_k=3；返回真实引用。",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "order_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Z0-9-]+$",
+            "title": "Order Id",
+            "type": "string"
+          },
+          "intent": {
+            "enum": [
+              "RETURN_REFUND",
+              "DAMAGE_REFUND",
+              "LOGISTICS"
+            ],
+            "title": "Intent",
+            "type": "string"
+          },
+          "query": {
+            "default": "",
+            "maxLength": 500,
+            "title": "Query",
+            "type": "string"
+          },
+          "top_k": {
+            "default": 3,
+            "maximum": 6,
+            "minimum": 1,
+            "title": "Top K",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "order_id",
+          "intent"
+        ],
+        "title": "PolicyInput",
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "check_eligibility",
+      "description": "只读检查申请规则；eligible不等于已提交或已批准退款。",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "order_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Z0-9-]+$",
+            "title": "Order Id",
+            "type": "string"
+          },
+          "case_type": {
+            "enum": [
+              "RETURN_REFUND",
+              "DAMAGE_REFUND"
+            ],
+            "title": "Case Type",
+            "type": "string"
+          },
+          "reason_code": {
+            "default": "OTHER",
+            "enum": [
+              "CHANGE_OF_MIND",
+              "DAMAGED",
+              "OTHER"
+            ],
+            "title": "Reason Code",
+            "type": "string"
+          }
+        },
+        "required": [
+          "order_id",
+          "case_type"
+        ],
+        "title": "EligibilityInput",
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "create_case_draft",
+      "description": "创建草稿，必须明确申请；未确认、未提交、未审批。",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "order_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Z0-9-]+$",
+            "title": "Order Id",
+            "type": "string"
+          },
+          "case_type": {
+            "enum": [
+              "RETURN_REFUND",
+              "DAMAGE_REFUND"
+            ],
+            "title": "Case Type",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "evidence_refs": {
+            "items": {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[A-Z0-9-]+$",
+              "type": "string"
+            },
+            "maxItems": 20,
+            "title": "Evidence Refs",
+            "type": "array"
+          }
+        },
+        "required": [
+          "order_id",
+          "case_type",
+          "reason"
+        ],
+        "title": "DraftInput",
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_case",
+      "description": "读取申请的实际状态、版本及金额。",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "case_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Z0-9-]+$",
+            "title": "Case Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "case_id"
+        ],
+        "title": "CaseInput",
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "submit_case",
+      "description": "仅提交已通过独立客户确认接口确认的当前版本申请。",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "case_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Z0-9-]+$",
+            "title": "Case Id",
+            "type": "string"
+          },
+          "expected_version": {
+            "minimum": 1,
+            "title": "Expected Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "case_id",
+          "expected_version"
+        ],
+        "title": "SubmitCaseInput",
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "create_support_ticket",
+      "description": "明确要求转人工时创建物流或售后人工工单。",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "order_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Z0-9-]+$",
+            "title": "Order Id",
+            "type": "string"
+          },
+          "category": {
+            "enum": [
+              "LOGISTICS",
+              "MANUAL_AFTER_SALES"
+            ],
+            "title": "Category",
+            "type": "string"
+          },
+          "summary": {
+            "maxLength": 2000,
+            "minLength": 1,
+            "title": "Summary",
+            "type": "string"
+          }
+        },
+        "required": [
+          "order_id",
+          "category",
+          "summary"
+        ],
+        "title": "TicketInput",
+        "type": "object"
+      }
+    }
+  },
+  {
+    "type": "function",
+    "function": {
+      "name": "get_support_ticket",
+      "description": "读取人工工单的实际状态。",
+      "parameters": {
+        "additionalProperties": false,
+        "properties": {
+          "ticket_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "pattern": "^[A-Z0-9-]+$",
+            "title": "Ticket Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "ticket_id"
+        ],
+        "title": "TicketReadInput",
+        "type": "object"
+      }
+    }
+  }
+]

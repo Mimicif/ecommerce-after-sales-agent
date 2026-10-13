@@ -1,0 +1,174 @@
+{
+  "B0/FORM": {
+    "tasks": 33,
+    "successes": 30,
+    "task_success_rate": 0.9090909090909091,
+    "hard_violations": 0,
+    "fact_correct": 459,
+    "fact_total": 459,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 0.8333333333333334,
+    "p50_ms": 250,
+    "p95_ms": 453,
+    "tokens": {},
+    "estimated_cost_usd_range": null,
+    "failures": [
+      {
+        "case_id": "H09",
+        "repeat_index": 0,
+        "failed_checks": [
+          "eligibility",
+          "citations_include"
+        ],
+        "error_code": null
+      },
+      {
+        "case_id": "H09",
+        "repeat_index": 1,
+        "failed_checks": [
+          "eligibility",
+          "citations_include"
+        ],
+        "error_code": null
+      },
+      {
+        "case_id": "H09",
+        "repeat_index": 2,
+        "failed_checks": [
+          "eligibility",
+          "citations_include"
+        ],
+        "error_code": null
+      }
+    ]
+  },
+  "B1/LIVE": {
+    "tasks": 21,
+    "successes": 18,
+    "task_success_rate": 0.8571428571428571,
+    "hard_violations": 0,
+    "fact_correct": 186,
+    "fact_total": 186,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 1.0,
+    "p50_ms": 5453,
+    "p95_ms": 9281,
+    "tokens": {
+      "total_tokens": 143099,
+      "prompt_tokens": 130989,
+      "completion_tokens": 12110,
+      "prompt_cache_hit_tokens": 108544,
+      "prompt_cache_miss_tokens": 22445
+    },
+    "estimated_cost_usd_range": [
+      0.010958382,
+      0.021916764
+    ],
+    "failures": [
+      {
+        "case_id": "H22",
+        "repeat_index": 0,
+        "failed_checks": [],
+        "error_code": "UNVERIFIED_STATUS_CLAIM"
+      },
+      {
+        "case_id": "H22",
+        "repeat_index": 1,
+        "failed_checks": [],
+        "error_code": "UNVERIFIED_STATUS_CLAIM"
+      },
+      {
+        "case_id": "H22",
+        "repeat_index": 2,
+        "failed_checks": [],
+        "error_code": "UNVERIFIED_STATUS_CLAIM"
+      }
+    ]
+  },
+  "B2/LIVE": {
+    "tasks": 33,
+    "successes": 27,
+    "task_success_rate": 0.8181818181818182,
+    "hard_violations": 0,
+    "fact_correct": 231,
+    "fact_total": 231,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 1.0,
+    "p50_ms": 5875,
+    "p95_ms": 9641,
+    "tokens": {
+      "total_tokens": 291421,
+      "prompt_tokens": 273456,
+      "completion_tokens": 17965,
+      "prompt_cache_hit_tokens": 226688,
+      "prompt_cache_miss_tokens": 46768
+    },
+    "estimated_cost_usd_range": [
+      0.018474264,
+      0.036948528
+    ],
+    "failures": [
+      {
+        "case_id": "H15",
+        "repeat_index": 0,
+        "failed_checks": [
+          "manual_handoff"
+        ],
+        "error_code": "TOOL_CORRECTION_EXHAUSTED"
+      },
+      {
+        "case_id": "H15",
+        "repeat_index": 1,
+        "failed_checks": [
+          "manual_handoff"
+        ],
+        "error_code": "TOOL_CORRECTION_EXHAUSTED"
+      },
+      {
+        "case_id": "H15",
+        "repeat_index": 2,
+        "failed_checks": [
+          "manual_handoff"
+        ],
+        "error_code": "TOOL_CORRECTION_EXHAUSTED"
+      },
+      {
+        "case_id": "H22",
+        "repeat_index": 0,
+        "failed_checks": [],
+        "error_code": "UNVERIFIED_STATUS_CLAIM"
+      },
+      {
+        "case_id": "H22",
+        "repeat_index": 1,
+        "failed_checks": [],
+        "error_code": "UNVERIFIED_STATUS_CLAIM"
+      },
+      {
+        "case_id": "H22",
+        "repeat_index": 2,
+        "failed_checks": [],
+        "error_code": "UNVERIFIED_STATUS_CLAIM"
+      }
+    ]
+  },
+  "SHARED/DETERMINISTIC_API": {
+    "tasks": 13,
+    "successes": 13,
+    "task_success_rate": 1.0,
+    "hard_violations": 0,
+    "fact_correct": 8,
+    "fact_total": 8,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": null,
+    "retrieval_coverage": null,
+    "p50_ms": 265,
+    "p95_ms": 766,
+    "tokens": {},
+    "estimated_cost_usd_range": null,
+    "failures": []
+  }
+}

@@ -1,0 +1,3 @@
+# Preserve exact bytes for frozen evaluation and acceptance SHA256 manifests.
+# Existing files include both LF and CRLF; checkout must not rewrite either.
+* -text

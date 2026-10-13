@@ -1,0 +1,12 @@
+{
+  "checked_at_utc": "2026-10-11T12:52:06.132712+00:00",
+  "result": "PASS",
+  "scope": "Live local HTTP and real PostgreSQL; no LLM",
+  "checks": [
+    "health_database_reachable",
+    "C-A1_order_scope",
+    "C-B1_order_scope",
+    "unauthenticated_request_blocked"
+  ],
+  "api_version": "api-v1-m0"
+}

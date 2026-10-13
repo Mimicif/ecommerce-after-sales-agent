@@ -1,0 +1,50 @@
+{
+  "B2/LIVE": {
+    "tasks": 6,
+    "successes": 3,
+    "task_success_rate": 0.5,
+    "hard_violations": 0,
+    "fact_correct": 44,
+    "fact_total": 44,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 1.0,
+    "p50_ms": 6718,
+    "p95_ms": 7187,
+    "tokens": {
+      "total_tokens": 62835,
+      "prompt_tokens": 58966,
+      "completion_tokens": 3869,
+      "prompt_cache_hit_tokens": 49792,
+      "prompt_cache_miss_tokens": 9174
+    },
+    "model_calls": 18,
+    "tool_calls": 12,
+    "usage_reported_calls": 18,
+    "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+    "estimated_cost_usd_range": [
+      0.0038468760000000004,
+      0.007693752000000001
+    ],
+    "failures": [
+      {
+        "case_id": "H22",
+        "repeat_index": 0,
+        "failed_checks": [],
+        "error_code": "UNVERIFIED_STATUS_CLAIM"
+      },
+      {
+        "case_id": "H22",
+        "repeat_index": 1,
+        "failed_checks": [],
+        "error_code": "UNVERIFIED_STATUS_CLAIM"
+      },
+      {
+        "case_id": "H22",
+        "repeat_index": 2,
+        "failed_checks": [],
+        "error_code": "UNVERIFIED_STATUS_CLAIM"
+      }
+    ]
+  }
+}

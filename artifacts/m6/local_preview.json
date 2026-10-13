@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "delivery_date": "2026-10-13",
+  "checks": [
+    {
+      "url": "http://127.0.0.1:8000/api/v1/health",
+      "http_status": 200
+    },
+    {
+      "url": "http://127.0.0.1:5173/",
+      "http_status": 200
+    }
+  ]
+}

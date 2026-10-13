@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "checked_at": "2026-10-12T08:09:56.275649+00:00",
+  "api_version": "api-v1-m5",
+  "application_version": "0.6.0",
+  "schema_version": "0005_m4",
+  "pytest_passed": 308,
+  "browser_passed": 2,
+  "live_runs": 5,
+  "simulated_refunds": 3,
+  "total_fen": 64700,
+  "development_unchanged": true,
+  "m4_frozen_implementation_unchanged": true,
+  "tool_count": 10,
+  "source_sha256": {
+    "backend/app/workspace.py": "0a0b2f2a094de2a417e0880c2f5f1ca56e57877d8aa6edbbd8fb4126d511f239",
+    "backend/app/main.py": "a7b8d30e0b8e3013cf8083ee1e9d7611c443220179c2c43e6cae62c65a66b493",
+    "backend/app/cli.py": "9496419a6f976df0a2305ce40ebdc702231fbe11b2442ba17eebfcd6e3eb5836",
+    "frontend/src/App.tsx": "45ddadf7f44491c1cb699468cd24e017f991e1469f2bdc1cf8638eae62bd343a",
+    "frontend/src/api.ts": "81b3165d4a626d86030eca0cace84754de9af6df0a92fddc9e7998b8a15353de",
+    "frontend/src/styles.css": "8cce113726ecf2733f2c27a7849ba65170eb0924bcecb4e0dfd1cac8fe3f4c5e",
+    "frontend/package-lock.json": "5787232e4a9bb7d2d59e1deead96d1d7bb8be1c6e77e5da11c56c701e47f3ac2"
+  }
+}

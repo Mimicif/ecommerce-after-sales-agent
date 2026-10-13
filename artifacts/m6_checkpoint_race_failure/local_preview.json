@@ -1,0 +1,21 @@
+{
+  "api": {
+    "url": "http://127.0.0.1:8000/api/v1/health",
+    "http_status": 200,
+    "health": {
+      "ok": true,
+      "code": "OK",
+      "data": {
+        "status": "healthy",
+        "database": "reachable",
+        "simulated": true
+      },
+      "trace_id": "9eaca5626b80466b925eb98d9d42c829"
+    }
+  },
+  "frontend": {
+    "url": "http://127.0.0.1:5173/",
+    "http_status": 200
+  },
+  "status": "PASS"
+}

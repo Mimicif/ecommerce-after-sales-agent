@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "real_postgresql": true,
+  "live_model": true,
+  "runs": 7,
+  "live_runs": 5,
+  "refunds": 3,
+  "provider_operations": 3,
+  "total_fen": 64700,
+  "schema_isolated": true,
+  "development_unchanged": true
+}

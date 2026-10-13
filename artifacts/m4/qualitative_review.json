@@ -1,0 +1,13 @@
+{
+  "reviewed_by": "assistant_reading_not_human_or_llm_financial_judge",
+  "metric": "Supplemental source-entailment review; does not overwrite frozen deterministic scores",
+  "finding": {
+    "case_id": "N12",
+    "repeat_index": 2,
+    "trace_path": "D:\\电商售后工单处理Agent\\evals\\reports\\holdout_v2_release\\N12_B2_2.json",
+    "answer": "本店现行退货政策（POLICY-B-2026-10-v1）只规定了常规申请3天窗口，以及所有退款均需审核（all_refunds_require_review=true），并未写明“退款成功”是否以仓库收货为前提，也没有相关流程条款，因此这一点无法给出确定结论，不能编造规则。可确认的是：退款需经审核，且需在批准后、收货后、对账成功后才可能到账，当前订单累计退款0元，尚无任何退款完成。如需进一步核实，可转人工，但按您要求本次不建单。",
+    "issue": "Reply acknowledges missing tenant-specific workflow text but then states receipt prerequisite; the cited B-RETURN-01 does not establish that prerequisite. Source validity metric does not check full entailment.",
+    "business_effect": "No case/ticket/refund created; zero hard violations",
+    "disposition": "Known free-text citation support limitation retained; no tuning on frozen v2"
+  }
+}

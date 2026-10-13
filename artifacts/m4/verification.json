@@ -1,0 +1,363 @@
+{
+  "checked_at": "2026-10-12T07:17:10.893055+00:00",
+  "result": "PASS",
+  "gates": {
+    "complete_denominators": true,
+    "zero_hard_violations": true,
+    "shared_domain_api_all_pass": true,
+    "budget_fault_pass": true,
+    "holdout_agent_success_ge_90pct": true,
+    "holdout_fact_accuracy_ge_95pct": true,
+    "holdout_citation_accuracy_ge_95pct": true,
+    "holdout_p95_le_30s": true
+  },
+  "tests": 293,
+  "dev": {
+    "B0/FORM": {
+      "tasks": 51,
+      "successes": 51,
+      "task_success_rate": 1.0,
+      "hard_violations": 0,
+      "fact_correct": 711,
+      "fact_total": 711,
+      "fact_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "retrieval_coverage": 1.0,
+      "p50_ms": 235,
+      "p95_ms": 531,
+      "tokens": {},
+      "model_calls": 0,
+      "tool_calls": 0,
+      "usage_reported_calls": 0,
+      "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+      "estimated_cost_usd_range": null,
+      "failures": []
+    },
+    "B1/LIVE": {
+      "tasks": 21,
+      "successes": 21,
+      "task_success_rate": 1.0,
+      "hard_violations": 0,
+      "fact_correct": 133,
+      "fact_total": 133,
+      "fact_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "retrieval_coverage": 1.0,
+      "p50_ms": 5422,
+      "p95_ms": 7141,
+      "tokens": {
+        "total_tokens": 130463,
+        "prompt_tokens": 121852,
+        "completion_tokens": 8611,
+        "prompt_cache_hit_tokens": 105472,
+        "prompt_cache_miss_tokens": 16380
+      },
+      "model_calls": 43,
+      "tool_calls": 37,
+      "usage_reported_calls": 43,
+      "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+      "estimated_cost_usd_range": [
+        0.007940016,
+        0.015880032
+      ],
+      "failures": []
+    },
+    "B2/LIVE": {
+      "tasks": 51,
+      "successes": 51,
+      "task_success_rate": 1.0,
+      "hard_violations": 0,
+      "fact_correct": 337,
+      "fact_total": 337,
+      "fact_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "retrieval_coverage": 1.0,
+      "p50_ms": 5938,
+      "p95_ms": 13688,
+      "tokens": {
+        "total_tokens": 508226,
+        "prompt_tokens": 482185,
+        "completion_tokens": 26041,
+        "prompt_cache_hit_tokens": 413310,
+        "prompt_cache_miss_tokens": 68875
+      },
+      "model_calls": 138,
+      "tool_calls": 140,
+      "usage_reported_calls": 138,
+      "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+      "estimated_cost_usd_range": [
+        0.02719578,
+        0.05439156
+      ],
+      "failures": []
+    },
+    "SHARED/DETERMINISTIC_API": {
+      "tasks": 18,
+      "successes": 18,
+      "task_success_rate": 1.0,
+      "hard_violations": 0,
+      "fact_correct": 12,
+      "fact_total": 12,
+      "fact_accuracy": 1.0,
+      "citation_accuracy": null,
+      "retrieval_coverage": null,
+      "p50_ms": 328,
+      "p95_ms": 844,
+      "tokens": {},
+      "model_calls": 0,
+      "tool_calls": 0,
+      "usage_reported_calls": 0,
+      "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+      "estimated_cost_usd_range": null,
+      "failures": []
+    },
+    "B2/FAULT_CONTRACT": {
+      "tasks": 1,
+      "successes": 1,
+      "task_success_rate": 1.0,
+      "hard_violations": 0,
+      "fact_correct": 0,
+      "fact_total": 0,
+      "fact_accuracy": null,
+      "citation_accuracy": null,
+      "retrieval_coverage": null,
+      "p50_ms": 2359,
+      "p95_ms": 2359,
+      "tokens": {},
+      "model_calls": 8,
+      "tool_calls": 8,
+      "usage_reported_calls": 8,
+      "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+      "estimated_cost_usd_range": null,
+      "failures": []
+    }
+  },
+  "holdout": {
+    "B0/FORM": {
+      "tasks": 36,
+      "successes": 33,
+      "task_success_rate": 0.9166666666666666,
+      "hard_violations": 0,
+      "fact_correct": 468,
+      "fact_total": 468,
+      "fact_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "retrieval_coverage": 0.75,
+      "p50_ms": 250,
+      "p95_ms": 813,
+      "tokens": {},
+      "model_calls": 0,
+      "tool_calls": 0,
+      "usage_reported_calls": 0,
+      "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+      "estimated_cost_usd_range": null,
+      "failures": [
+        {
+          "case_id": "N09",
+          "repeat_index": 0,
+          "failed_checks": [
+            "citations_include"
+          ],
+          "error_code": null
+        },
+        {
+          "case_id": "N09",
+          "repeat_index": 1,
+          "failed_checks": [
+            "citations_include"
+          ],
+          "error_code": null
+        },
+        {
+          "case_id": "N09",
+          "repeat_index": 2,
+          "failed_checks": [
+            "citations_include"
+          ],
+          "error_code": null
+        }
+      ]
+    },
+    "B1/LIVE": {
+      "tasks": 24,
+      "successes": 23,
+      "task_success_rate": 0.9583333333333334,
+      "hard_violations": 0,
+      "fact_correct": 175,
+      "fact_total": 181,
+      "fact_accuracy": 0.9668508287292817,
+      "citation_accuracy": 1.0,
+      "retrieval_coverage": 1.0,
+      "p50_ms": 5953,
+      "p95_ms": 8797,
+      "tokens": {
+        "total_tokens": 165495,
+        "prompt_tokens": 154232,
+        "completion_tokens": 11263,
+        "prompt_cache_hit_tokens": 131968,
+        "prompt_cache_miss_tokens": 22264
+      },
+      "model_calls": 54,
+      "tool_calls": 47,
+      "usage_reported_calls": 54,
+      "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+      "estimated_cost_usd_range": [
+        0.010493304,
+        0.020986608
+      ],
+      "failures": [
+        {
+          "case_id": "N03",
+          "repeat_index": 0,
+          "failed_checks": [],
+          "error_code": "FACT_UNVERIFIED"
+        }
+      ]
+    },
+    "B2/LIVE": {
+      "tasks": 36,
+      "successes": 36,
+      "task_success_rate": 1.0,
+      "hard_violations": 0,
+      "fact_correct": 217,
+      "fact_total": 223,
+      "fact_accuracy": 0.9730941704035875,
+      "citation_accuracy": 1.0,
+      "retrieval_coverage": 1.0,
+      "p50_ms": 5781,
+      "p95_ms": 9203,
+      "tokens": {
+        "total_tokens": 298079,
+        "prompt_tokens": 281598,
+        "completion_tokens": 16481,
+        "prompt_cache_hit_tokens": 239488,
+        "prompt_cache_miss_tokens": 42110
+      },
+      "model_calls": 81,
+      "tool_calls": 87,
+      "usage_reported_calls": 81,
+      "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+      "estimated_cost_usd_range": [
+        0.016923564,
+        0.033847128
+      ],
+      "failures": []
+    },
+    "SHARED/DETERMINISTIC_API": {
+      "tasks": 12,
+      "successes": 12,
+      "task_success_rate": 1.0,
+      "hard_violations": 0,
+      "fact_correct": 8,
+      "fact_total": 8,
+      "fact_accuracy": 1.0,
+      "citation_accuracy": null,
+      "retrieval_coverage": null,
+      "p50_ms": 156,
+      "p95_ms": 546,
+      "tokens": {},
+      "model_calls": 0,
+      "tool_calls": 0,
+      "usage_reported_calls": 0,
+      "cost_scope": "Recorded usage only; requests failing before usage persistence may still be billed",
+      "estimated_cost_usd_range": null,
+      "failures": []
+    }
+  },
+  "qualitative_review": {
+    "reviewed_by": "assistant_reading_not_human_or_llm_financial_judge",
+    "metric": "Supplemental source-entailment review; does not overwrite frozen deterministic scores",
+    "finding": {
+      "case_id": "N12",
+      "repeat_index": 2,
+      "trace_path": "D:\\电商售后工单处理Agent\\evals\\reports\\holdout_v2_release\\N12_B2_2.json",
+      "answer": "本店现行退货政策（POLICY-B-2026-10-v1）只规定了常规申请3天窗口，以及所有退款均需审核（all_refunds_require_review=true），并未写明“退款成功”是否以仓库收货为前提，也没有相关流程条款，因此这一点无法给出确定结论，不能编造规则。可确认的是：退款需经审核，且需在批准后、收货后、对账成功后才可能到账，当前订单累计退款0元，尚无任何退款完成。如需进一步核实，可转人工，但按您要求本次不建单。",
+      "issue": "Reply acknowledges missing tenant-specific workflow text but then states receipt prerequisite; the cited B-RETURN-01 does not establish that prerequisite. Source validity metric does not check full entailment.",
+      "business_effect": "No case/ticket/refund created; zero hard violations",
+      "disposition": "Known free-text citation support limitation retained; no tuning on frozen v2"
+    }
+  },
+  "task_success_95pct_wilson_descriptive": {
+    "dev": {
+      "B0/FORM": [
+        0.9299533801014687,
+        1
+      ],
+      "B1/LIVE": [
+        0.8453609810751531,
+        1
+      ],
+      "B2/LIVE": [
+        0.9299533801014687,
+        1
+      ],
+      "SHARED/DETERMINISTIC_API": [
+        0.8241207763533425,
+        1
+      ],
+      "B2/FAULT_CONTRACT": [
+        0.20654931437723745,
+        1
+      ]
+    },
+    "holdout": {
+      "B0/FORM": [
+        0.7817330875072737,
+        0.9712513886640066
+      ],
+      "B1/LIVE": [
+        0.7975819352134406,
+        0.9926065438344942
+      ],
+      "B2/LIVE": [
+        0.9035813714055363,
+        1
+      ],
+      "SHARED/DETERMINISTIC_API": [
+        0.7575059933447592,
+        1
+      ]
+    },
+    "interpretation": "Repeated small scenarios are correlated; not production reliability"
+  },
+  "development_database": {
+    "refund_count": 2,
+    "refund_total_fen": 23800,
+    "cases": [
+      {
+        "id": "CASE-D5DCDEE51C0E4D99BBAA8F760AA0A846",
+        "order_id": "O-A101",
+        "status": "REFUNDED"
+      },
+      {
+        "id": "CASE-C327FC0437644CACB184ACEA8DE28B5F",
+        "order_id": "O-A103",
+        "status": "REFUNDED"
+      },
+      {
+        "id": "CASE-1BB7B22B0C5A49D68BA8E1B72E985971",
+        "order_id": "O-B101",
+        "status": "CANCELLED"
+      },
+      {
+        "id": "CASE-3149D549A90D4FE5AD365D3D29A2BDB7",
+        "order_id": "O-A102",
+        "status": "PENDING_REVIEW"
+      },
+      {
+        "id": "CASE-E971E425C63743638995C735B62A5230",
+        "order_id": "O-A108",
+        "status": "PENDING_REVIEW"
+      }
+    ],
+    "indexed_chunks": 8
+  },
+  "limitations": [
+    "Simulated data/payment; local dev auth",
+    "Structured assertion metric plus bounded text checks",
+    "ASGI evaluation; separate real HTTP smoke",
+    "Model alias can change",
+    "First holdout-v1 failed and became exposed regression",
+    "New holdout-v2 not used for tuning"
+  ]
+}

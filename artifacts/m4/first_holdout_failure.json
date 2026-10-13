@@ -1,0 +1,207 @@
+{
+  "result": "GATES_NOT_MET",
+  "source_report": "evals/reports/holdout_release",
+  "original_manifest": {
+    "eval_version": "eval-v2-m4",
+    "dataset_sha256": "51cf380f4adb298a28280be08315d570d6fcfccf7b43bfae90be2b8bed8d4e66",
+    "dataset": "holdout",
+    "git_commit": null,
+    "git_state": "unborn/uncommitted",
+    "fixture_version": "fixtures-v1",
+    "policy_schema_version": "policy-schema-v1",
+    "prompt_version": "prompt-v4-m4",
+    "tool_schema_version": "tools-v2-m4",
+    "retrieval_version": "keyword_v1",
+    "schema_version": "0005_m4",
+    "prompt_sha256": "f39c4dc8f6800cf14cba88061ba2af9db0b1be3dd92aae7eb9e8534762f3aa12",
+    "request_contract_sha256": "1d8b1cd1c8842df22c8267f548199f8cb90291acdf28a1cbf86e69478ec7ba8b",
+    "fixtures_sha256": "c29b667f6eb078694708460b13f2399bff58fead4cd650a94710a7679efa9e96",
+    "seed": null,
+    "repeats": 3,
+    "transport": "ASGI TestClient + real PostgreSQL + live external model",
+    "model_official_version": "DeepSeek-V4.1-Flash",
+    "model_alias_immutable": false,
+    "price_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+    "price_verified_date": "2026-10-12",
+    "fact_metric_scope": "Structured final assertions grounded in successful tools; bounded free-text checks; no exhaustive semantic judging",
+    "latency_scope": "Active task time across turns; excludes schema setup and human waiting; includes tools, model and confirmation card",
+    "tuning_exposure": "dev36 only; holdout authored but not used as prompt examples",
+    "selection": "all"
+  },
+  "original_summary": {
+    "B0/FORM": {
+      "tasks": 33,
+      "successes": 30,
+      "task_success_rate": 0.9090909090909091,
+      "hard_violations": 0,
+      "fact_correct": 459,
+      "fact_total": 459,
+      "fact_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "retrieval_coverage": 0.8333333333333334,
+      "p50_ms": 250,
+      "p95_ms": 453,
+      "tokens": {},
+      "estimated_cost_usd_range": null,
+      "failures": [
+        {
+          "case_id": "H09",
+          "repeat_index": 0,
+          "failed_checks": [
+            "eligibility",
+            "citations_include"
+          ],
+          "error_code": null
+        },
+        {
+          "case_id": "H09",
+          "repeat_index": 1,
+          "failed_checks": [
+            "eligibility",
+            "citations_include"
+          ],
+          "error_code": null
+        },
+        {
+          "case_id": "H09",
+          "repeat_index": 2,
+          "failed_checks": [
+            "eligibility",
+            "citations_include"
+          ],
+          "error_code": null
+        }
+      ]
+    },
+    "B1/LIVE": {
+      "tasks": 21,
+      "successes": 18,
+      "task_success_rate": 0.8571428571428571,
+      "hard_violations": 0,
+      "fact_correct": 186,
+      "fact_total": 186,
+      "fact_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "retrieval_coverage": 1.0,
+      "p50_ms": 5453,
+      "p95_ms": 9281,
+      "tokens": {
+        "total_tokens": 143099,
+        "prompt_tokens": 130989,
+        "completion_tokens": 12110,
+        "prompt_cache_hit_tokens": 108544,
+        "prompt_cache_miss_tokens": 22445
+      },
+      "estimated_cost_usd_range": [
+        0.010958382,
+        0.021916764
+      ],
+      "failures": [
+        {
+          "case_id": "H22",
+          "repeat_index": 0,
+          "failed_checks": [],
+          "error_code": "UNVERIFIED_STATUS_CLAIM"
+        },
+        {
+          "case_id": "H22",
+          "repeat_index": 1,
+          "failed_checks": [],
+          "error_code": "UNVERIFIED_STATUS_CLAIM"
+        },
+        {
+          "case_id": "H22",
+          "repeat_index": 2,
+          "failed_checks": [],
+          "error_code": "UNVERIFIED_STATUS_CLAIM"
+        }
+      ]
+    },
+    "B2/LIVE": {
+      "tasks": 33,
+      "successes": 27,
+      "task_success_rate": 0.8181818181818182,
+      "hard_violations": 0,
+      "fact_correct": 231,
+      "fact_total": 231,
+      "fact_accuracy": 1.0,
+      "citation_accuracy": 1.0,
+      "retrieval_coverage": 1.0,
+      "p50_ms": 5875,
+      "p95_ms": 9641,
+      "tokens": {
+        "total_tokens": 291421,
+        "prompt_tokens": 273456,
+        "completion_tokens": 17965,
+        "prompt_cache_hit_tokens": 226688,
+        "prompt_cache_miss_tokens": 46768
+      },
+      "estimated_cost_usd_range": [
+        0.018474264,
+        0.036948528
+      ],
+      "failures": [
+        {
+          "case_id": "H15",
+          "repeat_index": 0,
+          "failed_checks": [
+            "manual_handoff"
+          ],
+          "error_code": "TOOL_CORRECTION_EXHAUSTED"
+        },
+        {
+          "case_id": "H15",
+          "repeat_index": 1,
+          "failed_checks": [
+            "manual_handoff"
+          ],
+          "error_code": "TOOL_CORRECTION_EXHAUSTED"
+        },
+        {
+          "case_id": "H15",
+          "repeat_index": 2,
+          "failed_checks": [
+            "manual_handoff"
+          ],
+          "error_code": "TOOL_CORRECTION_EXHAUSTED"
+        },
+        {
+          "case_id": "H22",
+          "repeat_index": 0,
+          "failed_checks": [],
+          "error_code": "UNVERIFIED_STATUS_CLAIM"
+        },
+        {
+          "case_id": "H22",
+          "repeat_index": 1,
+          "failed_checks": [],
+          "error_code": "UNVERIFIED_STATUS_CLAIM"
+        },
+        {
+          "case_id": "H22",
+          "repeat_index": 2,
+          "failed_checks": [],
+          "error_code": "UNVERIFIED_STATUS_CLAIM"
+        }
+      ]
+    },
+    "SHARED/DETERMINISTIC_API": {
+      "tasks": 13,
+      "successes": 13,
+      "task_success_rate": 1.0,
+      "hard_violations": 0,
+      "fact_correct": 8,
+      "fact_total": 8,
+      "fact_accuracy": 1.0,
+      "citation_accuracy": null,
+      "retrieval_coverage": null,
+      "p50_ms": 265,
+      "p95_ms": 766,
+      "tokens": {},
+      "estimated_cost_usd_range": null,
+      "failures": []
+    }
+  },
+  "failed_gate": "B2 task success 27/33 = 0.8181818 < 0.90",
+  "subsequent_use": "Exposed regression only after human requested repairs and new independent samples"
+}

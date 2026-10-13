@@ -1,0 +1,103 @@
+{
+  "policy_schema_version": "policy-schema-v1",
+  "simulated": true,
+  "policies": [
+    {
+      "id": "POLICY-A-2026-10-v1",
+      "tenant_id": "TENANT-A",
+      "status": "PUBLISHED",
+      "effective_from": "2026-10-01T00:00:00+08:00",
+      "effective_to": "2026-11-01T00:00:00+08:00",
+      "rules": {
+        "standard_return_window_seconds": 604800,
+        "window_end_inclusive": true,
+        "eligible_order_status": [
+          "DELIVERED"
+        ],
+        "automatic_standard_categories": [
+          "STANDARD"
+        ],
+        "excluded_categories_require_manual": [
+          "CUSTOM",
+          "PERISHABLE"
+        ],
+        "logistics_inactivity_seconds": 172800,
+        "logistics_threshold_comparator": ">",
+        "all_refunds_require_review": true,
+        "customer_confirmation_ttl_seconds": 900,
+        "standard_returns_require_warehouse_receipt": true,
+        "damaged_items_require_description_and_evidence": true,
+        "damage_decision_requires_manual_review": true,
+        "refund_mode": "FULL_REMAINING_SINGLE_ITEM",
+        "partial_refund_history_requires_manual": true
+      },
+      "clauses": [
+        {
+          "chunk_id": "A-RETURN-01",
+          "intent": "RETURN_REFUND",
+          "text": "模拟商家A：标准商品在签收后不超过7×24小时可提交常规退货申请，恰好7天包含在窗口内。资格通过不代表批准退款。"
+        },
+        {
+          "chunk_id": "A-RETURN-02",
+          "intent": "RETURN_REFUND",
+          "text": "模拟定制和易腐商品不自动判断常规退货资格，应转人工。既往部分退款订单不由首版自动新增退款。"
+        },
+        {
+          "chunk_id": "A-DAMAGE-01",
+          "intent": "DAMAGE_REFUND",
+          "text": "损坏诉求需补充描述与证据引用，交由人工判断。常规7天窗口之外的损坏争议仍可转人工，不能直接套用常规退货拒绝。"
+        },
+        {
+          "chunk_id": "A-LOGISTICS-01",
+          "intent": "LOGISTICS",
+          "text": "运输中订单最近轨迹超过48小时未更新可标记可能异常并创建物流工单。没有轨迹或查询失败不代表已丢件。"
+        },
+        {
+          "chunk_id": "A-CONFIRM-01",
+          "intent": "ALL",
+          "text": "客户确认绑定订单、类型、金额与政策版本，有效期15分钟。客户确认后可提交审核，全部退款仍需人工批准。"
+        },
+        {
+          "chunk_id": "A-REFUND-01",
+          "intent": "ALL",
+          "text": "常规退货批准后等待仓库确认收货；损坏退款无需退回必须有审核员明确决定。只有模拟支付对账成功才报告模拟退款成功。"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-A-2026-09-v1",
+      "tenant_id": "TENANT-A",
+      "status": "PUBLISHED",
+      "effective_from": "2026-09-01T00:00:00+08:00",
+      "effective_to": "2026-10-01T00:00:00+08:00",
+      "rules": {
+        "standard_return_window_seconds": 259200
+      },
+      "clauses": [
+        {
+          "chunk_id": "A-OLD-01",
+          "intent": "RETURN_REFUND",
+          "text": "过期模拟政策：常规退货3天窗口，仅用于验证旧版本不可召回。"
+        }
+      ]
+    },
+    {
+      "id": "POLICY-B-2026-10-v1",
+      "tenant_id": "TENANT-B",
+      "status": "PUBLISHED",
+      "effective_from": "2026-10-01T00:00:00+08:00",
+      "effective_to": "2026-11-01T00:00:00+08:00",
+      "rules": {
+        "standard_return_window_seconds": 259200,
+        "all_refunds_require_review": true
+      },
+      "clauses": [
+        {
+          "chunk_id": "B-RETURN-01",
+          "intent": "RETURN_REFUND",
+          "text": "隔离测试商家B：常规申请3天窗口。该条款不适用于商家A，也不能向A的用户泄露。"
+        }
+      ]
+    }
+  ]
+}

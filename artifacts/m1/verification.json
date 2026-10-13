@@ -1,0 +1,48 @@
+{
+  "verified_at_utc": "2026-10-12T02:34:36.998200+00:00",
+  "milestone": "M1",
+  "result": "PASS",
+  "scope": "Deterministic domain, schema, real PostgreSQL integration and live local HTTP; no LLM",
+  "pytest": {
+    "tests": 109,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 50.593,
+    "by_file": {
+      "backend.tests.test_m0": 21,
+      "backend.tests.test_m1": 63,
+      "backend.tests.test_m1_domain": 25
+    }
+  },
+  "m1_http_smoke": "PASS",
+  "m0_http_regression": "PASS",
+  "migration_check": "No new upgrade operations detected",
+  "packages": {
+    "fastapi": "0.143.0",
+    "sqlalchemy": "2.0.54",
+    "alembic": "1.20.0",
+    "psycopg": "3.3.6",
+    "pydantic": "2.14.0",
+    "pytest": "9.1.1"
+  },
+  "versions": {
+    "api": "api-v1-m1",
+    "tools": "tools-v1-m1",
+    "domain": "domain-v1-m1",
+    "schema": "0002_m1",
+    "fixtures": "fixtures-v1",
+    "policy_schema": "policy-schema-v1",
+    "prompt": null,
+    "model": null,
+    "live_agent_eval": "not_run"
+  },
+  "warnings": [
+    "Existing Starlette/httpx TestClient deprecation"
+  ],
+  "limitations": [
+    "Read-only precheck; active case guard and evidence validation await M2",
+    "Metadata-only policy filtering; keyword relevance and RAG evaluation await M4",
+    "No LLM calls or business write endpoints"
+  ]
+}

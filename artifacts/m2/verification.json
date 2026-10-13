@@ -1,0 +1,82 @@
+{
+  "checked_at_utc": "2026-10-12T03:07:59.281967+00:00",
+  "result": "PASS",
+  "versions": {
+    "app": "0.3.0",
+    "api": "api-v1-m2",
+    "schema": "0003_m2",
+    "domain": "domain-v1-m2",
+    "tools": "tools-v1-m1",
+    "fixtures": "fixtures-v1",
+    "policy_schema": "policy-schema-v1"
+  },
+  "tests": {
+    "passed": 206,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "duration_seconds": 205.237,
+    "by_file": {
+      "backend.tests.test_m0": 21,
+      "backend.tests.test_m1": 63,
+      "backend.tests.test_m1_domain": 25,
+      "backend.tests.test_m2": 97
+    }
+  },
+  "postgresql": "18.6",
+  "python": "3.12.7",
+  "packages": {
+    "fastapi": "0.143.0",
+    "sqlalchemy": "2.0.54",
+    "alembic": "1.20.0",
+    "psycopg": "3.3.6",
+    "pydantic": "2.14.0",
+    "pytest": "9.1.1",
+    "httpx": "0.28.1",
+    "starlette": "1.7.0",
+    "ruff": "0.17.0"
+  },
+  "http": "PASS: initial timeout injection, repeat without duplicate payment, M0/M1 regressions",
+  "schema_check": "PASS: Alembic no new upgrade operations",
+  "seed_repeat": "already_imported; preserved existing cases and successful refunds",
+  "contracts": "PASS: actual OpenAPI and read tools match exported schemas",
+  "bookkeeping": {
+    "demo_flows": [
+      {
+        "case_id": "CASE-D5DCDEE51C0E4D99BBAA8F760AA0A846",
+        "order_id": "O-A101",
+        "case_type": "RETURN_REFUND",
+        "amount_fen": 14900,
+        "final_status": "REFUNDED",
+        "successful_ledger_count": 1,
+        "order_version": 2,
+        "provider_operation_id": "SIM-PAY-E7769F63403E4986BB91036D1A50A7AE"
+      },
+      {
+        "case_id": "CASE-C327FC0437644CACB184ACEA8DE28B5F",
+        "order_id": "O-A103",
+        "case_type": "DAMAGE_REFUND",
+        "amount_fen": 8900,
+        "final_status": "REFUNDED",
+        "successful_ledger_count": 1,
+        "order_version": 2,
+        "provider_operation_id": "SIM-PAY-FCF7BA48C882431C847C6CD4DEB0D7FA"
+      }
+    ],
+    "successful_refund_total_fen": 23800
+  },
+  "source_sha256": {
+    "uv.lock": "424d17ad950c715568e5297f17f91d414f369afe6c60d88f4e17880ad05d411e",
+    "data/fixtures.json": "c29b667f6eb078694708460b13f2399bff58fead4cd650a94710a7679efa9e96",
+    "data/policy.json": "1ca36e4ced3d4e46947cbfa508a7d9dd73756f284310e0b49413e16e57f9bf45",
+    "evals/scenarios.jsonl": "ef576dd67d8971ccc30ec670a1fdc1f51bb6be59a9b59b3f40fa1685b29c811d"
+  },
+  "limitations": [
+    "Local simulated provider persists results in separate PostgreSQL transactions; no real payment",
+    "No model or live Agent evaluations; M3-M6 remain",
+    "Read tools only; write-tool orchestration starts M3",
+    "Existing Starlette/httpx TestClient deprecation warning",
+    "Fixture clock is frozen DEV demo time; leases/session use real UTC",
+    "Tickets support creation/read OPEN state; post-submission cancellation requires manual handling"
+  ]
+}

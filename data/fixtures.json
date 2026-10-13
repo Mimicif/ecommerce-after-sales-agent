@@ -1,0 +1,260 @@
+{
+  "fixture_version": "fixtures-v1",
+  "simulated": true,
+  "clock": "2026-10-11T10:00:00+08:00",
+  "currency": "CNY",
+  "amount_unit": "fen",
+  "tenants": [
+    {
+      "id": "TENANT-A",
+      "name": "演示商家A"
+    },
+    {
+      "id": "TENANT-B",
+      "name": "隔离测试商家B"
+    }
+  ],
+  "users": [
+    {
+      "id": "C-A1",
+      "tenant_id": "TENANT-A",
+      "roles": [
+        "customer"
+      ],
+      "customer_id": "C-A1"
+    },
+    {
+      "id": "C-A2",
+      "tenant_id": "TENANT-A",
+      "roles": [
+        "customer"
+      ],
+      "customer_id": "C-A2"
+    },
+    {
+      "id": "C-B1",
+      "tenant_id": "TENANT-B",
+      "roles": [
+        "customer"
+      ],
+      "customer_id": "C-B1"
+    },
+    {
+      "id": "E-A1",
+      "tenant_id": "TENANT-A",
+      "roles": [
+        "support"
+      ]
+    },
+    {
+      "id": "E-A2",
+      "tenant_id": "TENANT-A",
+      "roles": [
+        "reviewer"
+      ]
+    },
+    {
+      "id": "E-A3",
+      "tenant_id": "TENANT-A",
+      "roles": [
+        "warehouse"
+      ]
+    },
+    {
+      "id": "E-A4",
+      "tenant_id": "TENANT-A",
+      "roles": [
+        "support",
+        "reviewer"
+      ]
+    },
+    {
+      "id": "E-B2",
+      "tenant_id": "TENANT-B",
+      "roles": [
+        "reviewer"
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "id": "O-A101",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A1",
+      "product_category": "STANDARD",
+      "status": "DELIVERED",
+      "paid_amount_fen": 14900,
+      "refunded_amount_fen": 0,
+      "delivered_at": "2026-10-09T10:00:00+08:00",
+      "version": 1
+    },
+    {
+      "id": "O-A102",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A1",
+      "product_category": "STANDARD",
+      "status": "DELIVERED",
+      "paid_amount_fen": 39900,
+      "refunded_amount_fen": 0,
+      "delivered_at": "2026-10-10T10:00:00+08:00",
+      "version": 1
+    },
+    {
+      "id": "O-A103",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A1",
+      "product_category": "STANDARD",
+      "status": "DELIVERED",
+      "paid_amount_fen": 8900,
+      "refunded_amount_fen": 0,
+      "delivered_at": "2026-10-01T10:00:00+08:00",
+      "version": 1
+    },
+    {
+      "id": "O-A104",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A1",
+      "product_category": "STANDARD",
+      "status": "IN_TRANSIT",
+      "paid_amount_fen": 9900,
+      "refunded_amount_fen": 0,
+      "delivered_at": null,
+      "version": 1
+    },
+    {
+      "id": "O-A105",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A1",
+      "product_category": "STANDARD",
+      "status": "IN_TRANSIT",
+      "paid_amount_fen": 12900,
+      "refunded_amount_fen": 0,
+      "delivered_at": null,
+      "version": 1
+    },
+    {
+      "id": "O-A106",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A1",
+      "product_category": "CUSTOM",
+      "status": "DELIVERED",
+      "paid_amount_fen": 29900,
+      "refunded_amount_fen": 0,
+      "delivered_at": "2026-10-10T10:00:00+08:00",
+      "version": 1
+    },
+    {
+      "id": "O-A107",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A1",
+      "product_category": "STANDARD",
+      "status": "DELIVERED",
+      "paid_amount_fen": 19900,
+      "refunded_amount_fen": 19900,
+      "delivered_at": "2026-10-09T10:00:00+08:00",
+      "version": 1
+    },
+    {
+      "id": "O-A108",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A2",
+      "product_category": "STANDARD",
+      "status": "DELIVERED",
+      "paid_amount_fen": 9900,
+      "refunded_amount_fen": 0,
+      "delivered_at": "2026-10-09T10:00:00+08:00",
+      "version": 1
+    },
+    {
+      "id": "O-A109",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A1",
+      "product_category": "STANDARD",
+      "status": "DELIVERED",
+      "paid_amount_fen": 10900,
+      "refunded_amount_fen": 0,
+      "delivered_at": null,
+      "version": 1
+    },
+    {
+      "id": "O-A110",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A1",
+      "product_category": "STANDARD",
+      "status": "DELIVERED",
+      "paid_amount_fen": 0,
+      "refunded_amount_fen": 0,
+      "delivered_at": "2026-10-10T10:00:00+08:00",
+      "version": 1
+    },
+    {
+      "id": "O-A111",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A1",
+      "product_category": "STANDARD",
+      "status": "DELIVERED",
+      "paid_amount_fen": 11900,
+      "refunded_amount_fen": 0,
+      "delivered_at": "2026-10-12T10:00:00+08:00",
+      "version": 1
+    },
+    {
+      "id": "O-A112",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A1",
+      "product_category": "STANDARD",
+      "status": "DELIVERED",
+      "paid_amount_fen": 20000,
+      "refunded_amount_fen": 5000,
+      "delivered_at": "2026-10-10T10:00:00+08:00",
+      "version": 1
+    },
+    {
+      "id": "O-A113",
+      "tenant_id": "TENANT-A",
+      "customer_id": "C-A1",
+      "product_category": "STANDARD",
+      "status": "IN_TRANSIT",
+      "paid_amount_fen": 15900,
+      "refunded_amount_fen": 0,
+      "delivered_at": null,
+      "version": 1
+    },
+    {
+      "id": "O-B101",
+      "tenant_id": "TENANT-B",
+      "customer_id": "C-B1",
+      "product_category": "STANDARD",
+      "status": "DELIVERED",
+      "paid_amount_fen": 69900,
+      "refunded_amount_fen": 0,
+      "delivered_at": "2026-10-10T10:00:00+08:00",
+      "version": 1
+    }
+  ],
+  "logistics_events": [
+    {
+      "id": "L-A104-1",
+      "order_id": "O-A104",
+      "occurred_at": "2026-10-08T09:00:00+08:00",
+      "status": "IN_TRANSIT",
+      "description": "模拟转运中心等待发运"
+    },
+    {
+      "id": "L-A105-1",
+      "order_id": "O-A105",
+      "occurred_at": "2026-10-10T12:00:00+08:00",
+      "status": "IN_TRANSIT",
+      "description": "模拟包裹运输中"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EVIDENCE-A1",
+      "tenant_id": "TENANT-A",
+      "owner_id": "C-A1",
+      "kind": "SIMULATED_IMAGE_REFERENCE",
+      "description": "演示商品外壳破损，不是真实图片，不能作为自动鉴定结论"
+    }
+  ]
+}

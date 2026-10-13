@@ -1,0 +1,178 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "D:\\电商售后工单处理Agent\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "D:\\电商售后工单处理Agent\\frontend\\playwright.config.ts",
+    "rootDir": "D:/电商售后工单处理Agent/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/电商售后工单处理Agent/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/电商售后工单处理Agent/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\电商售后工单处理Agent\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "D:\\电商售后工单处理Agent\\frontend\\e2e",
+        "snapshotDir": "D:\\电商售后工单处理Agent\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5174",
+          "channel": "msedge",
+          "viewport": {
+            "width": 1366,
+            "height": 900
+          },
+          "headless": true,
+          "trace": "off",
+          "screenshot": "only-on-failure"
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "../artifacts/m5/browser_results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "workflow.spec.ts",
+      "file": "workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "真实模型 / 普通退货、损坏澄清、支付超时恢复与角色隔离",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 241144,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 240000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 240000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "D:\\电商售后工单处理Agent\\frontend\\e2e\\workflow.spec.ts",
+                        "column": 209,
+                        "line": 11
+                      },
+                      "message": "Error: locator.selectOption: Test timeout of 240000ms exceeded.\nCall log:\n\u001b[2m  - waiting for getByLabel('演示身份')\u001b[22m\n\n\n   9 | const cases:Record<string,string>={};\n  10 | const pageErrors:string[]=[];\n> 11 | async function enter(page:Page,user:string){await page.goto('/');if(await page.getByRole('button',{name:'切换身份'}).isVisible())await page.getByRole('button',{name:'切换身份'}).click();await page.getByLabel('演示身份').selectOption(user);await page.getByRole('button',{name:'进入工作台 →'}).click();await expect(page.getByRole('button',{name:'切换身份'})).toBeVisible();}\n     |                                                                                                                                                                                                                 ^\n  12 | async function api(page:Page,path:string){return page.evaluate(async path=>{const session=JSON.parse(sessionStorage.getItem('m5:session')!);const response=await fetch('/api/v1'+path,{headers:{Authorization:`Bearer ${session.access_token}`}});return{status:response.status,data:(await response.json()).data};},path);}\n  13 | async function chat(page:Page){await page.getByRole('button',{name:'＋ 新建咨询会话'}).click();await expect(page.getByRole('heading',{name:'先核对，再行动。'})).toBeVisible();}\n  14 | async function send(page:Page,content:string,order?:string,action='CONSULT'){const count=await page.locator('.message.assistant').count();if(order)await page.getByLabel('会话订单').selectOption(order);await page.getByLabel('本轮操作').selectOption(action);await page.getByLabel('问题或补充说明').fill(content);await page.getByRole('button',{name:'发送 →'}).click();await page.reload();await expect(page.locator('.message.assistant')).toHaveCount(count+1);await expect(page.getByRole('button',{name:'发送 →'})).toBeVisible();}\n    at enter (D:\\电商售后工单处理Agent\\frontend\\e2e\\workflow.spec.ts:11:209)\n    at approve (D:\\电商售后工单处理Agent\\frontend\\e2e\\workflow.spec.ts:17:68)\n    at D:\\电商售后工单处理Agent\\frontend\\e2e\\workflow.spec.ts:28:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T07:50:21.359Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\电商售后工单处理Agent\\frontend\\test-results\\workflow-真实模型-普通退货、损坏澄清、支付超时恢复与角色隔离\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\电商售后工单处理Agent\\frontend\\test-results\\workflow-真实模型-普通退货、损坏澄清、支付超时恢复与角色隔离\\error-context.md"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c601ceb5ecfc8efa4a14-4d8ea65bc921df21f678",
+          "file": "workflow.spec.ts",
+          "line": 21,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T07:50:20.557Z",
+    "duration": 243597.98799999998,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

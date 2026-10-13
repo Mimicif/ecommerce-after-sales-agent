@@ -1,0 +1,50 @@
+{
+  "verified_at_utc": "2026-10-11T12:54:19.007276+00:00",
+  "milestone": "M0",
+  "result": "PASS",
+  "python": "3.12.7",
+  "platform": "Windows",
+  "postgresql": "18.6",
+  "packages": {
+    "fastapi": "0.143.0",
+    "sqlalchemy": "2.0.54",
+    "alembic": "1.20.0",
+    "psycopg": "3.3.6",
+    "pydantic": "2.14.0",
+    "pydantic-settings": "2.15.0",
+    "uvicorn": "0.54.0",
+    "pytest": "9.1.1",
+    "starlette": "1.7.0",
+    "httpx": "0.28.1"
+  },
+  "pytest": {
+    "tests": 21,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 14.25
+  },
+  "http_smoke": "PASS",
+  "migration_check": "No new upgrade operations detected",
+  "reset_and_reimport": "PASS",
+  "concurrent_empty_seed_import": "PASS",
+  "versions": {
+    "api": "api-v1-m0",
+    "schema": "0001_m0",
+    "fixtures": "fixtures-v1",
+    "policy_schema": "policy-schema-v1",
+    "prompt": null,
+    "model": null,
+    "agent_eval": "not_run"
+  },
+  "warnings": [
+    "Starlette TestClient deprecates httpx; current lock validated"
+  ],
+  "limitations": [
+    "M1-M6 not implemented",
+    "Live Agent evaluation not run",
+    "Only local simulated identities"
+  ],
+  "postgresql_binary_source": "https://sbp.enterprisedb.com/getfile.jsp?fileid=1260609",
+  "postgresql_archive_sha256": "E2246BA91D22345BC3D017586C09EDE52D9DF180B1EEB480F050445F1CAD84E2"
+}

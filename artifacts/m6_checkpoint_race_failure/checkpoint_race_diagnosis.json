@@ -1,0 +1,13 @@
+{
+  "status": "CONFIRMED",
+  "scope": "local simulated M6 recording",
+  "run_error_code": "RUN_INTERNAL_ERROR",
+  "exception_type": "IntegrityError",
+  "postgresql_constraint": "graph_writes_run_id_checkpoint_id_fkey",
+  "sqlstate": "23503",
+  "database_log_time": "2026-10-12 17:11:06.918 Asia/Shanghai",
+  "business_effect": "damage draft committed before checkpoint failure",
+  "duplicate_refund_observed": false,
+  "mechanism": "LangGraph schedules checkpoint and pending-write saves on background futures; run-row fencing serializes writes but does not ensure parent checkpoint commits first.",
+  "proposed_fix": "bounded parent-checkpoint wait using short transactions and releasing the run row lock between attempts; retain lease and budget fencing, foreign key and business idempotency."
+}

@@ -1,0 +1,56 @@
+{
+  "B2/LIVE": {
+    "tasks": 8,
+    "successes": 4,
+    "task_success_rate": 0.5,
+    "hard_violations": 0,
+    "fact_correct": 40,
+    "fact_total": 40,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 1.0,
+    "p50_ms": 5531,
+    "p95_ms": 9656,
+    "tokens": {
+      "total_tokens": 82432,
+      "prompt_tokens": 77901,
+      "completion_tokens": 4531,
+      "prompt_cache_hit_tokens": 61568,
+      "prompt_cache_miss_tokens": 16333
+    },
+    "estimated_cost_usd_range": [
+      0.005353254,
+      0.010706508
+    ],
+    "failures": [
+      {
+        "case_id": "S01",
+        "repeat_index": 0,
+        "failed_checks": [],
+        "error_code": "UNVERIFIED_STATUS_CLAIM"
+      },
+      {
+        "case_id": "S07",
+        "repeat_index": 0,
+        "failed_checks": [
+          "citations_include"
+        ],
+        "error_code": "MODEL_RESPONSE_INVALID"
+      },
+      {
+        "case_id": "S12",
+        "repeat_index": 0,
+        "failed_checks": [
+          "mentions_review_rejection"
+        ],
+        "error_code": "UNVERIFIED_STATUS_CLAIM"
+      },
+      {
+        "case_id": "S24",
+        "repeat_index": 0,
+        "failed_checks": [],
+        "error_code": "MODEL_RESPONSE_INVALID"
+      }
+    ]
+  }
+}

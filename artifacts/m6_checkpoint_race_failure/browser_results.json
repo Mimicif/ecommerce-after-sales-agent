@@ -1,0 +1,239 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.EXE",
+      "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\node_modules\\@playwright\\test\\cli.js",
+      "test"
+    ],
+    "configFile": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\playwright.config.ts",
+    "rootDir": "D:/电商售后工单处理Agent/.runtime/m6_workspace_52f8a56100824b93ac73ce41c219f71b/frontend/e2e",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "D:/电商售后工单处理Agent/.runtime/m6_workspace_52f8a56100824b93ac73ce41c219f71b/frontend/test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "",
+        "name": "",
+        "testDir": "D:/电商售后工单处理Agent/.runtime/m6_workspace_52f8a56100824b93ac73ce41c219f71b/frontend/e2e",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 600000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\test-results",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "",
+        "testDir": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\e2e",
+        "snapshotDir": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\e2e",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 600000,
+        "use": {
+          "baseURL": "http://127.0.0.1:5175",
+          "actionTimeout": 15000,
+          "channel": "msedge",
+          "viewport": {
+            "width": 1366,
+            "height": 900
+          },
+          "headless": true,
+          "trace": "off",
+          "screenshot": "only-on-failure",
+          "video": {
+            "mode": "on",
+            "size": {
+              "width": 1366,
+              "height": 900
+            }
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": ""
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\artifacts\\m6/browser_results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "workflow.spec.ts",
+      "file": "workflow.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "真实模型 / 普通退货、损坏澄清、支付超时恢复与角色隔离",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 154764,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.message.assistant')\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  60000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.message.assistant') with timeout 60000ms\u001b[22m\n\u001b[2m  - waiting for locator('.message.assistant')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    119 × locator resolved to 1 element\u001b[22m\n\u001b[2m        - unexpected value \"1\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.message.assistant')\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  60000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.message.assistant') with timeout 60000ms\u001b[22m\n\u001b[2m  - waiting for locator('.message.assistant')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    119 × locator resolved to 1 element\u001b[22m\n\u001b[2m        - unexpected value \"1\"\u001b[22m\n\n    at send (D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\e2e\\workflow.spec.ts:69:52)\n    at D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\e2e\\workflow.spec.ts:188:5",
+                    "location": {
+                      "file": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\e2e\\workflow.spec.ts",
+                      "column": 52,
+                      "line": 69
+                    },
+                    "snippet": "  67 |   expect((await accepted).status()).toBe(202);\n  68 |   await page.reload();\n> 69 |   await expect(page.locator(\".message.assistant\")).toHaveCount(count + 1);\n     |                                                    ^\n  70 |   await expect(page.locator(\".message.assistant\").last()).not.toContainText(\n  71 |     \"服务端事实（上下文，勿仿写为最终输出格式）：\",\n  72 |   );"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\e2e\\workflow.spec.ts",
+                        "column": 52,
+                        "line": 69
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('.message.assistant')\nExpected: \u001b[32m2\u001b[39m\nReceived: \u001b[31m1\u001b[39m\nTimeout:  60000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" locator('.message.assistant') with timeout 60000ms\u001b[22m\n\u001b[2m  - waiting for locator('.message.assistant')\u001b[22m\n\u001b[2m    2 × locator resolved to 0 elements\u001b[22m\n\u001b[2m      - unexpected value \"0\"\u001b[22m\n\u001b[2m    119 × locator resolved to 1 element\u001b[22m\n\u001b[2m        - unexpected value \"1\"\u001b[22m\n\n\n  67 |   expect((await accepted).status()).toBe(202);\n  68 |   await page.reload();\n> 69 |   await expect(page.locator(\".message.assistant\")).toHaveCount(count + 1);\n     |                                                    ^\n  70 |   await expect(page.locator(\".message.assistant\").last()).not.toContainText(\n  71 |     \"服务端事实（上下文，勿仿写为最终输出格式）：\",\n  72 |   );\n    at send (D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\e2e\\workflow.spec.ts:69:52)\n    at D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\e2e\\workflow.spec.ts:188:5"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:09:43.329Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\test-results\\workflow-真实模型-普通退货、损坏澄清、支付超时恢复与角色隔离\\test-failed-1.png"
+                    },
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\test-results\\workflow-真实模型-普通退货、损坏澄清、支付超时恢复与角色隔离\\video.webm"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\test-results\\workflow-真实模型-普通退货、损坏澄清、支付超时恢复与角色隔离\\error-context.md"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\e2e\\workflow.spec.ts",
+                    "column": 52,
+                    "line": 69
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "c601ceb5ecfc8efa4a14-4d8ea65bc921df21f678",
+          "file": "workflow.spec.ts",
+          "line": 145,
+          "column": 1
+        },
+        {
+          "title": "真实后端 / 网络回执丢失、同键恢复、重复话语、停止与安全文本",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 600000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "",
+              "projectName": "",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11248,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:12:20.216Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "video",
+                      "contentType": "video/webm",
+                      "path": "D:\\电商售后工单处理Agent\\.runtime\\m6_workspace_52f8a56100824b93ac73ce41c219f71b\\frontend\\test-results\\workflow-真实后端-网络回执丢失、同键恢复、重复话语、停止与安全文本\\video.webm"
+                    }
+                  ]
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "c601ceb5ecfc8efa4a14-b515fd603c0486ccc4bc",
+          "file": "workflow.spec.ts",
+          "line": 325,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T09:09:42.340Z",
+    "duration": 170436.878,
+    "expected": 1,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

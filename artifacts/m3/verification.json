@@ -1,0 +1,169 @@
+{
+  "result": "PASS",
+  "checked_at": "2026-10-12T03:59:46.926814+00:00",
+  "versions": {
+    "app": "0.4.0",
+    "api": "api-v1-m3",
+    "schema": "0004_m3",
+    "tools": "tools-v1-m3",
+    "prompt": "prompt-v1-m3",
+    "domain": "domain-v1-m2",
+    "fixtures": "fixtures-v1",
+    "policy_schema": "policy-schema-v1"
+  },
+  "offline": {
+    "mode": "FAKE scripted / real PostgreSQL",
+    "passed": 245,
+    "failed": 0,
+    "skipped": 0,
+    "by_file": {
+      "backend.tests.test_m0": 21,
+      "backend.tests.test_m1": 63,
+      "backend.tests.test_m1_domain": 25,
+      "backend.tests.test_m2": 97,
+      "backend.tests.test_m3": 39
+    },
+    "duration_seconds": 258.557
+  },
+  "live": {
+    "provider": "deepseek",
+    "model_id": "deepseek-flash",
+    "official_model_version": "DeepSeek-V4.1-Flash",
+    "checks": {
+      "multiple_orders_clarified": true,
+      "draft_real_confirmation_submit": true,
+      "logistics_ticket": true,
+      "damage_evidence_clarified": true,
+      "tenant_isolation": true,
+      "clean_customer_confirmation_submit": true
+    },
+    "runs": [
+      {
+        "run_id": "RUN-D67FB218AC334AD995EC821179A2F0D5",
+        "status": "WAITING_FOR_USER",
+        "error_code": null,
+        "model_calls": 2,
+        "tool_calls": 1
+      },
+      {
+        "run_id": "RUN-0BF94359DAAE41D38C36E382E98F3C7A",
+        "status": "WAITING_FOR_USER",
+        "error_code": null,
+        "model_calls": 2,
+        "tool_calls": 4
+      },
+      {
+        "run_id": "RUN-4136CB7BA3FA4B4AAB8E0C6ADC3E6391",
+        "status": "FAILED",
+        "error_code": "MODEL_RESPONSE_INVALID",
+        "model_calls": 3,
+        "tool_calls": 2
+      },
+      {
+        "run_id": "RUN-032163D5BFE145BB86748F4D8C537F6A",
+        "status": "COMPLETED",
+        "error_code": null,
+        "model_calls": 2,
+        "tool_calls": 1
+      },
+      {
+        "run_id": "RUN-EDB514DD119249C2AE639B1EF319F0DF",
+        "status": "COMPLETED",
+        "error_code": null,
+        "model_calls": 3,
+        "tool_calls": 4
+      },
+      {
+        "run_id": "RUN-27260B66FE314608AB111F629FD21319",
+        "status": "WAITING_FOR_USER",
+        "error_code": null,
+        "model_calls": 1,
+        "tool_calls": 0
+      },
+      {
+        "run_id": "RUN-5944F7970C604FF7B3CDB29D9478A495",
+        "status": "COMPLETED",
+        "error_code": null,
+        "model_calls": 2,
+        "tool_calls": 3
+      },
+      {
+        "run_id": "RUN-78AE592CA7A643289A47655CED9AFA8C",
+        "status": "WAITING_FOR_USER",
+        "error_code": null,
+        "model_calls": 2,
+        "tool_calls": 4
+      },
+      {
+        "run_id": "RUN-00ED90B4C87143F6A876E126255DEDE7",
+        "status": "COMPLETED",
+        "error_code": null,
+        "model_calls": 3,
+        "tool_calls": 2
+      }
+    ],
+    "usage": {
+      "total_tokens": 59741,
+      "prompt_tokens": 57212,
+      "completion_tokens": 2529,
+      "prompt_cache_hit_tokens": 33280,
+      "prompt_cache_miss_tokens": 23932
+    },
+    "capability_probe_usage": {
+      "prompt_tokens": 1729,
+      "completion_tokens": 48,
+      "total_tokens": 1777,
+      "prompt_cache_hit_tokens": 0,
+      "prompt_cache_miss_tokens": 1729
+    },
+    "probe_source": "Executed adapter probe; tool get_order; console metadata recorded",
+    "estimated_cost_usd_range_including_probe": [
+      0.00549519,
+      0.01099038
+    ],
+    "price_source": "https://api-docs.deepseek.com/quick_start/pricing/",
+    "cost_note": "Official off-peak/peak token estimate; not a billing receipt"
+  },
+  "business": {
+    "agent_submitted_cases": [
+      {
+        "case_id": "CASE-3149D549A90D4FE5AD365D3D29A2BDB7",
+        "order_id": "O-A102",
+        "status": "PENDING_REVIEW",
+        "requested_amount_fen": 39900
+      },
+      {
+        "case_id": "CASE-E971E425C63743638995C735B62A5230",
+        "order_id": "O-A108",
+        "status": "PENDING_REVIEW",
+        "requested_amount_fen": 9900
+      }
+    ],
+    "preserved_m2_refund_total_fen": 23800,
+    "real_payment": false
+  },
+  "packages": {
+    "langgraph": "1.2.14",
+    "langgraph-checkpoint": "4.2.0",
+    "langchain-core": "1.6.9",
+    "httpx": "0.28.1",
+    "fastapi": "0.143.0",
+    "sqlalchemy": "2.0.54",
+    "psycopg": "3.3.6",
+    "pytest": "9.1.1"
+  },
+  "source_sha256": {
+    "uv.lock": "789bb0089ccb24273a3675bc9fd06b0356231b5fb204ee3fa6886cf1498afde0",
+    "backend/app/prompts/system_m3.txt": "e39c61a00c5268535d4c74975c0313142e32936ebdb52a95c0915e6adf6e7f5e",
+    "data/fixtures.json": "c29b667f6eb078694708460b13f2399bff58fead4cd650a94710a7679efa9e96",
+    "data/policy.json": "1ca36e4ced3d4e46947cbfa508a7d9dd73756f284310e0b49413e16e57f9bf45",
+    "evals/scenarios.jsonl": "ef576dd67d8971ccc30ec670a1fdc1f51bb6be59a9b59b3f40fa1685b29c811d"
+  },
+  "limitations": [
+    "M4 full scenario evaluations, Chinese retrieval ranking, M5 UI and M6 pending",
+    "Single root LangGraph namespace, JSON-only checkpoints",
+    "Current backend cards are authoritative; free-text semantics need M4 evaluation",
+    "Local dev sessions and simulated payment only",
+    "A business write can succeed before a final model response fails; read resource truth"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "release": "0.6.0-local-m6",
+  "backend_tests": 311,
+  "checkpoint_version": "checkpoint-v2-m6",
+  "checkpoint_sha256": "77721138d2ec9462579878193a6ca90000b40bef0c21d90df53e65e6b2e1ffe6",
+  "backend_regression": {
+    "exit_code": 0,
+    "seconds": 353.015
+  },
+  "browser_tests": 2,
+  "fresh_physical_database": true,
+  "clean_install": true,
+  "production_preview": true,
+  "development_unchanged": true,
+  "tested_source_files_unchanged": 1124,
+  "runtime_versions": {
+    "python": "Python 3.12.7",
+    "uv": "uv 0.12.0 (b88d7c5c4 2026-07-28 x86_64-pc-windows-msvc)",
+    "node": "v24.14.1",
+    "npm": "11.11.0"
+  },
+  "postgresql": "18.6",
+  "demo": {
+    "duration_seconds": 228.2,
+    "width": 1366,
+    "height": 900,
+    "sha256": "bf711d410cf8a0d6bd8979452ab15980323356e154242e1c0753690f0f54889f",
+    "source_recording": "frontend/test-results/workflow-真实模型-普通退货、损坏澄清、支付超时恢复与角色隔离/video.webm",
+    "inspected_recordings": 2
+  },
+  "historical_evaluations_preserved": true
+}

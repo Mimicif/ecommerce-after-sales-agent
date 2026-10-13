@@ -1,0 +1,1220 @@
+{
+  "case_id": "S07",
+  "title": "物流超48小时建单",
+  "level": "agent",
+  "tags": [
+    "core"
+  ],
+  "baseline": "B2",
+  "timestamp": "2026-10-12T05:02:16.399755+00:00",
+  "score": {
+    "success": true,
+    "checks": {
+      "ticket_category": true,
+      "ticket_count": true,
+      "refund_success_count": true,
+      "citations_include": true
+    },
+    "hard_violations": [],
+    "fact_correct": 12,
+    "fact_total": 12,
+    "citation_correct": 1,
+    "citation_total": 1,
+    "retrieval_required": true,
+    "retrieval_covered": true
+  },
+  "evidence": {
+    "responses": [
+      {
+        "cases": [],
+        "facts": [
+          {
+            "kind": "ORDER",
+            "field": "status",
+            "value": "IN_TRANSIT",
+            "resource_id": "O-A104"
+          },
+          {
+            "kind": "ORDER",
+            "field": "paid_amount_fen",
+            "value": 9900,
+            "resource_id": "O-A104"
+          },
+          {
+            "kind": "ORDER",
+            "field": "refunded_amount_fen",
+            "value": 0,
+            "resource_id": "O-A104"
+          },
+          {
+            "kind": "ORDER",
+            "field": "delivered_at",
+            "value": null,
+            "resource_id": "O-A104"
+          },
+          {
+            "kind": "LOGISTICS",
+            "field": "possible_exception",
+            "value": true,
+            "resource_id": "O-A104"
+          },
+          {
+            "kind": "LOGISTICS",
+            "field": "order_status",
+            "value": "IN_TRANSIT",
+            "resource_id": "O-A104"
+          },
+          {
+            "kind": "LOGISTICS",
+            "field": "last_updated_at",
+            "value": "2026-10-08T01:00:00Z",
+            "resource_id": "O-A104"
+          },
+          {
+            "kind": "LOGISTICS",
+            "field": "evaluated_at",
+            "value": "2026-10-11T02:00:00Z",
+            "resource_id": "O-A104"
+          },
+          {
+            "kind": "POLICY",
+            "field": "logistics_inactivity_seconds",
+            "value": 172800,
+            "resource_id": "POLICY-A-2026-10-v1"
+          },
+          {
+            "kind": "TICKET",
+            "field": "status",
+            "value": "OPEN",
+            "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B"
+          },
+          {
+            "kind": "TICKET",
+            "field": "category",
+            "value": "LOGISTICS",
+            "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B"
+          },
+          {
+            "kind": "TICKET",
+            "field": "order_id",
+            "value": "O-A104",
+            "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B"
+          }
+        ],
+        "answer": "已为订单O-A104创建物流异常人工工单（工单号TICKET-EB2466F610BF473897F2E1AE42FA990B，状态OPEN）。该订单当前状态为运输中，最近轨迹为2026-10-08 09:00（北京时间，转运中心等待发运），评估时间2026-10-11 10:00，系统标记为可能异常（轨迹超过48小时未更新）。需说明：轨迹未更新只是可能异常，不代表已丢件，是否丢件或滞留由人工核查确认。",
+        "tickets": [
+          {
+            "id": "TICKET-EB2466F610BF473897F2E1AE42FA990B",
+            "status": "OPEN",
+            "summary": "客户反馈订单O-A104物流多日未更新，申请核查。订单状态IN_TRANSIT，最近轨迹2026-10-08T01:00:00Z（转运中心等待发运），评估时间2026-10-11T02:00:00Z，系统标记可能异常（LOGISTICS_INACTIVE），需人工核查是否丢件或滞留。",
+            "category": "LOGISTICS",
+            "order_id": "O-A104",
+            "simulated": true
+          }
+        ],
+        "citations": [
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01"
+        ],
+        "simulated": true,
+        "needs_input": false
+      }
+    ],
+    "citations": [
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01"
+    ],
+    "available_citations": [
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+    ],
+    "retrieved": [
+      "A-LOGISTICS-01",
+      "A-CONFIRM-01",
+      "A-REFUND-01"
+    ],
+    "observations": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "paid_amount_fen",
+        "value": 9900
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "refunded_amount_fen",
+        "value": 0
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "delivered_at",
+        "value": null
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "product_category",
+        "value": "STANDARD"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "status",
+        "value": "IN_TRANSIT"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "version",
+        "value": 1
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "possible_exception",
+        "value": true
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "order_status",
+        "value": "IN_TRANSIT"
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "last_updated_at",
+        "value": "2026-10-08T01:00:00Z"
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "standard_return_window_seconds",
+        "value": 604800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "customer_confirmation_ttl_seconds",
+        "value": 900
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "logistics_inactivity_seconds",
+        "value": 172800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "all_refunds_require_review",
+        "value": true
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      },
+      {
+        "kind": "TICKET",
+        "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B",
+        "field": "status",
+        "value": "OPEN"
+      },
+      {
+        "kind": "TICKET",
+        "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B",
+        "field": "category",
+        "value": "LOGISTICS"
+      },
+      {
+        "kind": "TICKET",
+        "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B",
+        "field": "order_id",
+        "value": "O-A104"
+      }
+    ],
+    "claims": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "status",
+        "value": "IN_TRANSIT"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "paid_amount_fen",
+        "value": 9900
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "refunded_amount_fen",
+        "value": 0
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A104",
+        "field": "delivered_at",
+        "value": null
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "possible_exception",
+        "value": true
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "order_status",
+        "value": "IN_TRANSIT"
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "last_updated_at",
+        "value": "2026-10-08T01:00:00Z"
+      },
+      {
+        "kind": "LOGISTICS",
+        "resource_id": "O-A104",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "logistics_inactivity_seconds",
+        "value": 172800
+      },
+      {
+        "kind": "TICKET",
+        "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B",
+        "field": "status",
+        "value": "OPEN"
+      },
+      {
+        "kind": "TICKET",
+        "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B",
+        "field": "category",
+        "value": "LOGISTICS"
+      },
+      {
+        "kind": "TICKET",
+        "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B",
+        "field": "order_id",
+        "value": "O-A104"
+      }
+    ],
+    "business_data": [
+      {
+        "id": "O-A104",
+        "cases": [],
+        "status": "IN_TRANSIT",
+        "version": 1,
+        "delivered_at": null,
+        "paid_amount_fen": 9900,
+        "product_category": "STANDARD",
+        "refunded_amount_fen": 0
+      },
+      {
+        "events": [
+          {
+            "id": "L-A104-1",
+            "status": "IN_TRANSIT",
+            "description": "模拟转运中心等待发运",
+            "occurred_at": "2026-10-08T01:00:00Z"
+          }
+        ],
+        "order_id": "O-A104",
+        "simulated": true,
+        "evaluated_at": "2026-10-11T02:00:00Z",
+        "order_status": "IN_TRANSIT",
+        "reason_codes": [
+          "LOGISTICS_INACTIVE"
+        ],
+        "last_updated_at": "2026-10-08T01:00:00Z",
+        "manual_required": true,
+        "events_truncated": false,
+        "possible_exception": true
+      },
+      {
+        "intent": "LOGISTICS",
+        "clauses": [
+          {
+            "text": "运输中订单最近轨迹超过48小时未更新可标记可能异常并创建物流工单。没有轨迹或查询失败不代表已丢件。",
+            "intent": "LOGISTICS",
+            "chunk_id": "A-LOGISTICS-01",
+            "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01"
+          },
+          {
+            "text": "客户确认绑定订单、类型、金额与政策版本，有效期15分钟。客户确认后可提交审核，全部退款仍需人工批准。",
+            "intent": "ALL",
+            "chunk_id": "A-CONFIRM-01",
+            "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01"
+          },
+          {
+            "text": "常规退货批准后等待仓库确认收货；损坏退款无需退回必须有审核员明确决定。只有模拟支付对账成功才报告模拟退款成功。",
+            "intent": "ALL",
+            "chunk_id": "A-REFUND-01",
+            "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+          }
+        ],
+        "order_id": "O-A104",
+        "simulated": true,
+        "candidates": [
+          {
+            "score": 6.239099,
+            "chunk_id": "A-LOGISTICS-01",
+            "selected": true
+          },
+          {
+            "score": 0.0,
+            "chunk_id": "A-CONFIRM-01",
+            "selected": true
+          },
+          {
+            "score": 0.0,
+            "chunk_id": "A-REFUND-01",
+            "selected": true
+          }
+        ],
+        "effective_to": "2026-10-31T16:00:00Z",
+        "evaluated_at": "2026-10-11T02:00:00Z",
+        "rule_summary": {
+          "all_refunds_require_review": true,
+          "logistics_inactivity_seconds": 172800,
+          "standard_return_window_seconds": 604800,
+          "customer_confirmation_ttl_seconds": 900
+        },
+        "effective_from": "2026-09-30T16:00:00Z",
+        "policy_version": "POLICY-A-2026-10-v1",
+        "retrieval_mode": "keyword_v1"
+      },
+      {
+        "id": "TICKET-EB2466F610BF473897F2E1AE42FA990B",
+        "status": "OPEN",
+        "summary": "客户反馈订单O-A104物流多日未更新，申请核查。订单状态IN_TRANSIT，最近轨迹2026-10-08T01:00:00Z（转运中心等待发运），评估时间2026-10-11T02:00:00Z，系统标记可能异常（LOGISTICS_INACTIVE），需人工核查是否丢件或滞留。",
+        "category": "LOGISTICS",
+        "order_id": "O-A104",
+        "simulated": true
+      }
+    ],
+    "events": [
+      {
+        "run_id": "RUN-7201240689C94B949859EC518968D653",
+        "seq": 1,
+        "kind": "QUEUED",
+        "data": {
+          "action": "CREATE_TICKET"
+        }
+      },
+      {
+        "run_id": "RUN-7201240689C94B949859EC518968D653",
+        "seq": 2,
+        "kind": "RUNNING",
+        "data": {
+          "model": "deepseek-flash",
+          "resumed": false,
+          "provider": "deepseek"
+        }
+      },
+      {
+        "run_id": "RUN-7201240689C94B949859EC518968D653",
+        "seq": 3,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 0,
+          "usage": {
+            "total_tokens": 3068,
+            "prompt_tokens": 2915,
+            "completion_tokens": 153,
+            "prompt_cache_hit_tokens": 2688,
+            "prompt_cache_miss_tokens": 227
+          },
+          "input_ref": {
+            "round": 0,
+            "message_id": "MSG-FB083FF8CF304C9FAA974414A5BE5001"
+          },
+          "latency_ms": 1610,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "0",
+            "run_id": "RUN-7201240689C94B949859EC518968D653"
+          },
+          "tool_names": [
+            "get_order",
+            "get_logistics",
+            "search_policy"
+          ]
+        }
+      },
+      {
+        "run_id": "RUN-7201240689C94B949859EC518968D653",
+        "seq": 4,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "get_order",
+          "step": "0:0",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "id": "O-A104",
+              "cases": [],
+              "status": "IN_TRANSIT",
+              "version": 1,
+              "delivered_at": null,
+              "paid_amount_fen": 9900,
+              "product_category": "STANDARD",
+              "refunded_amount_fen": 0
+            },
+            "trace_id": "RUN-7201240689C94B949859EC518968D653",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "order_id": "O-A104"
+          }
+        }
+      },
+      {
+        "run_id": "RUN-7201240689C94B949859EC518968D653",
+        "seq": 5,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "get_logistics",
+          "step": "0:1",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "events": [
+                {
+                  "id": "L-A104-1",
+                  "status": "IN_TRANSIT",
+                  "description": "模拟转运中心等待发运",
+                  "occurred_at": "2026-10-08T01:00:00Z"
+                }
+              ],
+              "order_id": "O-A104",
+              "simulated": true,
+              "evaluated_at": "2026-10-11T02:00:00Z",
+              "order_status": "IN_TRANSIT",
+              "reason_codes": [
+                "LOGISTICS_INACTIVE"
+              ],
+              "last_updated_at": "2026-10-08T01:00:00Z",
+              "manual_required": true,
+              "events_truncated": false,
+              "possible_exception": true
+            },
+            "trace_id": "RUN-7201240689C94B949859EC518968D653",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "order_id": "O-A104"
+          }
+        }
+      },
+      {
+        "run_id": "RUN-7201240689C94B949859EC518968D653",
+        "seq": 6,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "search_policy",
+          "step": "0:2",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "intent": "LOGISTICS",
+              "clauses": [
+                {
+                  "text": "运输中订单最近轨迹超过48小时未更新可标记可能异常并创建物流工单。没有轨迹或查询失败不代表已丢件。",
+                  "intent": "LOGISTICS",
+                  "chunk_id": "A-LOGISTICS-01",
+                  "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01"
+                },
+                {
+                  "text": "客户确认绑定订单、类型、金额与政策版本，有效期15分钟。客户确认后可提交审核，全部退款仍需人工批准。",
+                  "intent": "ALL",
+                  "chunk_id": "A-CONFIRM-01",
+                  "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01"
+                },
+                {
+                  "text": "常规退货批准后等待仓库确认收货；损坏退款无需退回必须有审核员明确决定。只有模拟支付对账成功才报告模拟退款成功。",
+                  "intent": "ALL",
+                  "chunk_id": "A-REFUND-01",
+                  "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+                }
+              ],
+              "order_id": "O-A104",
+              "simulated": true,
+              "candidates": [
+                {
+                  "score": 6.239099,
+                  "chunk_id": "A-LOGISTICS-01",
+                  "selected": true
+                },
+                {
+                  "score": 0.0,
+                  "chunk_id": "A-CONFIRM-01",
+                  "selected": true
+                },
+                {
+                  "score": 0.0,
+                  "chunk_id": "A-REFUND-01",
+                  "selected": true
+                }
+              ],
+              "effective_to": "2026-10-31T16:00:00Z",
+              "evaluated_at": "2026-10-11T02:00:00Z",
+              "rule_summary": {
+                "all_refunds_require_review": true,
+                "logistics_inactivity_seconds": 172800,
+                "standard_return_window_seconds": 604800,
+                "customer_confirmation_ttl_seconds": 900
+              },
+              "effective_from": "2026-09-30T16:00:00Z",
+              "policy_version": "POLICY-A-2026-10-v1",
+              "retrieval_mode": "keyword_v1"
+            },
+            "trace_id": "RUN-7201240689C94B949859EC518968D653",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "query": "物流轨迹长时间未更新是否异常",
+            "top_k": 3,
+            "intent": "LOGISTICS",
+            "order_id": "O-A104"
+          }
+        }
+      },
+      {
+        "run_id": "RUN-7201240689C94B949859EC518968D653",
+        "seq": 7,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 1,
+          "usage": {
+            "total_tokens": 4141,
+            "prompt_tokens": 3985,
+            "completion_tokens": 156,
+            "prompt_cache_hit_tokens": 2816,
+            "prompt_cache_miss_tokens": 1169
+          },
+          "input_ref": {
+            "round": 1,
+            "message_id": "MSG-FB083FF8CF304C9FAA974414A5BE5001"
+          },
+          "latency_ms": 2015,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "1",
+            "run_id": "RUN-7201240689C94B949859EC518968D653"
+          },
+          "tool_names": [
+            "create_support_ticket"
+          ]
+        }
+      },
+      {
+        "run_id": "RUN-7201240689C94B949859EC518968D653",
+        "seq": 8,
+        "kind": "TOOL_RESULT",
+        "data": {
+          "name": "create_support_ticket",
+          "step": "1:0",
+          "result": {
+            "ok": true,
+            "code": "OK",
+            "data": {
+              "id": "TICKET-EB2466F610BF473897F2E1AE42FA990B",
+              "status": "OPEN",
+              "summary": "客户反馈订单O-A104物流多日未更新，申请核查。订单状态IN_TRANSIT，最近轨迹2026-10-08T01:00:00Z（转运中心等待发运），评估时间2026-10-11T02:00:00Z，系统标记可能异常（LOGISTICS_INACTIVE），需人工核查是否丢件或滞留。",
+              "category": "LOGISTICS",
+              "order_id": "O-A104",
+              "simulated": true
+            },
+            "trace_id": "RUN-7201240689C94B949859EC518968D653",
+            "retryable": false,
+            "tool_version": "tools-v2-m4"
+          },
+          "arguments": {
+            "summary": "客户反馈订单O-A104物流多日未更新，申请核查。订单状态IN_TRANSIT，最近轨迹2026-10-08T01:00:00Z（转运中心等待发运），评估时间2026-10-11T02:00:00Z，系统标记可能异常（LOGISTICS_INACTIVE），需人工核查是否丢件或滞留。",
+            "category": "LOGISTICS",
+            "order_id": "O-A104"
+          }
+        }
+      },
+      {
+        "run_id": "RUN-7201240689C94B949859EC518968D653",
+        "seq": 9,
+        "kind": "MODEL_RESULT",
+        "data": {
+          "model": "deepseek-flash",
+          "round": 2,
+          "usage": {
+            "total_tokens": 4882,
+            "prompt_tokens": 4348,
+            "completion_tokens": 534,
+            "prompt_cache_hit_tokens": 4096,
+            "prompt_cache_miss_tokens": 252
+          },
+          "input_ref": {
+            "round": 2,
+            "message_id": "MSG-FB083FF8CF304C9FAA974414A5BE5001"
+          },
+          "latency_ms": 2953,
+          "output_ref": {
+            "kind": "MODEL",
+            "step": "2",
+            "run_id": "RUN-7201240689C94B949859EC518968D653"
+          },
+          "tool_names": []
+        }
+      },
+      {
+        "run_id": "RUN-7201240689C94B949859EC518968D653",
+        "seq": 10,
+        "kind": "COMPLETED",
+        "data": {
+          "response": {
+            "cases": [],
+            "facts": [
+              {
+                "kind": "ORDER",
+                "field": "status",
+                "value": "IN_TRANSIT",
+                "resource_id": "O-A104"
+              },
+              {
+                "kind": "ORDER",
+                "field": "paid_amount_fen",
+                "value": 9900,
+                "resource_id": "O-A104"
+              },
+              {
+                "kind": "ORDER",
+                "field": "refunded_amount_fen",
+                "value": 0,
+                "resource_id": "O-A104"
+              },
+              {
+                "kind": "ORDER",
+                "field": "delivered_at",
+                "value": null,
+                "resource_id": "O-A104"
+              },
+              {
+                "kind": "LOGISTICS",
+                "field": "possible_exception",
+                "value": true,
+                "resource_id": "O-A104"
+              },
+              {
+                "kind": "LOGISTICS",
+                "field": "order_status",
+                "value": "IN_TRANSIT",
+                "resource_id": "O-A104"
+              },
+              {
+                "kind": "LOGISTICS",
+                "field": "last_updated_at",
+                "value": "2026-10-08T01:00:00Z",
+                "resource_id": "O-A104"
+              },
+              {
+                "kind": "LOGISTICS",
+                "field": "evaluated_at",
+                "value": "2026-10-11T02:00:00Z",
+                "resource_id": "O-A104"
+              },
+              {
+                "kind": "POLICY",
+                "field": "logistics_inactivity_seconds",
+                "value": 172800,
+                "resource_id": "POLICY-A-2026-10-v1"
+              },
+              {
+                "kind": "TICKET",
+                "field": "status",
+                "value": "OPEN",
+                "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B"
+              },
+              {
+                "kind": "TICKET",
+                "field": "category",
+                "value": "LOGISTICS",
+                "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B"
+              },
+              {
+                "kind": "TICKET",
+                "field": "order_id",
+                "value": "O-A104",
+                "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B"
+              }
+            ],
+            "answer": "已为订单O-A104创建物流异常人工工单（工单号TICKET-EB2466F610BF473897F2E1AE42FA990B，状态OPEN）。该订单当前状态为运输中，最近轨迹为2026-10-08 09:00（北京时间，转运中心等待发运），评估时间2026-10-11 10:00，系统标记为可能异常（轨迹超过48小时未更新）。需说明：轨迹未更新只是可能异常，不代表已丢件，是否丢件或滞留由人工核查确认。",
+            "tickets": [
+              {
+                "id": "TICKET-EB2466F610BF473897F2E1AE42FA990B",
+                "status": "OPEN",
+                "summary": "客户反馈订单O-A104物流多日未更新，申请核查。订单状态IN_TRANSIT，最近轨迹2026-10-08T01:00:00Z（转运中心等待发运），评估时间2026-10-11T02:00:00Z，系统标记可能异常（LOGISTICS_INACTIVE），需人工核查是否丢件或滞留。",
+                "category": "LOGISTICS",
+                "order_id": "O-A104",
+                "simulated": true
+              }
+            ],
+            "citations": [
+              "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01"
+            ],
+            "simulated": true
+          },
+          "error_code": null
+        }
+      }
+    ],
+    "model_outputs": [
+      {
+        "step": "0",
+        "result": {
+          "calls": [
+            {
+              "id": "call_00_1nuvcj6bSeqqOoB4D1pr0858",
+              "name": "get_order",
+              "arguments": {
+                "order_id": "O-A104"
+              }
+            },
+            {
+              "id": "call_01_67jQ3rUoaFBcOH7qhoBi8426",
+              "name": "get_logistics",
+              "arguments": {
+                "order_id": "O-A104"
+              }
+            },
+            {
+              "id": "call_02_A8tsUSDYHvQr3H3sTxV44113",
+              "name": "search_policy",
+              "arguments": {
+                "query": "物流轨迹长时间未更新是否异常",
+                "top_k": 3,
+                "intent": "LOGISTICS",
+                "order_id": "O-A104"
+              }
+            }
+          ],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 3068,
+            "prompt_tokens": 2915,
+            "completion_tokens": 153,
+            "prompt_cache_hit_tokens": 2688,
+            "prompt_cache_miss_tokens": 227
+          },
+          "content": "I'll check the order and logistics first."
+        }
+      },
+      {
+        "step": "1",
+        "result": {
+          "calls": [
+            {
+              "id": "call_00_T0eeKu3fmYtNEbTmPKuJ0086",
+              "name": "create_support_ticket",
+              "arguments": {
+                "summary": "客户反馈订单O-A104物流多日未更新，申请核查。订单状态IN_TRANSIT，最近轨迹2026-10-08T01:00:00Z（转运中心等待发运），评估时间2026-10-11T02:00:00Z，系统标记可能异常（LOGISTICS_INACTIVE），需人工核查是否丢件或滞留。",
+                "category": "LOGISTICS",
+                "order_id": "O-A104"
+              }
+            }
+          ],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 4141,
+            "prompt_tokens": 3985,
+            "completion_tokens": 156,
+            "prompt_cache_hit_tokens": 2816,
+            "prompt_cache_miss_tokens": 1169
+          },
+          "content": ""
+        }
+      },
+      {
+        "step": "2",
+        "result": {
+          "calls": [],
+          "model": "deepseek-flash",
+          "usage": {
+            "total_tokens": 4882,
+            "prompt_tokens": 4348,
+            "completion_tokens": 534,
+            "prompt_cache_hit_tokens": 4096,
+            "prompt_cache_miss_tokens": 252
+          },
+          "content": "{\"answer\":\"已为订单O-A104创建物流异常人工工单（工单号TICKET-EB2466F610BF473897F2E1AE42FA990B，状态OPEN）。该订单当前状态为运输中，最近轨迹为2026-10-08 09:00（北京时间，转运中心等待发运），评估时间2026-10-11 10:00，系统标记为可能异常（轨迹超过48小时未更新）。需说明：轨迹未更新只是可能异常，不代表已丢件，是否丢件或滞留由人工核查确认。\",\"needs_input\":false,\"citations\":[\"模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01\"],\"facts\":[{\"kind\":\"ORDER\",\"resource_id\":\"O-A104\",\"field\":\"status\",\"value\":\"IN_TRANSIT\"},{\"kind\":\"ORDER\",\"resource_id\":\"O-A104\",\"field\":\"paid_amount_fen\",\"value\":9900},{\"kind\":\"ORDER\",\"resource_id\":\"O-A104\",\"field\":\"refunded_amount_fen\",\"value\":0},{\"kind\":\"ORDER\",\"resource_id\":\"O-A104\",\"field\":\"delivered_at\",\"value\":null},{\"kind\":\"LOGISTICS\",\"resource_id\":\"O-A104\",\"field\":\"possible_exception\",\"value\":true},{\"kind\":\"LOGISTICS\",\"resource_id\":\"O-A104\",\"field\":\"order_status\",\"value\":\"IN_TRANSIT\"},{\"kind\":\"LOGISTICS\",\"resource_id\":\"O-A104\",\"field\":\"last_updated_at\",\"value\":\"2026-10-08T01:00:00Z\"},{\"kind\":\"LOGISTICS\",\"resource_id\":\"O-A104\",\"field\":\"evaluated_at\",\"value\":\"2026-10-11T02:00:00Z\"},{\"kind\":\"POLICY\",\"resource_id\":\"POLICY-A-2026-10-v1\",\"field\":\"logistics_inactivity_seconds\",\"value\":172800},{\"kind\":\"TICKET\",\"resource_id\":\"TICKET-EB2466F610BF473897F2E1AE42FA990B\",\"field\":\"status\",\"value\":\"OPEN\"},{\"kind\":\"TICKET\",\"resource_id\":\"TICKET-EB2466F610BF473897F2E1AE42FA990B\",\"field\":\"category\",\"value\":\"LOGISTICS\"},{\"kind\":\"TICKET\",\"resource_id\":\"TICKET-EB2466F610BF473897F2E1AE42FA990B\",\"field\":\"order_id\",\"value\":\"O-A104\"}]}"
+        }
+      }
+    ],
+    "tokens": {
+      "total_tokens": 12091,
+      "prompt_tokens": 11248,
+      "completion_tokens": 843,
+      "prompt_cache_hit_tokens": 9600,
+      "prompt_cache_miss_tokens": 1648
+    },
+    "extra": {},
+    "run_status": "COMPLETED",
+    "error_code": null,
+    "runs": [
+      {
+        "processed": true,
+        "run_id": "RUN-7201240689C94B949859EC518968D653",
+        "conversation_id": "CONV-1EF6FC43F949459D944BB3D59188AA4B",
+        "status": "COMPLETED",
+        "action": "CREATE_TICKET",
+        "target_order_id": "O-A104",
+        "provider": "deepseek",
+        "model": "deepseek-flash",
+        "prompt_version": "prompt-v4-m4",
+        "tool_version": "tools-v2-m4",
+        "model_calls": 3,
+        "tool_calls": 4,
+        "error_code": null,
+        "response": {
+          "cases": [],
+          "facts": [
+            {
+              "kind": "ORDER",
+              "field": "status",
+              "value": "IN_TRANSIT",
+              "resource_id": "O-A104"
+            },
+            {
+              "kind": "ORDER",
+              "field": "paid_amount_fen",
+              "value": 9900,
+              "resource_id": "O-A104"
+            },
+            {
+              "kind": "ORDER",
+              "field": "refunded_amount_fen",
+              "value": 0,
+              "resource_id": "O-A104"
+            },
+            {
+              "kind": "ORDER",
+              "field": "delivered_at",
+              "value": null,
+              "resource_id": "O-A104"
+            },
+            {
+              "kind": "LOGISTICS",
+              "field": "possible_exception",
+              "value": true,
+              "resource_id": "O-A104"
+            },
+            {
+              "kind": "LOGISTICS",
+              "field": "order_status",
+              "value": "IN_TRANSIT",
+              "resource_id": "O-A104"
+            },
+            {
+              "kind": "LOGISTICS",
+              "field": "last_updated_at",
+              "value": "2026-10-08T01:00:00Z",
+              "resource_id": "O-A104"
+            },
+            {
+              "kind": "LOGISTICS",
+              "field": "evaluated_at",
+              "value": "2026-10-11T02:00:00Z",
+              "resource_id": "O-A104"
+            },
+            {
+              "kind": "POLICY",
+              "field": "logistics_inactivity_seconds",
+              "value": 172800,
+              "resource_id": "POLICY-A-2026-10-v1"
+            },
+            {
+              "kind": "TICKET",
+              "field": "status",
+              "value": "OPEN",
+              "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B"
+            },
+            {
+              "kind": "TICKET",
+              "field": "category",
+              "value": "LOGISTICS",
+              "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B"
+            },
+            {
+              "kind": "TICKET",
+              "field": "order_id",
+              "value": "O-A104",
+              "resource_id": "TICKET-EB2466F610BF473897F2E1AE42FA990B"
+            }
+          ],
+          "answer": "已为订单O-A104创建物流异常人工工单（工单号TICKET-EB2466F610BF473897F2E1AE42FA990B，状态OPEN）。该订单当前状态为运输中，最近轨迹为2026-10-08 09:00（北京时间，转运中心等待发运），评估时间2026-10-11 10:00，系统标记为可能异常（轨迹超过48小时未更新）。需说明：轨迹未更新只是可能异常，不代表已丢件，是否丢件或滞留由人工核查确认。",
+          "tickets": [
+            {
+              "id": "TICKET-EB2466F610BF473897F2E1AE42FA990B",
+              "status": "OPEN",
+              "summary": "客户反馈订单O-A104物流多日未更新，申请核查。订单状态IN_TRANSIT，最近轨迹2026-10-08T01:00:00Z（转运中心等待发运），评估时间2026-10-11T02:00:00Z，系统标记可能异常（LOGISTICS_INACTIVE），需人工核查是否丢件或滞留。",
+              "category": "LOGISTICS",
+              "order_id": "O-A104",
+              "simulated": true
+            }
+          ],
+          "citations": [
+            "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01"
+          ],
+          "simulated": true
+        },
+        "created_at": "2026-10-12T05:02:08.858933+00:00",
+        "completed_at": "2026-10-12T05:02:16.141623+00:00"
+      }
+    ],
+    "mode": "LIVE",
+    "provider": "deepseek",
+    "model_id": "deepseek-flash",
+    "latency_ms": 7500,
+    "http_trace": [
+      {
+        "path": "/conversations",
+        "actor": "C-A1",
+        "http_status": 201,
+        "code": "OK",
+        "data": {
+          "conversation_id": "CONV-1EF6FC43F949459D944BB3D59188AA4B"
+        }
+      },
+      {
+        "path": "/conversations/CONV-1EF6FC43F949459D944BB3D59188AA4B/messages",
+        "actor": "C-A1",
+        "http_status": 202,
+        "code": "OK",
+        "data": {
+          "run_id": "RUN-7201240689C94B949859EC518968D653",
+          "conversation_id": "CONV-1EF6FC43F949459D944BB3D59188AA4B",
+          "status": "QUEUED",
+          "action": "CREATE_TICKET",
+          "target_order_id": "O-A104",
+          "provider": null,
+          "model": null,
+          "prompt_version": "prompt-v4-m4",
+          "tool_version": "tools-v2-m4",
+          "model_calls": 0,
+          "tool_calls": 0,
+          "error_code": null,
+          "response": null,
+          "created_at": "2026-10-12T05:02:08.858933+00:00",
+          "completed_at": null
+        }
+      }
+    ],
+    "database": {
+      "cases": [],
+      "tickets": [
+        {
+          "id": "TICKET-EB2466F610BF473897F2E1AE42FA990B",
+          "order_id": "O-A104",
+          "tenant_id": "TENANT-A",
+          "category": "LOGISTICS",
+          "status": "OPEN",
+          "created_by": "C-A1"
+        }
+      ],
+      "refunds": [],
+      "providers": [],
+      "reviews": [],
+      "confirmations": [],
+      "orders": [
+        {
+          "id": "O-A101",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 14900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A102",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 39900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A103",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 8900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A104",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A105",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 12900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A106",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 29900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A107",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 19900,
+          "refunded_amount_fen": 19900
+        },
+        {
+          "id": "O-A108",
+          "customer_id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A109",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 10900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A110",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 0,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A111",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 11900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A112",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 20000,
+          "refunded_amount_fen": 5000
+        },
+        {
+          "id": "O-A113",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 15900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-B101",
+          "customer_id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "paid_amount_fen": 69900,
+          "refunded_amount_fen": 0
+        }
+      ],
+      "users": [
+        {
+          "id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A2",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "customer_id": "C-B1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "E-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support"
+          ]
+        },
+        {
+          "id": "E-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-A3",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "warehouse"
+          ]
+        },
+        {
+          "id": "E-A4",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-B2",
+          "tenant_id": "TENANT-B",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        }
+      ]
+    }
+  },
+  "repeat_index": 1
+}

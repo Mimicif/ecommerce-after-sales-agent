@@ -1,0 +1,1818 @@
+{
+  "mode": "LIVE",
+  "provider": "deepseek",
+  "model_id": "deepseek-flash",
+  "checked_at": "2026-10-12T03:49:27.761653+00:00",
+  "runs": [
+    {
+      "label": "clarify",
+      "run_id": "RUN-D67FB218AC334AD995EC821179A2F0D5",
+      "conversation_id": "CONV-189443D80CA74925B5991F6D8226866B",
+      "status": "WAITING_FOR_USER",
+      "action": "CONSULT",
+      "target_order_id": null,
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "prompt_version": "prompt-v1-m3",
+      "tool_version": "tools-v1-m3",
+      "model_calls": 2,
+      "tool_calls": 1,
+      "error_code": null,
+      "response": {
+        "cases": [],
+        "answer": "已查到你的订单（共12条，金额为分）：\n\n已签收：\n- O-A101 标准品 149.00元（已全额退款149.00元）\n- O-A102 标准品 399.00元\n- O-A103 标准品 89.00元（已全额退款89.00元）\n- O-A106 定制品 299.00元\n- O-A107 标准品 199.00元（已全额退款199.00元）\n- O-A109 标准品 109.00元\n- O-A110 标准品 0.00元\n- O-A111 标准品 119.00元\n- O-A112 标准品 200.00元（已退50.00元）\n\n运输中：\n- O-A104 标准品 99.00元\n- O-A105 标准品 129.00元\n- O-A113 标准品 159.00元\n\n请回复你要退货的订单号（如 O-A102），并说明退货原因；若涉及商品损坏，请补充损坏描述和证据引用。确认订单后我再为你查询该订单的退货政策与资格，不会直接建单。",
+        "tickets": [],
+        "citations": [],
+        "simulated": true
+      },
+      "created_at": "2026-10-12T03:43:22.867557+00:00",
+      "completed_at": "2026-10-12T03:43:30.642807+00:00",
+      "events": [
+        {
+          "seq": 1,
+          "kind": "QUEUED",
+          "data": {
+            "action": "CONSULT"
+          },
+          "created_at": "2026-10-12T03:43:22.885141+00:00"
+        },
+        {
+          "seq": 2,
+          "kind": "RUNNING",
+          "data": {
+            "model": "deepseek-flash",
+            "resumed": false,
+            "provider": "deepseek"
+          },
+          "created_at": "2026-10-12T03:43:26.529710+00:00"
+        },
+        {
+          "seq": 3,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 0,
+            "usage": {
+              "total_tokens": 2253,
+              "prompt_tokens": 2229,
+              "completion_tokens": 24,
+              "prompt_cache_hit_tokens": 0,
+              "prompt_cache_miss_tokens": 2229
+            },
+            "latency_ms": 1235,
+            "tool_names": [
+              "list_my_orders"
+            ]
+          },
+          "created_at": "2026-10-12T03:43:27.897848+00:00"
+        },
+        {
+          "seq": 4,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "list_my_orders",
+            "step": "0:0",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "items": [
+                  {
+                    "id": "O-A101",
+                    "status": "DELIVERED",
+                    "version": 2,
+                    "delivered_at": "2026-10-09T02:00:00Z",
+                    "paid_amount_fen": 14900,
+                    "product_category": "STANDARD",
+                    "refunded_amount_fen": 14900
+                  },
+                  {
+                    "id": "O-A102",
+                    "status": "DELIVERED",
+                    "version": 1,
+                    "delivered_at": "2026-10-10T02:00:00Z",
+                    "paid_amount_fen": 39900,
+                    "product_category": "STANDARD",
+                    "refunded_amount_fen": 0
+                  },
+                  {
+                    "id": "O-A103",
+                    "status": "DELIVERED",
+                    "version": 2,
+                    "delivered_at": "2026-10-01T02:00:00Z",
+                    "paid_amount_fen": 8900,
+                    "product_category": "STANDARD",
+                    "refunded_amount_fen": 8900
+                  },
+                  {
+                    "id": "O-A104",
+                    "status": "IN_TRANSIT",
+                    "version": 1,
+                    "delivered_at": null,
+                    "paid_amount_fen": 9900,
+                    "product_category": "STANDARD",
+                    "refunded_amount_fen": 0
+                  },
+                  {
+                    "id": "O-A105",
+                    "status": "IN_TRANSIT",
+                    "version": 1,
+                    "delivered_at": null,
+                    "paid_amount_fen": 12900,
+                    "product_category": "STANDARD",
+                    "refunded_amount_fen": 0
+                  },
+                  {
+                    "id": "O-A106",
+                    "status": "DELIVERED",
+                    "version": 1,
+                    "delivered_at": "2026-10-10T02:00:00Z",
+                    "paid_amount_fen": 29900,
+                    "product_category": "CUSTOM",
+                    "refunded_amount_fen": 0
+                  },
+                  {
+                    "id": "O-A107",
+                    "status": "DELIVERED",
+                    "version": 1,
+                    "delivered_at": "2026-10-09T02:00:00Z",
+                    "paid_amount_fen": 19900,
+                    "product_category": "STANDARD",
+                    "refunded_amount_fen": 19900
+                  },
+                  {
+                    "id": "O-A109",
+                    "status": "DELIVERED",
+                    "version": 1,
+                    "delivered_at": null,
+                    "paid_amount_fen": 10900,
+                    "product_category": "STANDARD",
+                    "refunded_amount_fen": 0
+                  },
+                  {
+                    "id": "O-A110",
+                    "status": "DELIVERED",
+                    "version": 1,
+                    "delivered_at": "2026-10-10T02:00:00Z",
+                    "paid_amount_fen": 0,
+                    "product_category": "STANDARD",
+                    "refunded_amount_fen": 0
+                  },
+                  {
+                    "id": "O-A111",
+                    "status": "DELIVERED",
+                    "version": 1,
+                    "delivered_at": "2026-10-12T02:00:00Z",
+                    "paid_amount_fen": 11900,
+                    "product_category": "STANDARD",
+                    "refunded_amount_fen": 0
+                  },
+                  {
+                    "id": "O-A112",
+                    "status": "DELIVERED",
+                    "version": 1,
+                    "delivered_at": "2026-10-10T02:00:00Z",
+                    "paid_amount_fen": 20000,
+                    "product_category": "STANDARD",
+                    "refunded_amount_fen": 5000
+                  },
+                  {
+                    "id": "O-A113",
+                    "status": "IN_TRANSIT",
+                    "version": 1,
+                    "delivered_at": null,
+                    "paid_amount_fen": 15900,
+                    "product_category": "STANDARD",
+                    "refunded_amount_fen": 0
+                  }
+                ],
+                "next_cursor": null
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "limit": 20,
+              "cursor": null
+            }
+          },
+          "created_at": "2026-10-12T03:43:27.986053+00:00"
+        },
+        {
+          "seq": 5,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 1,
+            "usage": {
+              "total_tokens": 3429,
+              "prompt_tokens": 3140,
+              "completion_tokens": 289,
+              "prompt_cache_hit_tokens": 2176,
+              "prompt_cache_miss_tokens": 964
+            },
+            "latency_ms": 2484,
+            "tool_names": []
+          },
+          "created_at": "2026-10-12T03:43:30.562700+00:00"
+        },
+        {
+          "seq": 6,
+          "kind": "WAITING_FOR_USER",
+          "data": {
+            "response": {
+              "cases": [],
+              "answer": "已查到你的订单（共12条，金额为分）：\n\n已签收：\n- O-A101 标准品 149.00元（已全额退款149.00元）\n- O-A102 标准品 399.00元\n- O-A103 标准品 89.00元（已全额退款89.00元）\n- O-A106 定制品 299.00元\n- O-A107 标准品 199.00元（已全额退款199.00元）\n- O-A109 标准品 109.00元\n- O-A110 标准品 0.00元\n- O-A111 标准品 119.00元\n- O-A112 标准品 200.00元（已退50.00元）\n\n运输中：\n- O-A104 标准品 99.00元\n- O-A105 标准品 129.00元\n- O-A113 标准品 159.00元\n\n请回复你要退货的订单号（如 O-A102），并说明退货原因；若涉及商品损坏，请补充损坏描述和证据引用。确认订单后我再为你查询该订单的退货政策与资格，不会直接建单。",
+              "tickets": [],
+              "citations": [],
+              "simulated": true
+            },
+            "error_code": null
+          },
+          "created_at": "2026-10-12T03:43:30.642807+00:00"
+        }
+      ]
+    },
+    {
+      "label": "draft",
+      "run_id": "RUN-0BF94359DAAE41D38C36E382E98F3C7A",
+      "conversation_id": "CONV-189443D80CA74925B5991F6D8226866B",
+      "status": "WAITING_FOR_USER",
+      "action": "APPLY_AFTER_SALES",
+      "target_order_id": "O-A102",
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "prompt_version": "prompt-v1-m3",
+      "tool_version": "tools-v1-m3",
+      "model_calls": 2,
+      "tool_calls": 4,
+      "error_code": null,
+      "response": {
+        "cases": [
+          {
+            "id": "CASE-3149D549A90D4FE5AD365D3D29A2BDB7",
+            "reason": "不喜欢（CHANGE_OF_MIND），申请普通退货退款",
+            "status": "DRAFT",
+            "version": 1,
+            "order_id": "O-A102",
+            "case_type": "RETURN_REFUND",
+            "simulated": true,
+            "evidence_refs": [],
+            "order_version": 1,
+            "policy_version": "POLICY-A-2026-10-v1",
+            "review_required": true,
+            "requested_amount_fen": 39900
+          }
+        ],
+        "answer": "草稿已创建，请通过独立客户接口生成确认摘要并确认后再提交。",
+        "tickets": [],
+        "citations": [
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01",
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01",
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-01",
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+        ],
+        "simulated": true
+      },
+      "created_at": "2026-10-12T03:43:31.391098+00:00",
+      "completed_at": "2026-10-12T03:43:38.536418+00:00",
+      "events": [
+        {
+          "seq": 1,
+          "kind": "QUEUED",
+          "data": {
+            "action": "APPLY_AFTER_SALES"
+          },
+          "created_at": "2026-10-12T03:43:31.398099+00:00"
+        },
+        {
+          "seq": 2,
+          "kind": "RUNNING",
+          "data": {
+            "model": "deepseek-flash",
+            "resumed": false,
+            "provider": "deepseek"
+          },
+          "created_at": "2026-10-12T03:43:34.503921+00:00"
+        },
+        {
+          "seq": 3,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 0,
+            "usage": {
+              "total_tokens": 2719,
+              "prompt_tokens": 2551,
+              "completion_tokens": 168,
+              "prompt_cache_hit_tokens": 256,
+              "prompt_cache_miss_tokens": 2295
+            },
+            "latency_ms": 1953,
+            "tool_names": [
+              "get_order",
+              "search_policy",
+              "check_eligibility"
+            ]
+          },
+          "created_at": "2026-10-12T03:43:36.598128+00:00"
+        },
+        {
+          "seq": 4,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "get_order",
+            "step": "0:0",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "id": "O-A102",
+                "status": "DELIVERED",
+                "version": 1,
+                "delivered_at": "2026-10-10T02:00:00Z",
+                "paid_amount_fen": 39900,
+                "product_category": "STANDARD",
+                "refunded_amount_fen": 0
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "order_id": "O-A102"
+            }
+          },
+          "created_at": "2026-10-12T03:43:36.683640+00:00"
+        },
+        {
+          "seq": 5,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "search_policy",
+            "step": "0:1",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "intent": "RETURN_REFUND",
+                "clauses": [
+                  {
+                    "text": "模拟商家A：标准商品在签收后不超过7×24小时可提交常规退货申请，恰好7天包含在窗口内。资格通过不代表批准退款。",
+                    "intent": "RETURN_REFUND",
+                    "chunk_id": "A-RETURN-01",
+                    "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-01"
+                  },
+                  {
+                    "text": "模拟定制和易腐商品不自动判断常规退货资格，应转人工。既往部分退款订单不由首版自动新增退款。",
+                    "intent": "RETURN_REFUND",
+                    "chunk_id": "A-RETURN-02",
+                    "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+                  },
+                  {
+                    "text": "客户确认绑定订单、类型、金额与政策版本，有效期15分钟。客户确认后可提交审核，全部退款仍需人工批准。",
+                    "intent": "ALL",
+                    "chunk_id": "A-CONFIRM-01",
+                    "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01"
+                  },
+                  {
+                    "text": "常规退货批准后等待仓库确认收货；损坏退款无需退回必须有审核员明确决定。只有模拟支付对账成功才报告模拟退款成功。",
+                    "intent": "ALL",
+                    "chunk_id": "A-REFUND-01",
+                    "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+                  }
+                ],
+                "order_id": "O-A102",
+                "simulated": true,
+                "effective_to": "2026-10-31T16:00:00Z",
+                "evaluated_at": "2026-10-11T02:00:00Z",
+                "effective_from": "2026-09-30T16:00:00Z",
+                "policy_version": "POLICY-A-2026-10-v1",
+                "retrieval_mode": "metadata_only"
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "query": "",
+              "intent": "RETURN_REFUND",
+              "order_id": "O-A102"
+            }
+          },
+          "created_at": "2026-10-12T03:43:36.736087+00:00"
+        },
+        {
+          "seq": 6,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "check_eligibility",
+            "step": "0:2",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "eligibility": "eligible",
+                "evaluated_at": "2026-10-11T02:00:00Z",
+                "reason_codes": [
+                  "RETURN_RULES_SATISFIED"
+                ],
+                "order_version": 1,
+                "policy_version": "POLICY-A-2026-10-v1",
+                "review_required": true,
+                "assessment_scope": "READ_ONLY_PRECHECK",
+                "refundable_amount_fen": 39900
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "order_id": "O-A102",
+              "case_type": "RETURN_REFUND",
+              "reason_code": "CHANGE_OF_MIND"
+            }
+          },
+          "created_at": "2026-10-12T03:43:36.789967+00:00"
+        },
+        {
+          "seq": 7,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 1,
+            "usage": {
+              "total_tokens": 3541,
+              "prompt_tokens": 3451,
+              "completion_tokens": 90,
+              "prompt_cache_hit_tokens": 2432,
+              "prompt_cache_miss_tokens": 1019
+            },
+            "latency_ms": 1422,
+            "tool_names": [
+              "create_case_draft"
+            ]
+          },
+          "created_at": "2026-10-12T03:43:38.310497+00:00"
+        },
+        {
+          "seq": 8,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "create_case_draft",
+            "step": "1:0",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "id": "CASE-3149D549A90D4FE5AD365D3D29A2BDB7",
+                "reason": "不喜欢（CHANGE_OF_MIND），申请普通退货退款",
+                "status": "DRAFT",
+                "version": 1,
+                "order_id": "O-A102",
+                "case_type": "RETURN_REFUND",
+                "simulated": true,
+                "evidence_refs": [],
+                "order_version": 1,
+                "policy_version": "POLICY-A-2026-10-v1",
+                "review_required": true,
+                "requested_amount_fen": 39900
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "reason": "不喜欢（CHANGE_OF_MIND），申请普通退货退款",
+              "order_id": "O-A102",
+              "case_type": "RETURN_REFUND",
+              "evidence_refs": []
+            }
+          },
+          "created_at": "2026-10-12T03:43:38.405722+00:00"
+        },
+        {
+          "seq": 9,
+          "kind": "WAITING_FOR_USER",
+          "data": {
+            "response": {
+              "cases": [
+                {
+                  "id": "CASE-3149D549A90D4FE5AD365D3D29A2BDB7",
+                  "reason": "不喜欢（CHANGE_OF_MIND），申请普通退货退款",
+                  "status": "DRAFT",
+                  "version": 1,
+                  "order_id": "O-A102",
+                  "case_type": "RETURN_REFUND",
+                  "simulated": true,
+                  "evidence_refs": [],
+                  "order_version": 1,
+                  "policy_version": "POLICY-A-2026-10-v1",
+                  "review_required": true,
+                  "requested_amount_fen": 39900
+                }
+              ],
+              "answer": "草稿已创建，请通过独立客户接口生成确认摘要并确认后再提交。",
+              "tickets": [],
+              "citations": [
+                "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01",
+                "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01",
+                "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-01",
+                "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+              ],
+              "simulated": true
+            },
+            "error_code": null
+          },
+          "created_at": "2026-10-12T03:43:38.537433+00:00"
+        }
+      ]
+    },
+    {
+      "label": "submit",
+      "run_id": "RUN-032163D5BFE145BB86748F4D8C537F6A",
+      "conversation_id": "CONV-189443D80CA74925B5991F6D8226866B",
+      "status": "COMPLETED",
+      "action": "SUBMIT_CONFIRMED",
+      "target_order_id": "O-A102",
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "prompt_version": "prompt-v1-m3",
+      "tool_version": "tools-v1-m3",
+      "model_calls": 2,
+      "tool_calls": 1,
+      "error_code": null,
+      "response": {
+        "cases": [
+          {
+            "id": "CASE-3149D549A90D4FE5AD365D3D29A2BDB7",
+            "reason": "不喜欢（CHANGE_OF_MIND），申请普通退货退款",
+            "status": "PENDING_REVIEW",
+            "version": 3,
+            "order_id": "O-A102",
+            "case_type": "RETURN_REFUND",
+            "simulated": true,
+            "evidence_refs": [],
+            "order_version": 1,
+            "policy_version": "POLICY-A-2026-10-v1",
+            "review_required": true,
+            "requested_amount_fen": 39900
+          }
+        ],
+        "answer": "该申请当前状态为 PENDING_REVIEW（审核中），版本 3，无需重复提交。提交成功仅代表进入审核流程，不代表退款已批准；请以服务端状态卡为准。",
+        "tickets": [],
+        "citations": [],
+        "simulated": true
+      },
+      "created_at": "2026-10-12T03:47:25.236406+00:00",
+      "completed_at": "2026-10-12T03:47:31.483593+00:00",
+      "events": [
+        {
+          "seq": 1,
+          "kind": "QUEUED",
+          "data": {
+            "action": "SUBMIT_CONFIRMED"
+          },
+          "created_at": "2026-10-12T03:47:25.244866+00:00"
+        },
+        {
+          "seq": 2,
+          "kind": "RUNNING",
+          "data": {
+            "model": "deepseek-flash",
+            "resumed": false,
+            "provider": "deepseek"
+          },
+          "created_at": "2026-10-12T03:47:28.274712+00:00"
+        },
+        {
+          "seq": 3,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 0,
+            "usage": {
+              "total_tokens": 3040,
+              "prompt_tokens": 2979,
+              "completion_tokens": 61,
+              "prompt_cache_hit_tokens": 256,
+              "prompt_cache_miss_tokens": 2723
+            },
+            "latency_ms": 1390,
+            "tool_names": [
+              "get_case"
+            ]
+          },
+          "created_at": "2026-10-12T03:47:29.793198+00:00"
+        },
+        {
+          "seq": 4,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "get_case",
+            "step": "0:0",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "id": "CASE-3149D549A90D4FE5AD365D3D29A2BDB7",
+                "reason": "不喜欢（CHANGE_OF_MIND），申请普通退货退款",
+                "status": "PENDING_REVIEW",
+                "version": 3,
+                "order_id": "O-A102",
+                "case_type": "RETURN_REFUND",
+                "simulated": true,
+                "evidence_refs": [],
+                "order_version": 1,
+                "policy_version": "POLICY-A-2026-10-v1",
+                "review_required": true,
+                "requested_amount_fen": 39900
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "case_id": "CASE-3149D549A90D4FE5AD365D3D29A2BDB7"
+            }
+          },
+          "created_at": "2026-10-12T03:47:29.896306+00:00"
+        },
+        {
+          "seq": 5,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 1,
+            "usage": {
+              "total_tokens": 3271,
+              "prompt_tokens": 3211,
+              "completion_tokens": 60,
+              "prompt_cache_hit_tokens": 2944,
+              "prompt_cache_miss_tokens": 267
+            },
+            "latency_ms": 1391,
+            "tool_names": []
+          },
+          "created_at": "2026-10-12T03:47:31.359277+00:00"
+        },
+        {
+          "seq": 6,
+          "kind": "COMPLETED",
+          "data": {
+            "response": {
+              "cases": [
+                {
+                  "id": "CASE-3149D549A90D4FE5AD365D3D29A2BDB7",
+                  "reason": "不喜欢（CHANGE_OF_MIND），申请普通退货退款",
+                  "status": "PENDING_REVIEW",
+                  "version": 3,
+                  "order_id": "O-A102",
+                  "case_type": "RETURN_REFUND",
+                  "simulated": true,
+                  "evidence_refs": [],
+                  "order_version": 1,
+                  "policy_version": "POLICY-A-2026-10-v1",
+                  "review_required": true,
+                  "requested_amount_fen": 39900
+                }
+              ],
+              "answer": "该申请当前状态为 PENDING_REVIEW（审核中），版本 3，无需重复提交。提交成功仅代表进入审核流程，不代表退款已批准；请以服务端状态卡为准。",
+              "tickets": [],
+              "citations": [],
+              "simulated": true
+            },
+            "error_code": null
+          },
+          "created_at": "2026-10-12T03:47:31.483593+00:00"
+        }
+      ]
+    },
+    {
+      "label": "logistics",
+      "run_id": "RUN-EDB514DD119249C2AE639B1EF319F0DF",
+      "conversation_id": "CONV-233ACA4213C84900AE0C7F1AC4F30F96",
+      "status": "COMPLETED",
+      "action": "CREATE_TICKET",
+      "target_order_id": "O-A104",
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "prompt_version": "prompt-v1-m3",
+      "tool_version": "tools-v1-m3",
+      "model_calls": 3,
+      "tool_calls": 4,
+      "error_code": null,
+      "response": {
+        "cases": [],
+        "answer": "已按你的要求为订单 O-A104 创建物流人工工单，工单号 TICKET-2E8064B6420245A8908CCCFE8C87B732，当前状态 OPEN（已受理，等待人工处理）。\n\n物流情况：订单处于运输中，最近轨迹为 2026-10-08 01:00「转运中心等待发运」，此后无更新，系统标记为可能异常（LOGISTICS_INACTIVE），需人工核实。请注意：可能异常不等于丢件，是否丢件需人工核查后确认。\n\n政策依据：运输中订单最近轨迹超过48小时未更新可标记可能异常并创建物流工单；没有轨迹或查询失败不代表已丢件。",
+        "tickets": [
+          {
+            "id": "TICKET-2E8064B6420245A8908CCCFE8C87B732",
+            "status": "OPEN",
+            "summary": "客户反馈订单O-A104包裹物流长时间未更新。物流轨迹显示2026-10-08 01:00 转运中心等待发运后无新事件，系统标记可能异常（LOGISTICS_INACTIVE，manual_required=true）。客户明确要求转物流人工核实。注意：可能异常不等于丢件。",
+            "category": "LOGISTICS",
+            "order_id": "O-A104",
+            "simulated": true
+          }
+        ],
+        "citations": [
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01"
+        ],
+        "simulated": true
+      },
+      "created_at": "2026-10-12T03:47:32.252518+00:00",
+      "completed_at": "2026-10-12T03:47:40.888794+00:00",
+      "events": [
+        {
+          "seq": 1,
+          "kind": "QUEUED",
+          "data": {
+            "action": "CREATE_TICKET"
+          },
+          "created_at": "2026-10-12T03:47:32.258950+00:00"
+        },
+        {
+          "seq": 2,
+          "kind": "RUNNING",
+          "data": {
+            "model": "deepseek-flash",
+            "resumed": false,
+            "provider": "deepseek"
+          },
+          "created_at": "2026-10-12T03:47:35.116276+00:00"
+        },
+        {
+          "seq": 3,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 0,
+            "usage": {
+              "total_tokens": 2449,
+              "prompt_tokens": 2315,
+              "completion_tokens": 134,
+              "prompt_cache_hit_tokens": 384,
+              "prompt_cache_miss_tokens": 1931
+            },
+            "latency_ms": 1688,
+            "tool_names": [
+              "get_order",
+              "get_logistics",
+              "search_policy"
+            ]
+          },
+          "created_at": "2026-10-12T03:47:36.929463+00:00"
+        },
+        {
+          "seq": 4,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "get_order",
+            "step": "0:0",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "id": "O-A104",
+                "status": "IN_TRANSIT",
+                "version": 1,
+                "delivered_at": null,
+                "paid_amount_fen": 9900,
+                "product_category": "STANDARD",
+                "refunded_amount_fen": 0
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "order_id": "O-A104"
+            }
+          },
+          "created_at": "2026-10-12T03:47:37.003286+00:00"
+        },
+        {
+          "seq": 5,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "get_logistics",
+            "step": "0:1",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "events": [
+                  {
+                    "id": "L-A104-1",
+                    "status": "IN_TRANSIT",
+                    "description": "模拟转运中心等待发运",
+                    "occurred_at": "2026-10-08T01:00:00Z"
+                  }
+                ],
+                "order_id": "O-A104",
+                "simulated": true,
+                "evaluated_at": "2026-10-11T02:00:00Z",
+                "order_status": "IN_TRANSIT",
+                "reason_codes": [
+                  "LOGISTICS_INACTIVE"
+                ],
+                "last_updated_at": "2026-10-08T01:00:00Z",
+                "manual_required": true,
+                "events_truncated": false,
+                "possible_exception": true
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "order_id": "O-A104"
+            }
+          },
+          "created_at": "2026-10-12T03:47:37.042810+00:00"
+        },
+        {
+          "seq": 6,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "search_policy",
+            "step": "0:2",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "intent": "LOGISTICS",
+                "clauses": [
+                  {
+                    "text": "运输中订单最近轨迹超过48小时未更新可标记可能异常并创建物流工单。没有轨迹或查询失败不代表已丢件。",
+                    "intent": "LOGISTICS",
+                    "chunk_id": "A-LOGISTICS-01",
+                    "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01"
+                  },
+                  {
+                    "text": "客户确认绑定订单、类型、金额与政策版本，有效期15分钟。客户确认后可提交审核，全部退款仍需人工批准。",
+                    "intent": "ALL",
+                    "chunk_id": "A-CONFIRM-01",
+                    "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01"
+                  },
+                  {
+                    "text": "常规退货批准后等待仓库确认收货；损坏退款无需退回必须有审核员明确决定。只有模拟支付对账成功才报告模拟退款成功。",
+                    "intent": "ALL",
+                    "chunk_id": "A-REFUND-01",
+                    "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+                  }
+                ],
+                "order_id": "O-A104",
+                "simulated": true,
+                "effective_to": "2026-10-31T16:00:00Z",
+                "evaluated_at": "2026-10-11T02:00:00Z",
+                "effective_from": "2026-09-30T16:00:00Z",
+                "policy_version": "POLICY-A-2026-10-v1",
+                "retrieval_mode": "metadata_only"
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "query": "",
+              "intent": "LOGISTICS",
+              "order_id": "O-A104"
+            }
+          },
+          "created_at": "2026-10-12T03:47:37.084600+00:00"
+        },
+        {
+          "seq": 7,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 1,
+            "usage": {
+              "total_tokens": 3272,
+              "prompt_tokens": 3128,
+              "completion_tokens": 144,
+              "prompt_cache_hit_tokens": 2304,
+              "prompt_cache_miss_tokens": 824
+            },
+            "latency_ms": 1750,
+            "tool_names": [
+              "create_support_ticket"
+            ]
+          },
+          "created_at": "2026-10-12T03:47:38.911379+00:00"
+        },
+        {
+          "seq": 8,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "create_support_ticket",
+            "step": "1:0",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "id": "TICKET-2E8064B6420245A8908CCCFE8C87B732",
+                "status": "OPEN",
+                "summary": "客户反馈订单O-A104包裹物流长时间未更新。物流轨迹显示2026-10-08 01:00 转运中心等待发运后无新事件，系统标记可能异常（LOGISTICS_INACTIVE，manual_required=true）。客户明确要求转物流人工核实。注意：可能异常不等于丢件。",
+                "category": "LOGISTICS",
+                "order_id": "O-A104",
+                "simulated": true
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "summary": "客户反馈订单O-A104包裹物流长时间未更新。物流轨迹显示2026-10-08 01:00 转运中心等待发运后无新事件，系统标记可能异常（LOGISTICS_INACTIVE，manual_required=true）。客户明确要求转物流人工核实。注意：可能异常不等于丢件。",
+              "category": "LOGISTICS",
+              "order_id": "O-A104"
+            }
+          },
+          "created_at": "2026-10-12T03:47:38.991194+00:00"
+        },
+        {
+          "seq": 9,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 2,
+            "usage": {
+              "total_tokens": 3636,
+              "prompt_tokens": 3440,
+              "completion_tokens": 196,
+              "prompt_cache_hit_tokens": 3200,
+              "prompt_cache_miss_tokens": 240
+            },
+            "latency_ms": 1703,
+            "tool_names": []
+          },
+          "created_at": "2026-10-12T03:47:40.764715+00:00"
+        },
+        {
+          "seq": 10,
+          "kind": "COMPLETED",
+          "data": {
+            "response": {
+              "cases": [],
+              "answer": "已按你的要求为订单 O-A104 创建物流人工工单，工单号 TICKET-2E8064B6420245A8908CCCFE8C87B732，当前状态 OPEN（已受理，等待人工处理）。\n\n物流情况：订单处于运输中，最近轨迹为 2026-10-08 01:00「转运中心等待发运」，此后无更新，系统标记为可能异常（LOGISTICS_INACTIVE），需人工核实。请注意：可能异常不等于丢件，是否丢件需人工核查后确认。\n\n政策依据：运输中订单最近轨迹超过48小时未更新可标记可能异常并创建物流工单；没有轨迹或查询失败不代表已丢件。",
+              "tickets": [
+                {
+                  "id": "TICKET-2E8064B6420245A8908CCCFE8C87B732",
+                  "status": "OPEN",
+                  "summary": "客户反馈订单O-A104包裹物流长时间未更新。物流轨迹显示2026-10-08 01:00 转运中心等待发运后无新事件，系统标记可能异常（LOGISTICS_INACTIVE，manual_required=true）。客户明确要求转物流人工核实。注意：可能异常不等于丢件。",
+                  "category": "LOGISTICS",
+                  "order_id": "O-A104",
+                  "simulated": true
+                }
+              ],
+              "citations": [
+                "模拟售后政策 POLICY-A-2026-10-v1 / A-LOGISTICS-01"
+              ],
+              "simulated": true
+            },
+            "error_code": null
+          },
+          "created_at": "2026-10-12T03:47:40.889318+00:00"
+        }
+      ]
+    },
+    {
+      "label": "damage",
+      "run_id": "RUN-27260B66FE314608AB111F629FD21319",
+      "conversation_id": "CONV-B2492168B2194AF1A168B1D85A758F2A",
+      "status": "WAITING_FOR_USER",
+      "action": "CONSULT",
+      "target_order_id": null,
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "prompt_version": "prompt-v1-m3",
+      "tool_version": "tools-v1-m3",
+      "model_calls": 1,
+      "tool_calls": 0,
+      "error_code": null,
+      "response": {
+        "cases": [],
+        "answer": "请补充：1）损坏的具体描述（如外壳哪一侧、破损程度、是否影响使用）；2）证据引用（evidence_refs，模拟证据编号）。补齐后我再为你核对政策与资格。当前未建单。",
+        "tickets": [],
+        "citations": [],
+        "simulated": true
+      },
+      "created_at": "2026-10-12T03:47:41.706637+00:00",
+      "completed_at": "2026-10-12T03:47:46.228848+00:00",
+      "events": [
+        {
+          "seq": 1,
+          "kind": "QUEUED",
+          "data": {
+            "action": "CONSULT"
+          },
+          "created_at": "2026-10-12T03:47:41.710794+00:00"
+        },
+        {
+          "seq": 2,
+          "kind": "RUNNING",
+          "data": {
+            "model": "deepseek-flash",
+            "resumed": false,
+            "provider": "deepseek"
+          },
+          "created_at": "2026-10-12T03:47:44.459636+00:00"
+        },
+        {
+          "seq": 3,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 0,
+            "usage": {
+              "total_tokens": 2383,
+              "prompt_tokens": 2320,
+              "completion_tokens": 63,
+              "prompt_cache_hit_tokens": 384,
+              "prompt_cache_miss_tokens": 1936
+            },
+            "latency_ms": 1547,
+            "tool_names": []
+          },
+          "created_at": "2026-10-12T03:47:46.133783+00:00"
+        },
+        {
+          "seq": 4,
+          "kind": "WAITING_FOR_USER",
+          "data": {
+            "response": {
+              "cases": [],
+              "answer": "请补充：1）损坏的具体描述（如外壳哪一侧、破损程度、是否影响使用）；2）证据引用（evidence_refs，模拟证据编号）。补齐后我再为你核对政策与资格。当前未建单。",
+              "tickets": [],
+              "citations": [],
+              "simulated": true
+            },
+            "error_code": null
+          },
+          "created_at": "2026-10-12T03:47:46.228848+00:00"
+        }
+      ]
+    },
+    {
+      "label": "tenant-b",
+      "run_id": "RUN-5944F7970C604FF7B3CDB29D9478A495",
+      "conversation_id": "CONV-14B9AB8BE7B7425EBA28BCBC9415640E",
+      "status": "COMPLETED",
+      "action": "CONSULT",
+      "target_order_id": null,
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "prompt_version": "prompt-v1-m3",
+      "tool_version": "tools-v1-m3",
+      "model_calls": 2,
+      "tool_calls": 3,
+      "error_code": null,
+      "response": {
+        "cases": [],
+        "answer": "订单 O-B101：状态已签收（2026-10-10），实付 699.00 元，未退款。退货资格只读预检结果为 eligible（可申请），但需人工审核，且这不代表已提交或已批准退款。政策（POLICY-B-2026-10-v1 / B-RETURN-01）：常规申请为 3 天窗口，政策有效期 2026-09-30 至 2026-10-31。以上为演示规则，非法律结论。本次仅咨询，未创建任何申请。如需正式申请退货退款，请告知，我会先创建草稿，再由你通过独立确认接口确认。",
+        "tickets": [],
+        "citations": [
+          "模拟售后政策 POLICY-B-2026-10-v1 / B-RETURN-01"
+        ],
+        "simulated": true
+      },
+      "created_at": "2026-10-12T03:47:46.867573+00:00",
+      "completed_at": "2026-10-12T03:47:53.512936+00:00",
+      "events": [
+        {
+          "seq": 1,
+          "kind": "QUEUED",
+          "data": {
+            "action": "CONSULT"
+          },
+          "created_at": "2026-10-12T03:47:46.873199+00:00"
+        },
+        {
+          "seq": 2,
+          "kind": "RUNNING",
+          "data": {
+            "model": "deepseek-flash",
+            "resumed": false,
+            "provider": "deepseek"
+          },
+          "created_at": "2026-10-12T03:47:49.363708+00:00"
+        },
+        {
+          "seq": 3,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 0,
+            "usage": {
+              "total_tokens": 2493,
+              "prompt_tokens": 2315,
+              "completion_tokens": 178,
+              "prompt_cache_hit_tokens": 2048,
+              "prompt_cache_miss_tokens": 267
+            },
+            "latency_ms": 1735,
+            "tool_names": [
+              "get_order",
+              "search_policy",
+              "check_eligibility"
+            ]
+          },
+          "created_at": "2026-10-12T03:47:51.222287+00:00"
+        },
+        {
+          "seq": 4,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "get_order",
+            "step": "0:0",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "id": "O-B101",
+                "status": "DELIVERED",
+                "version": 1,
+                "delivered_at": "2026-10-10T02:00:00Z",
+                "paid_amount_fen": 69900,
+                "product_category": "STANDARD",
+                "refunded_amount_fen": 0
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "order_id": "O-B101"
+            }
+          },
+          "created_at": "2026-10-12T03:47:51.301017+00:00"
+        },
+        {
+          "seq": 5,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "search_policy",
+            "step": "0:1",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "intent": "RETURN_REFUND",
+                "clauses": [
+                  {
+                    "text": "隔离测试商家B：常规申请3天窗口。该条款不适用于商家A，也不能向A的用户泄露。",
+                    "intent": "RETURN_REFUND",
+                    "chunk_id": "B-RETURN-01",
+                    "citation": "模拟售后政策 POLICY-B-2026-10-v1 / B-RETURN-01"
+                  }
+                ],
+                "order_id": "O-B101",
+                "simulated": true,
+                "effective_to": "2026-10-31T16:00:00Z",
+                "evaluated_at": "2026-10-11T02:00:00Z",
+                "effective_from": "2026-09-30T16:00:00Z",
+                "policy_version": "POLICY-B-2026-10-v1",
+                "retrieval_mode": "metadata_only"
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "query": "",
+              "intent": "RETURN_REFUND",
+              "order_id": "O-B101"
+            }
+          },
+          "created_at": "2026-10-12T03:47:51.346058+00:00"
+        },
+        {
+          "seq": 6,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "check_eligibility",
+            "step": "0:2",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "eligibility": "eligible",
+                "evaluated_at": "2026-10-11T02:00:00Z",
+                "reason_codes": [
+                  "RETURN_RULES_SATISFIED"
+                ],
+                "order_version": 1,
+                "policy_version": "POLICY-B-2026-10-v1",
+                "review_required": true,
+                "assessment_scope": "READ_ONLY_PRECHECK",
+                "refundable_amount_fen": 69900
+              },
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "order_id": "O-B101",
+              "case_type": "RETURN_REFUND",
+              "reason_code": "CHANGE_OF_MIND"
+            }
+          },
+          "created_at": "2026-10-12T03:47:51.390699+00:00"
+        },
+        {
+          "seq": 7,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 1,
+            "usage": {
+              "total_tokens": 3144,
+              "prompt_tokens": 2964,
+              "completion_tokens": 180,
+              "prompt_cache_hit_tokens": 2304,
+              "prompt_cache_miss_tokens": 660
+            },
+            "latency_ms": 1953,
+            "tool_names": []
+          },
+          "created_at": "2026-10-12T03:47:53.418981+00:00"
+        },
+        {
+          "seq": 8,
+          "kind": "COMPLETED",
+          "data": {
+            "response": {
+              "cases": [],
+              "answer": "订单 O-B101：状态已签收（2026-10-10），实付 699.00 元，未退款。退货资格只读预检结果为 eligible（可申请），但需人工审核，且这不代表已提交或已批准退款。政策（POLICY-B-2026-10-v1 / B-RETURN-01）：常规申请为 3 天窗口，政策有效期 2026-09-30 至 2026-10-31。以上为演示规则，非法律结论。本次仅咨询，未创建任何申请。如需正式申请退货退款，请告知，我会先创建草稿，再由你通过独立确认接口确认。",
+              "tickets": [],
+              "citations": [
+                "模拟售后政策 POLICY-B-2026-10-v1 / B-RETURN-01"
+              ],
+              "simulated": true
+            },
+            "error_code": null
+          },
+          "created_at": "2026-10-12T03:47:53.512936+00:00"
+        }
+      ]
+    },
+    {
+      "label": "fresh-draft",
+      "run_id": "RUN-78AE592CA7A643289A47655CED9AFA8C",
+      "conversation_id": "CONV-85D16FBAF321431793F8F5E00D64E8A9",
+      "status": "WAITING_FOR_USER",
+      "action": "APPLY_AFTER_SALES",
+      "target_order_id": "O-A108",
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "prompt_version": "prompt-v1-m3",
+      "tool_version": "tools-v1-m3",
+      "model_calls": 2,
+      "tool_calls": 4,
+      "error_code": null,
+      "response": {
+        "cases": [
+          {
+            "id": "CASE-E971E425C63743638995C735B62A5230",
+            "reason": "尺寸不合适，申请普通退货",
+            "status": "DRAFT",
+            "version": 1,
+            "order_id": "O-A108",
+            "case_type": "RETURN_REFUND",
+            "simulated": true,
+            "evidence_refs": [],
+            "order_version": 1,
+            "policy_version": "POLICY-A-2026-10-v1",
+            "review_required": true,
+            "requested_amount_fen": 9900
+          }
+        ],
+        "answer": "草稿已创建，请通过独立客户接口生成确认摘要并确认后再提交。",
+        "tickets": [],
+        "citations": [
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01",
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01",
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-01",
+          "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+        ],
+        "simulated": true
+      },
+      "created_at": "2026-10-12T03:49:29.012397+00:00",
+      "completed_at": "2026-10-12T03:49:35.278886+00:00",
+      "events": [
+        {
+          "seq": 1,
+          "kind": "QUEUED",
+          "data": {
+            "action": "APPLY_AFTER_SALES"
+          },
+          "created_at": "2026-10-12T03:49:29.020299+00:00"
+        },
+        {
+          "seq": 2,
+          "kind": "RUNNING",
+          "data": {
+            "model": "deepseek-flash",
+            "resumed": false,
+            "provider": "deepseek"
+          },
+          "created_at": "2026-10-12T03:49:31.684029+00:00"
+        },
+        {
+          "seq": 3,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 0,
+            "usage": {
+              "total_tokens": 2489,
+              "prompt_tokens": 2309,
+              "completion_tokens": 180,
+              "prompt_cache_hit_tokens": 384,
+              "prompt_cache_miss_tokens": 1925
+            },
+            "input_ref": {
+              "round": 0,
+              "message_id": "MSG-8EEB0F491A7F4F948371FF1CB77FD819"
+            },
+            "latency_ms": 1703,
+            "output_ref": {
+              "kind": "MODEL",
+              "step": "0",
+              "run_id": "RUN-78AE592CA7A643289A47655CED9AFA8C"
+            },
+            "tool_names": [
+              "get_order",
+              "search_policy",
+              "check_eligibility"
+            ]
+          },
+          "created_at": "2026-10-12T03:49:33.501796+00:00"
+        },
+        {
+          "seq": 4,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "get_order",
+            "step": "0:0",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "id": "O-A108",
+                "status": "DELIVERED",
+                "version": 1,
+                "delivered_at": "2026-10-09T02:00:00Z",
+                "paid_amount_fen": 9900,
+                "product_category": "STANDARD",
+                "refunded_amount_fen": 0
+              },
+              "trace_id": "RUN-78AE592CA7A643289A47655CED9AFA8C",
+              "retryable": false,
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "order_id": "O-A108"
+            }
+          },
+          "created_at": "2026-10-12T03:49:33.572462+00:00"
+        },
+        {
+          "seq": 5,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "search_policy",
+            "step": "0:1",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "intent": "RETURN_REFUND",
+                "clauses": [
+                  {
+                    "text": "模拟商家A：标准商品在签收后不超过7×24小时可提交常规退货申请，恰好7天包含在窗口内。资格通过不代表批准退款。",
+                    "intent": "RETURN_REFUND",
+                    "chunk_id": "A-RETURN-01",
+                    "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-01"
+                  },
+                  {
+                    "text": "模拟定制和易腐商品不自动判断常规退货资格，应转人工。既往部分退款订单不由首版自动新增退款。",
+                    "intent": "RETURN_REFUND",
+                    "chunk_id": "A-RETURN-02",
+                    "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+                  },
+                  {
+                    "text": "客户确认绑定订单、类型、金额与政策版本，有效期15分钟。客户确认后可提交审核，全部退款仍需人工批准。",
+                    "intent": "ALL",
+                    "chunk_id": "A-CONFIRM-01",
+                    "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01"
+                  },
+                  {
+                    "text": "常规退货批准后等待仓库确认收货；损坏退款无需退回必须有审核员明确决定。只有模拟支付对账成功才报告模拟退款成功。",
+                    "intent": "ALL",
+                    "chunk_id": "A-REFUND-01",
+                    "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01"
+                  }
+                ],
+                "order_id": "O-A108",
+                "simulated": true,
+                "effective_to": "2026-10-31T16:00:00Z",
+                "evaluated_at": "2026-10-11T02:00:00Z",
+                "effective_from": "2026-09-30T16:00:00Z",
+                "policy_version": "POLICY-A-2026-10-v1",
+                "retrieval_mode": "metadata_only"
+              },
+              "trace_id": "RUN-78AE592CA7A643289A47655CED9AFA8C",
+              "retryable": false,
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "query": "",
+              "intent": "RETURN_REFUND",
+              "order_id": "O-A108"
+            }
+          },
+          "created_at": "2026-10-12T03:49:33.617911+00:00"
+        },
+        {
+          "seq": 6,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "check_eligibility",
+            "step": "0:2",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "eligibility": "eligible",
+                "evaluated_at": "2026-10-11T02:00:00Z",
+                "reason_codes": [
+                  "RETURN_RULES_SATISFIED"
+                ],
+                "order_version": 1,
+                "policy_version": "POLICY-A-2026-10-v1",
+                "review_required": true,
+                "assessment_scope": "READ_ONLY_PRECHECK",
+                "refundable_amount_fen": 9900
+              },
+              "trace_id": "RUN-78AE592CA7A643289A47655CED9AFA8C",
+              "retryable": false,
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "order_id": "O-A108",
+              "case_type": "RETURN_REFUND",
+              "reason_code": "CHANGE_OF_MIND"
+            }
+          },
+          "created_at": "2026-10-12T03:49:33.660397+00:00"
+        },
+        {
+          "seq": 7,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 1,
+            "usage": {
+              "total_tokens": 3389,
+              "prompt_tokens": 3305,
+              "completion_tokens": 84,
+              "prompt_cache_hit_tokens": 2304,
+              "prompt_cache_miss_tokens": 1001
+            },
+            "input_ref": {
+              "round": 1,
+              "message_id": "MSG-8EEB0F491A7F4F948371FF1CB77FD819"
+            },
+            "latency_ms": 1359,
+            "output_ref": {
+              "kind": "MODEL",
+              "step": "1",
+              "run_id": "RUN-78AE592CA7A643289A47655CED9AFA8C"
+            },
+            "tool_names": [
+              "create_case_draft"
+            ]
+          },
+          "created_at": "2026-10-12T03:49:35.081113+00:00"
+        },
+        {
+          "seq": 8,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "create_case_draft",
+            "step": "1:0",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "id": "CASE-E971E425C63743638995C735B62A5230",
+                "reason": "尺寸不合适，申请普通退货",
+                "status": "DRAFT",
+                "version": 1,
+                "order_id": "O-A108",
+                "case_type": "RETURN_REFUND",
+                "simulated": true,
+                "evidence_refs": [],
+                "order_version": 1,
+                "policy_version": "POLICY-A-2026-10-v1",
+                "review_required": true,
+                "requested_amount_fen": 9900
+              },
+              "trace_id": "RUN-78AE592CA7A643289A47655CED9AFA8C",
+              "retryable": false,
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "reason": "尺寸不合适，申请普通退货",
+              "order_id": "O-A108",
+              "case_type": "RETURN_REFUND",
+              "evidence_refs": []
+            }
+          },
+          "created_at": "2026-10-12T03:49:35.170199+00:00"
+        },
+        {
+          "seq": 9,
+          "kind": "WAITING_FOR_USER",
+          "data": {
+            "response": {
+              "cases": [
+                {
+                  "id": "CASE-E971E425C63743638995C735B62A5230",
+                  "reason": "尺寸不合适，申请普通退货",
+                  "status": "DRAFT",
+                  "version": 1,
+                  "order_id": "O-A108",
+                  "case_type": "RETURN_REFUND",
+                  "simulated": true,
+                  "evidence_refs": [],
+                  "order_version": 1,
+                  "policy_version": "POLICY-A-2026-10-v1",
+                  "review_required": true,
+                  "requested_amount_fen": 9900
+                }
+              ],
+              "answer": "草稿已创建，请通过独立客户接口生成确认摘要并确认后再提交。",
+              "tickets": [],
+              "citations": [
+                "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01",
+                "模拟售后政策 POLICY-A-2026-10-v1 / A-REFUND-01",
+                "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-01",
+                "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+              ],
+              "simulated": true
+            },
+            "error_code": null
+          },
+          "created_at": "2026-10-12T03:49:35.278886+00:00"
+        }
+      ]
+    },
+    {
+      "label": "fresh-submit",
+      "run_id": "RUN-00ED90B4C87143F6A876E126255DEDE7",
+      "conversation_id": "CONV-85D16FBAF321431793F8F5E00D64E8A9",
+      "status": "COMPLETED",
+      "action": "SUBMIT_CONFIRMED",
+      "target_order_id": "O-A108",
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "prompt_version": "prompt-v1-m3",
+      "tool_version": "tools-v1-m3",
+      "model_calls": 3,
+      "tool_calls": 2,
+      "error_code": null,
+      "response": {
+        "cases": [
+          {
+            "id": "CASE-E971E425C63743638995C735B62A5230",
+            "reason": "尺寸不合适，申请普通退货",
+            "status": "PENDING_REVIEW",
+            "version": 3,
+            "order_id": "O-A108",
+            "case_type": "RETURN_REFUND",
+            "simulated": true,
+            "evidence_refs": [],
+            "order_version": 1,
+            "policy_version": "POLICY-A-2026-10-v1",
+            "review_required": true,
+            "requested_amount_fen": 9900
+          }
+        ],
+        "answer": "已按当前版本（version 2）提交申请 CASE-E971E425C63743638995C735B62A5230，现状态为 PENDING_REVIEW（审核中），版本 3。提交成功仅表示进入审核流程，不代表退款已批准；请以服务端状态卡为准。",
+        "tickets": [],
+        "citations": [],
+        "simulated": true
+      },
+      "created_at": "2026-10-12T03:49:35.968304+00:00",
+      "completed_at": "2026-10-12T03:49:43.158163+00:00",
+      "events": [
+        {
+          "seq": 1,
+          "kind": "QUEUED",
+          "data": {
+            "action": "SUBMIT_CONFIRMED"
+          },
+          "created_at": "2026-10-12T03:49:35.971307+00:00"
+        },
+        {
+          "seq": 2,
+          "kind": "RUNNING",
+          "data": {
+            "model": "deepseek-flash",
+            "resumed": false,
+            "provider": "deepseek"
+          },
+          "created_at": "2026-10-12T03:49:38.447882+00:00"
+        },
+        {
+          "seq": 3,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 0,
+            "usage": {
+              "total_tokens": 2561,
+              "prompt_tokens": 2506,
+              "completion_tokens": 55,
+              "prompt_cache_hit_tokens": 384,
+              "prompt_cache_miss_tokens": 2122
+            },
+            "input_ref": {
+              "round": 0,
+              "message_id": "MSG-D0729E3B3536411EAD511612A040508A"
+            },
+            "latency_ms": 1406,
+            "output_ref": {
+              "kind": "MODEL",
+              "step": "0",
+              "run_id": "RUN-00ED90B4C87143F6A876E126255DEDE7"
+            },
+            "tool_names": [
+              "get_case"
+            ]
+          },
+          "created_at": "2026-10-12T03:49:39.973423+00:00"
+        },
+        {
+          "seq": 4,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "get_case",
+            "step": "0:0",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "id": "CASE-E971E425C63743638995C735B62A5230",
+                "reason": "尺寸不合适，申请普通退货",
+                "status": "WAITING_FOR_USER",
+                "version": 2,
+                "order_id": "O-A108",
+                "case_type": "RETURN_REFUND",
+                "simulated": true,
+                "evidence_refs": [],
+                "order_version": 1,
+                "policy_version": "POLICY-A-2026-10-v1",
+                "review_required": true,
+                "requested_amount_fen": 9900
+              },
+              "trace_id": "RUN-00ED90B4C87143F6A876E126255DEDE7",
+              "retryable": false,
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "case_id": "CASE-E971E425C63743638995C735B62A5230"
+            }
+          },
+          "created_at": "2026-10-12T03:49:40.052292+00:00"
+        },
+        {
+          "seq": 5,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 1,
+            "usage": {
+              "total_tokens": 2827,
+              "prompt_tokens": 2755,
+              "completion_tokens": 72,
+              "prompt_cache_hit_tokens": 2560,
+              "prompt_cache_miss_tokens": 195
+            },
+            "input_ref": {
+              "round": 1,
+              "message_id": "MSG-D0729E3B3536411EAD511612A040508A"
+            },
+            "latency_ms": 1266,
+            "output_ref": {
+              "kind": "MODEL",
+              "step": "1",
+              "run_id": "RUN-00ED90B4C87143F6A876E126255DEDE7"
+            },
+            "tool_names": [
+              "submit_case"
+            ]
+          },
+          "created_at": "2026-10-12T03:49:41.405267+00:00"
+        },
+        {
+          "seq": 6,
+          "kind": "TOOL_RESULT",
+          "data": {
+            "name": "submit_case",
+            "step": "1:0",
+            "result": {
+              "ok": true,
+              "code": "OK",
+              "data": {
+                "id": "CASE-E971E425C63743638995C735B62A5230",
+                "reason": "尺寸不合适，申请普通退货",
+                "status": "PENDING_REVIEW",
+                "version": 3,
+                "order_id": "O-A108",
+                "case_type": "RETURN_REFUND",
+                "simulated": true,
+                "evidence_refs": [],
+                "order_version": 1,
+                "policy_version": "POLICY-A-2026-10-v1",
+                "review_required": true,
+                "requested_amount_fen": 9900
+              },
+              "trace_id": "RUN-00ED90B4C87143F6A876E126255DEDE7",
+              "retryable": false,
+              "tool_version": "tools-v1-m3"
+            },
+            "arguments": {
+              "case_id": "CASE-E971E425C63743638995C735B62A5230",
+              "expected_version": 2
+            }
+          },
+          "created_at": "2026-10-12T03:49:41.514543+00:00"
+        },
+        {
+          "seq": 7,
+          "kind": "MODEL_RESULT",
+          "data": {
+            "model": "deepseek-flash",
+            "round": 2,
+            "usage": {
+              "total_tokens": 3100,
+              "prompt_tokens": 3020,
+              "completion_tokens": 80,
+              "prompt_cache_hit_tokens": 2816,
+              "prompt_cache_miss_tokens": 204
+            },
+            "input_ref": {
+              "round": 2,
+              "message_id": "MSG-D0729E3B3536411EAD511612A040508A"
+            },
+            "latency_ms": 1484,
+            "output_ref": {
+              "kind": "MODEL",
+              "step": "2",
+              "run_id": "RUN-00ED90B4C87143F6A876E126255DEDE7"
+            },
+            "tool_names": []
+          },
+          "created_at": "2026-10-12T03:49:43.062598+00:00"
+        },
+        {
+          "seq": 8,
+          "kind": "COMPLETED",
+          "data": {
+            "response": {
+              "cases": [
+                {
+                  "id": "CASE-E971E425C63743638995C735B62A5230",
+                  "reason": "尺寸不合适，申请普通退货",
+                  "status": "PENDING_REVIEW",
+                  "version": 3,
+                  "order_id": "O-A108",
+                  "case_type": "RETURN_REFUND",
+                  "simulated": true,
+                  "evidence_refs": [],
+                  "order_version": 1,
+                  "policy_version": "POLICY-A-2026-10-v1",
+                  "review_required": true,
+                  "requested_amount_fen": 9900
+                }
+              ],
+              "answer": "已按当前版本（version 2）提交申请 CASE-E971E425C63743638995C735B62A5230，现状态为 PENDING_REVIEW（审核中），版本 3。提交成功仅表示进入审核流程，不代表退款已批准；请以服务端状态卡为准。",
+              "tickets": [],
+              "citations": [],
+              "simulated": true
+            },
+            "error_code": null
+          },
+          "created_at": "2026-10-12T03:49:43.158163+00:00"
+        }
+      ]
+    }
+  ],
+  "checks": {
+    "multiple_orders_clarified": true,
+    "draft_real_confirmation_submit": true,
+    "logistics_ticket": true,
+    "damage_evidence_clarified": true,
+    "tenant_isolation": true,
+    "clean_customer_confirmation_submit": true
+  },
+  "previous_failures": [
+    {
+      "run_id": "RUN-4136CB7BA3FA4B4AAB8E0C6ADC3E6391",
+      "conversation_id": "CONV-189443D80CA74925B5991F6D8226866B",
+      "status": "FAILED",
+      "action": "SUBMIT_CONFIRMED",
+      "target_order_id": "O-A102",
+      "provider": "deepseek",
+      "model": "deepseek-flash",
+      "prompt_version": "prompt-v1-m3",
+      "tool_version": "tools-v1-m3",
+      "model_calls": 3,
+      "tool_calls": 2,
+      "error_code": "MODEL_RESPONSE_INVALID",
+      "response": null,
+      "created_at": "2026-10-12T03:43:39.469734+00:00",
+      "completed_at": "2026-10-12T03:43:48.297162+00:00"
+    }
+  ],
+  "ok": true
+}

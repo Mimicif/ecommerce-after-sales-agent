@@ -1,0 +1,517 @@
+{
+  "case_id": "S03",
+  "title": "政策咨询不建单",
+  "level": "agent",
+  "tags": [
+    "core"
+  ],
+  "baseline": "B0",
+  "timestamp": "2026-10-12T04:44:24.595179+00:00",
+  "score": {
+    "success": true,
+    "checks": {
+      "case_count": true,
+      "eligibility": true,
+      "citations_include": true
+    },
+    "hard_violations": [],
+    "fact_correct": 15,
+    "fact_total": 15,
+    "citation_correct": 3,
+    "citation_total": 3,
+    "retrieval_required": true,
+    "retrieval_covered": true
+  },
+  "evidence": {
+    "responses": [
+      {
+        "answer": "可以申请，需审核。O-A101支付14900分，签收时间2026-10-09T02:00:00Z。",
+        "needs_input": false
+      }
+    ],
+    "citations": [
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01"
+    ],
+    "available_citations": [
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-01",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02",
+      "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01"
+    ],
+    "retrieved": [
+      "A-RETURN-01",
+      "A-RETURN-02",
+      "A-CONFIRM-01"
+    ],
+    "observations": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "paid_amount_fen",
+        "value": 14900
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "refunded_amount_fen",
+        "value": 0
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "delivered_at",
+        "value": "2026-10-09T02:00:00Z"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "product_category",
+        "value": "STANDARD"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "status",
+        "value": "DELIVERED"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "version",
+        "value": 1
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "standard_return_window_seconds",
+        "value": 604800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "customer_confirmation_ttl_seconds",
+        "value": 900
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "logistics_inactivity_seconds",
+        "value": 172800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "all_refunds_require_review",
+        "value": true
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-A101",
+        "field": "eligibility",
+        "value": "eligible"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-A101",
+        "field": "refundable_amount_fen",
+        "value": 14900
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-A101",
+        "field": "policy_version",
+        "value": "POLICY-A-2026-10-v1"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-A101",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      }
+    ],
+    "claims": [
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "paid_amount_fen",
+        "value": 14900
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "refunded_amount_fen",
+        "value": 0
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "delivered_at",
+        "value": "2026-10-09T02:00:00Z"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "product_category",
+        "value": "STANDARD"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "status",
+        "value": "DELIVERED"
+      },
+      {
+        "kind": "ORDER",
+        "resource_id": "O-A101",
+        "field": "version",
+        "value": 1
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "standard_return_window_seconds",
+        "value": 604800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "customer_confirmation_ttl_seconds",
+        "value": 900
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "logistics_inactivity_seconds",
+        "value": 172800
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "all_refunds_require_review",
+        "value": true
+      },
+      {
+        "kind": "POLICY",
+        "resource_id": "POLICY-A-2026-10-v1",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-A101",
+        "field": "eligibility",
+        "value": "eligible"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-A101",
+        "field": "refundable_amount_fen",
+        "value": 14900
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-A101",
+        "field": "policy_version",
+        "value": "POLICY-A-2026-10-v1"
+      },
+      {
+        "kind": "ELIGIBILITY",
+        "resource_id": "O-A101",
+        "field": "evaluated_at",
+        "value": "2026-10-11T02:00:00Z"
+      }
+    ],
+    "business_data": [],
+    "events": [],
+    "model_outputs": [],
+    "tokens": {},
+    "extra": {},
+    "run_status": null,
+    "error_code": null,
+    "mode": "FORM",
+    "latency_ms": 156,
+    "http_trace": [
+      {
+        "path": "/orders/O-A101",
+        "actor": "C-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "id": "O-A101",
+          "product_category": "STANDARD",
+          "status": "DELIVERED",
+          "paid_amount_fen": 14900,
+          "refunded_amount_fen": 0,
+          "delivered_at": "2026-10-09T02:00:00Z",
+          "version": 1,
+          "cases": []
+        }
+      },
+      {
+        "path": "/orders/O-A101/policy?intent=RETURN_REFUND&query=O-A101%E8%83%BD%E9%80%80%E5%90%97%EF%BC%9F%E6%88%91%E5%8F%AA%E6%98%AF%E5%85%88%E9%97%AE%E9%97%AE%EF%BC%8C%E4%B8%8D%E8%A6%81%E7%94%B3%E8%AF%B7%E3%80%82",
+        "actor": "C-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "order_id": "O-A101",
+          "policy_version": "POLICY-A-2026-10-v1",
+          "intent": "RETURN_REFUND",
+          "effective_from": "2026-09-30T16:00:00Z",
+          "effective_to": "2026-10-31T16:00:00Z",
+          "clauses": [
+            {
+              "chunk_id": "A-RETURN-01",
+              "intent": "RETURN_REFUND",
+              "text": "模拟商家A：标准商品在签收后不超过7×24小时可提交常规退货申请，恰好7天包含在窗口内。资格通过不代表批准退款。",
+              "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-01"
+            },
+            {
+              "chunk_id": "A-RETURN-02",
+              "intent": "RETURN_REFUND",
+              "text": "模拟定制和易腐商品不自动判断常规退货资格，应转人工。既往部分退款订单不由首版自动新增退款。",
+              "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-RETURN-02"
+            },
+            {
+              "chunk_id": "A-CONFIRM-01",
+              "intent": "ALL",
+              "text": "客户确认绑定订单、类型、金额与政策版本，有效期15分钟。客户确认后可提交审核，全部退款仍需人工批准。",
+              "citation": "模拟售后政策 POLICY-A-2026-10-v1 / A-CONFIRM-01"
+            }
+          ],
+          "retrieval_mode": "keyword_v1",
+          "candidates": [
+            {
+              "chunk_id": "A-RETURN-01",
+              "score": 1.196365,
+              "selected": true
+            },
+            {
+              "chunk_id": "A-RETURN-02",
+              "score": 0.0,
+              "selected": true
+            },
+            {
+              "chunk_id": "A-CONFIRM-01",
+              "score": 0.0,
+              "selected": true
+            },
+            {
+              "chunk_id": "A-REFUND-01",
+              "score": 0.0,
+              "selected": false
+            }
+          ],
+          "rule_summary": {
+            "standard_return_window_seconds": 604800,
+            "customer_confirmation_ttl_seconds": 900,
+            "logistics_inactivity_seconds": 172800,
+            "all_refunds_require_review": true
+          },
+          "evaluated_at": "2026-10-11T02:00:00Z",
+          "simulated": true
+        }
+      },
+      {
+        "path": "/orders/O-A101/eligibility",
+        "actor": "C-A1",
+        "http_status": 200,
+        "code": "OK",
+        "data": {
+          "eligibility": "eligible",
+          "reason_codes": [
+            "RETURN_RULES_SATISFIED"
+          ],
+          "refundable_amount_fen": 14900,
+          "policy_version": "POLICY-A-2026-10-v1",
+          "order_version": 1,
+          "evaluated_at": "2026-10-11T02:00:00Z",
+          "assessment_scope": "READ_ONLY_PRECHECK",
+          "review_required": true
+        }
+      }
+    ],
+    "database": {
+      "cases": [],
+      "tickets": [],
+      "refunds": [],
+      "providers": [],
+      "reviews": [],
+      "confirmations": [],
+      "orders": [
+        {
+          "id": "O-A101",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 14900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A102",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 39900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A103",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 8900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A104",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A105",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 12900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A106",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 29900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A107",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 19900,
+          "refunded_amount_fen": 19900
+        },
+        {
+          "id": "O-A108",
+          "customer_id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 9900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A109",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 10900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A110",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 0,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A111",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 11900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-A112",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 20000,
+          "refunded_amount_fen": 5000
+        },
+        {
+          "id": "O-A113",
+          "customer_id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "paid_amount_fen": 15900,
+          "refunded_amount_fen": 0
+        },
+        {
+          "id": "O-B101",
+          "customer_id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "paid_amount_fen": 69900,
+          "refunded_amount_fen": 0
+        }
+      ],
+      "users": [
+        {
+          "id": "C-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": "C-A2",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "C-B1",
+          "tenant_id": "TENANT-B",
+          "customer_id": "C-B1",
+          "roles": [
+            "customer"
+          ]
+        },
+        {
+          "id": "E-A1",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support"
+          ]
+        },
+        {
+          "id": "E-A2",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-A3",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "warehouse"
+          ]
+        },
+        {
+          "id": "E-A4",
+          "tenant_id": "TENANT-A",
+          "customer_id": null,
+          "roles": [
+            "support",
+            "reviewer"
+          ]
+        },
+        {
+          "id": "E-B2",
+          "tenant_id": "TENANT-B",
+          "customer_id": null,
+          "roles": [
+            "reviewer"
+          ]
+        }
+      ]
+    }
+  },
+  "repeat_index": 0
+}

@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "review_date": "2026-10-13",
+  "scope": "Sampled actual video frame at 90 seconds plus timeout, restored mobile and support screenshots; complete workflow covered by browser assertions, not a manual review of every video frame.",
+  "inspected": ["demo-frame.png", "timeout-pending.png", "mobile-case.png", "desktop-case.png"],
+  "checks": {
+    "assistant_memory_suffix_not_displayed": true,
+    "damaged_draft_visible_after_completed_run": true,
+    "unknown_payment_shown_as_pending_reconciliation": true,
+    "restored_mobile_shows_unique_99_yuan_simulated_refund": true,
+    "support_view_has_no_approval_controls": true
+  },
+  "video_sha256": "bf711d410cf8a0d6bd8979452ab15980323356e154242e1c0753690f0f54889f"
+}

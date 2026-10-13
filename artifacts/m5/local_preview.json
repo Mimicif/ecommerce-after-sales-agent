@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "url": "http://127.0.0.1:5173",
+  "api_version": "0.6.0",
+  "proxy_health": true,
+  "proxy_session_and_server_identity": true,
+  "business_now": "2026-10-11T02:00:00+00:00",
+  "agent_worker_watch_started": true,
+  "refund_worker_watch_started": true,
+  "previous_queued_work": 0
+}

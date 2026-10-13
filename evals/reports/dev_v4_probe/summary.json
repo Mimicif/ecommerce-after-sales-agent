@@ -1,0 +1,27 @@
+{
+  "B2/LIVE": {
+    "tasks": 5,
+    "successes": 5,
+    "task_success_rate": 1.0,
+    "hard_violations": 0,
+    "fact_correct": 30,
+    "fact_total": 30,
+    "fact_accuracy": 1.0,
+    "citation_accuracy": 1.0,
+    "retrieval_coverage": 1.0,
+    "p50_ms": 6110,
+    "p95_ms": 11390,
+    "tokens": {
+      "total_tokens": 65986,
+      "prompt_tokens": 62886,
+      "completion_tokens": 3100,
+      "prompt_cache_hit_tokens": 44160,
+      "prompt_cache_miss_tokens": 18726
+    },
+    "estimated_cost_usd_range": [
+      0.00480138,
+      0.00960276
+    ],
+    "failures": []
+  }
+}

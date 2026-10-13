@@ -1,0 +1,36 @@
+{
+  "checked_at_utc": "2026-10-12T03:00:13.245576+00:00",
+  "result": "PASS",
+  "api_version": "api-v1-m2",
+  "schema_version": "0003_m2",
+  "business_clock": "fixture",
+  "simulated": true,
+  "scope": "Real HTTP, PostgreSQL and separate simulated worker processes; no LLM",
+  "first_run_timeout_injected": true,
+  "checks": [
+    "standard_return_requires_warehouse",
+    "damage_outside_window_requires_reviewer",
+    "submission_replay_is_same_result",
+    "case_customer_and_tenant_isolation",
+    "separate_worker_provider_success_timeout_remains_unknown",
+    "new_worker_query_recovery_and_repeated_execution_do_not_double_refund",
+    "tenant_b_separate_policy_draft_and_cancel",
+    "logistics_ticket_does_not_create_refund"
+  ],
+  "flows": [
+    {
+      "case_id": "CASE-D5DCDEE51C0E4D99BBAA8F760AA0A846",
+      "order_id": "O-A101",
+      "case_type": "RETURN_REFUND",
+      "amount_fen": 14900,
+      "final_status": "REFUNDED"
+    },
+    {
+      "case_id": "CASE-C327FC0437644CACB184ACEA8DE28B5F",
+      "order_id": "O-A103",
+      "case_type": "DAMAGE_REFUND",
+      "amount_fen": 8900,
+      "final_status": "REFUNDED"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "reviewed_by": "human_user",
+  "approved_at": "2026-10-12T05:30:23.363141+00:00",
+  "eval_version": "holdout-v2-m4",
+  "case_count": 24,
+  "prompt_version": "prompt-v5-m4",
+  "prompt_tuning_exposure": "none; deterministic API/authoring checks only before human freeze",
+  "approval": "已核验第二批24条预期，同意冻结并验收",
+  "sha256": "423b5d9b8a609978c8fd1487165289ce0663c6ee60afb33bbe671e0c6a1ce013",
+  "implementation_sha256": {
+    "backend/app/prompts/system_m4.txt": "5bc67d8bc71ff36c3079840a2bfa975490f3352225b9383c5f1a81d4b0d723e6",
+    "backend/app/agent.py": "0404ea7e4e89840d8ffd664c5d7d6be4d9f8e82e7e81845056a18c69206995b2",
+    "backend/app/agent_model.py": "8735a1980798eb25b9f3f3633de086f271e154b9f3752aa48fe6c5aca36c89ab",
+    "backend/app/grounding.py": "1b84670c3488a5d01f7fcf6259944fad08f6b44703087d265475492497852c69"
+  }
+}

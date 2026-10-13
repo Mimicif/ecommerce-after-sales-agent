@@ -1,0 +1,154 @@
+[
+  {
+    "name": "list_my_orders",
+    "description": "列出当前身份可访问的订单，最多20条，只读。",
+    "parameters": {
+      "additionalProperties": false,
+      "properties": {
+        "cursor": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "minLength": 1,
+              "pattern": "^[A-Z0-9-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cursor"
+        },
+        "limit": {
+          "default": 20,
+          "maximum": 20,
+          "minimum": 1,
+          "title": "Limit",
+          "type": "integer"
+        }
+      },
+      "title": "ListOrdersInput",
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_order",
+    "description": "查询有权限的订单事实与整数分金额，不提交售后。",
+    "parameters": {
+      "additionalProperties": false,
+      "properties": {
+        "order_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Z0-9-]+$",
+          "title": "Order Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "order_id"
+      ],
+      "title": "OrderInput",
+      "type": "object"
+    }
+  },
+  {
+    "name": "get_logistics",
+    "description": "读取物流轨迹与可能异常信号；未知不代表丢件。",
+    "parameters": {
+      "additionalProperties": false,
+      "properties": {
+        "order_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Z0-9-]+$",
+          "title": "Order Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "order_id"
+      ],
+      "title": "OrderInput",
+      "type": "object"
+    }
+  },
+  {
+    "name": "search_policy",
+    "description": "仅返回本租户当前有效的模拟政策条款；M1按意图筛选，不做相关度检索。",
+    "parameters": {
+      "additionalProperties": false,
+      "properties": {
+        "order_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Z0-9-]+$",
+          "title": "Order Id",
+          "type": "string"
+        },
+        "intent": {
+          "enum": [
+            "RETURN_REFUND",
+            "DAMAGE_REFUND",
+            "LOGISTICS"
+          ],
+          "title": "Intent",
+          "type": "string"
+        },
+        "query": {
+          "default": "",
+          "maxLength": 500,
+          "title": "Query",
+          "type": "string"
+        }
+      },
+      "required": [
+        "order_id",
+        "intent"
+      ],
+      "title": "PolicyInput",
+      "type": "object"
+    }
+  },
+  {
+    "name": "check_eligibility",
+    "description": "只读检查申请规则；eligible不等于已提交或已批准退款。",
+    "parameters": {
+      "additionalProperties": false,
+      "properties": {
+        "order_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "pattern": "^[A-Z0-9-]+$",
+          "title": "Order Id",
+          "type": "string"
+        },
+        "case_type": {
+          "enum": [
+            "RETURN_REFUND",
+            "DAMAGE_REFUND"
+          ],
+          "title": "Case Type",
+          "type": "string"
+        },
+        "reason_code": {
+          "default": "OTHER",
+          "enum": [
+            "CHANGE_OF_MIND",
+            "DAMAGED",
+            "OTHER"
+          ],
+          "title": "Reason Code",
+          "type": "string"
+        }
+      },
+      "required": [
+        "order_id",
+        "case_type"
+      ],
+      "title": "EligibilityInput",
+      "type": "object"
+    }
+  }
+]
