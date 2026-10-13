@@ -50,7 +50,9 @@ M4完整成绩独立存放evals/reports，不把离线结果记作真实模型�
 
 用户明确授权公开同步，并确认 `Mimicif/ecommerce-after-sales-agent` 与 MIT。新增 LICENSE、克隆和开源范围说明、ADR-021及docs/20_OPEN_SOURCE.md；.gitignore扩展排除环境变体、视频与私钥。发布本地分支codex/open-source，远端main；使用GitHub noreply提交邮箱。
 
-保留源码、锁文件、模拟数据、测试与已检查的历史评测/验收证据；不上传模型密钥、数据库/运行时、依赖、视频或dist压缩包。发布文件凭据检查、文档/fixture结构与受验收源码哈希检查通过；本次未重跑PostgreSQL回归、浏览器或live模型评测。应用/API/schema/prompt/policy/eval不变；原M6源码包及证据不覆盖，历史“未上传”记录描述当时状态。本次推送及远端核对结果见交付消息。
+保留源码、锁文件、模拟数据、测试与已检查的历史评测/验收证据；不上传模型密钥、数据库/运行时、依赖、视频或dist压缩包。1253个发布文件凭据检查、文档/fixture结构与1116个受验收源码文件哈希检查通过；本次未重跑PostgreSQL回归、浏览器或live模型评测。应用/API/schema/prompt/policy/eval不变；原M6源码包及证据不覆盖，历史“未上传”记录描述当时状态。
+
+已成功发布至 https://github.com/Mimicif/ecommerce-after-sales-agent 。首次源码提交 `1a5fd8f50dcb7178156cde7d6055604b5ffe349a` 与远端main一致，公开可见性与默认main分支已核对，GitHub许可证接口识别为MIT。原Git/libcurl直连两次失败，通过一次性loopback桥接、Python HTTPS转发标准Git协议完成非强制推送；临时服务已关闭，凭据未保存，不改变系统代理或TLS设置。随后提交本发布记录。
 
 ## 每次后续开发结束时更新（字段）
 
